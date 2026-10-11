@@ -1,4 +1,4 @@
-package sketches.gradients
+package sketches.experiments.gradients
 
 import org.scalajs.dom.HTMLCanvasElement
 import sketchlib.shaders.room.*

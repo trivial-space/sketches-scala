@@ -1,4 +1,4 @@
-package sketches.strokes.tile_strokes
+package sketches.paintings.tile_strokes
 
 import org.scalajs.dom.HTMLCanvasElement
 import trivalibs.graphics.geometry.*

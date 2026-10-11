@@ -1,4 +1,4 @@
-package sketches.strokes.tile_strokes
+package sketches.paintings.tile_strokes
 
 import trivalibs.graphics.geometry.*
 import trivalibs.graphics.lib.color.*

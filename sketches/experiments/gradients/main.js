@@ -2659,10 +2659,10 @@ $p.qs = (function(xs, seed) {
   }
   return ((rangeState === 2) ? this.oJ(initial, rangeDiff, prev, seed) : this.ad(h, n));
 });
-function $p_Lsketches_gradients_Gradients$package$__isHangingFace$1__Lsketchlib_utils_room_Wall__Z($thiz, w) {
-  return ((w.aT > (2.0 * $m_Lsketches_gradients_Gradients$package$().jm)) && (w.b5.A > 0.5));
+function $p_Lsketches_experiments_gradients_Gradients$package$__isHangingFace$1__Lsketchlib_utils_room_Wall__Z($thiz, w) {
+  return ((w.aT > (2.0 * $m_Lsketches_experiments_gradients_Gradients$package$().jm)) && (w.b5.A > 0.5));
 }
-function $p_Lsketches_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form($thiz, p$5, faces) {
+function $p_Lsketches_experiments_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form($thiz, p$5, faces) {
   var mesh$proxy1 = $m_Ltrivalibs_graphics_geometry_Mesh$().nZ(faces, null, 0, new $c_Ltrivalibs_graphics_geometry_package$package$$anon$1(0));
   var vl = new $c_Ltrivalibs_graphics_geometry_VertexLayout$named(new $c_Ltrivalibs_graphics_geometry_VertexLayoutHelper$cons($m_Ltrivalibs_graphics_geometry_FieldWriter$vec3Writer$(), new $c_Ltrivalibs_graphics_geometry_VertexLayoutHelper$cons($m_Ltrivalibs_graphics_geometry_FieldWriter$vec2Writer$(), $m_Ltrivalibs_graphics_geometry_VertexLayoutHelper$nil$())));
   var f = ((v$3, n$3, ref$3) => {
@@ -2762,16 +2762,16 @@ function $p_Lsketches_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_
   }
   return p$5.of($x_1, (void 0), (void 0), (void 0), (void 0), (void 0));
 }
-function $p_Lsketches_gradients_Gradients$package$__texSize$1__D__D__T2($thiz, w, h) {
-  return new $c_T2($doubleToInt((w * $m_Lsketches_gradients_Gradients$package$().jc)), $doubleToInt((h * $m_Lsketches_gradients_Gradients$package$().jc)));
+function $p_Lsketches_experiments_gradients_Gradients$package$__texSize$1__D__D__T2($thiz, w, h) {
+  return new $c_T2($doubleToInt((w * $m_Lsketches_experiments_gradients_Gradients$package$().jc)), $doubleToInt((h * $m_Lsketches_experiments_gradients_Gradients$package$().jc)));
 }
-function $p_Lsketches_gradients_Gradients$package$__fadeToEnv$1__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr($thiz, color, wp, eye) {
-  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().r5(color, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().kK($m_Lsketches_gradients_Gradients$package$().gk), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().fS($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().iU($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().kH(wp, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), eye)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_gradients_Gradients$package$().lo), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_gradients_Gradients$package$().jg)));
+function $p_Lsketches_experiments_gradients_Gradients$package$__fadeToEnv$1__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr($thiz, color, wp, eye) {
+  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().r5(color, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().kK($m_Lsketches_experiments_gradients_Gradients$package$().gk), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().fS($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().iU($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().kH(wp, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), eye)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_experiments_gradients_Gradients$package$().lo), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_experiments_gradients_Gradients$package$().jg)));
 }
-function $p_Lsketches_gradients_Gradients$package$__wallTex$1__Lsketchlib_utils_room_Hanging__Lsketchlib_utils_bake_TextureBaker__Ltrivalibs_graphics_painter_Form__Lsketchlib_utils_room_Wall__sjs_js_Array__Ltrivalibs_graphics_painter_Panel($thiz, hanging$1, wallBaker$1, wallForm, wall, pieces) {
+function $p_Lsketches_experiments_gradients_Gradients$package$__wallTex$1__Lsketchlib_utils_room_Hanging__Lsketchlib_utils_bake_TextureBaker__Ltrivalibs_graphics_painter_Form__Lsketchlib_utils_room_Wall__sjs_js_Array__Ltrivalibs_graphics_painter_Panel($thiz, hanging$1, wallBaker$1, wallForm, wall, pieces) {
   matchResult5: {
     var \u03b42$;
-    var x13 = $p_Lsketches_gradients_Gradients$package$__texSize$1__D__D__T2($thiz, wall.aT, wall.b4);
+    var x13 = $p_Lsketches_experiments_gradients_Gradients$package$__texSize$1__D__D__T2($thiz, wall.aT, wall.b4);
     if ((x13 !== null)) {
       var \u03b42$ = x13;
       break matchResult5;
@@ -2782,7 +2782,7 @@ function $p_Lsketches_gradients_Gradients$package$__wallTex$1__Lsketchlib_utils_
   var h$2 = (\u03b42$.ag | 0);
   return hanging$1.pA($m_Lsketchlib_utils_bake_Bake$package$().o0(wallBaker$1, wallForm, w$2, h$2, (void 0), (void 0), true, (void 0)), w$2, h$2, pieces);
 }
-function $p_Lsketches_gradients_Gradients$package$__gradientPanel$1__Ltrivalibs_graphics_painter_Painter__F1__Ltrivalibs_graphics_painter_Panel($thiz, p$6, interp) {
+function $p_Lsketches_experiments_gradients_Gradients$package$__gradientPanel$1__Ltrivalibs_graphics_painter_Painter__F1__Ltrivalibs_graphics_painter_Panel($thiz, p$6, interp) {
   var program = new $c_Ltrivalibs_graphics_shader_dsl_LayerProgram();
   var ctx = new $c_Ltrivalibs_graphics_shader_dsl_FragmentCtx(new $c_Ltrivalibs_graphics_shader_dsl_TypedExprAccessor("in"), new $c_Ltrivalibs_graphics_shader_dsl_TypedAssignAccessor("out"), new $c_Ltrivalibs_graphics_shader_dsl_TypedExprAccessor(""), new $c_Ltrivalibs_graphics_shader_dsl_TypedPanelAccessor());
   var reg = new $c_Ltrivalibs_graphics_shader_dsl_FnRegistry();
@@ -2790,7 +2790,7 @@ function $p_Lsketches_gradients_Gradients$package$__gradientPanel$1__Ltrivalibs_
   $m_Ltrivalibs_graphics_shader_dsl_FnRegistry$().m = reg;
   try {
     var AssignTarget_this = ctx.at.X("color");
-    var value$proxy21 = $m_Ltrivalibs_graphics_math_gpu_vec4$().ai($m_Ltrivalibs_graphics_math_gpu_vec3$().bw($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().i5($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_gradients_Gradients$package$().lq), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_gradients_Gradients$package$().lt), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().kw(interp.h($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().a8(ctx.ac.k("uv")))))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
+    var value$proxy21 = $m_Ltrivalibs_graphics_math_gpu_vec4$().ai($m_Ltrivalibs_graphics_math_gpu_vec3$().bw($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().i5($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_experiments_gradients_Gradients$package$().lq), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_experiments_gradients_Gradients$package$().lt), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().kw(interp.h($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().a8(ctx.ac.k("uv")))))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
     $m_Ltrivalibs_graphics_math_gpu_expr$package$();
     var $x_1 = (((("  " + AssignTarget_this.S) + " = ") + value$proxy21.d) + ";");
   } finally {
@@ -2836,21 +2836,21 @@ function $p_Lsketches_gradients_Gradients$package$__gradientPanel$1__Ltrivalibs_
   var bgls = [];
   var shade = new $c_Ltrivalibs_graphics_painter_Shade(id, module, null, null, null, $m_Ltrivalibs_graphics_shader_layouts$().R(p$6.f, bgls), false, dict, dict$2);
   var layer$1 = p$6.bn(shade, (void 0), (void 0), (void 0));
-  var panel = p$6.bz($m_Lsketches_gradients_Gradients$package$().ls, $m_Lsketches_gradients_Gradients$package$().lr, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), layer$1, (void 0));
+  var panel = p$6.bz($m_Lsketches_experiments_gradients_Gradients$package$().ls, $m_Lsketches_experiments_gradients_Gradients$package$().lr, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), layer$1, (void 0));
   $p_Ltrivalibs_graphics_painter_Painter__paintPanel__Ltrivalibs_graphics_painter_Panel__V(p$6, panel);
   return panel;
 }
-function $p_Lsketches_gradients_Gradients$package$__curate$1__Lsketchlib_utils_room_Hanging__sjs_js_Array__Lsketchlib_utils_room_Wall__sjs_js_Array($thiz, hanging$3, gradientImages$2, wall) {
+function $p_Lsketches_experiments_gradients_Gradients$package$__curate$1__Lsketchlib_utils_room_Hanging__sjs_js_Array__Lsketchlib_utils_room_Wall__sjs_js_Array($thiz, hanging$3, gradientImages$2, wall) {
   var out = [];
-  if ($p_Lsketches_gradients_Gradients$package$__isHangingFace$1__Lsketchlib_utils_room_Wall__Z($thiz, wall)) {
-    var end = ($m_Lsketches_gradients_Gradients$package$().h3.length | 0);
+  if ($p_Lsketches_experiments_gradients_Gradients$package$__isHangingFace$1__Lsketchlib_utils_room_Wall__Z($thiz, wall)) {
+    var end = ($m_Lsketches_experiments_gradients_Gradients$package$().h3.length | 0);
     var isEmpty = (end <= 0);
     var scala$collection$immutable$Range$$lastElement = ((end - 1) | 0);
     if ((!isEmpty)) {
       var i = 0;
       while (true) {
         var x0 = i;
-        (out.push(hanging$3.qg(wall, new $c_Lsketchlib_utils_room_PaintingSpec($m_Lsketches_gradients_Gradients$package$().h2, $m_Lsketches_gradients_Gradients$package$().lm, $m_Lsketches_gradients_Gradients$package$().ll, gradientImages$2[x0], 3.0), $m_Lsketches_gradients_Gradients$package$().px(x0), $m_Lsketches_gradients_Gradients$package$().lk, $m_Lsketches_gradients_Gradients$package$().ln)) | 0);
+        (out.push(hanging$3.qg(wall, new $c_Lsketchlib_utils_room_PaintingSpec($m_Lsketches_experiments_gradients_Gradients$package$().h2, $m_Lsketches_experiments_gradients_Gradients$package$().lm, $m_Lsketches_experiments_gradients_Gradients$package$().ll, gradientImages$2[x0], 3.0), $m_Lsketches_experiments_gradients_Gradients$package$().px(x0), $m_Lsketches_experiments_gradients_Gradients$package$().lk, $m_Lsketches_experiments_gradients_Gradients$package$().ln)) | 0);
         if ((i === scala$collection$immutable$Range$$lastElement)) {
           break;
         }
@@ -2861,7 +2861,7 @@ function $p_Lsketches_gradients_Gradients$package$__curate$1__Lsketchlib_utils_r
   return out;
 }
 /** @constructor */
-function $c_Lsketches_gradients_Gradients$package$() {
+function $c_Lsketches_experiments_gradients_Gradients$package$() {
   this.h3 = null;
   this.lq = 0.0;
   this.lt = 0.0;
@@ -2903,7 +2903,7 @@ function $c_Lsketches_gradients_Gradients$package$() {
   this.lz = 0.0;
   this.ly = 0.0;
   this.lj = 0.0;
-  $n_Lsketches_gradients_Gradients$package$ = this;
+  $n_Lsketches_experiments_gradients_Gradients$package$ = this;
   this.h3 = [new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2) => t$2)), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$1) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().j1($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B(t$2$1, 3.141592653589793), 0.5)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$2) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().rS(t$2$2))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$3) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().fS(t$2$3, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.6), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.8)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$4) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().qf(t$2$4, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.7)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$5) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().iY(t$2$5, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(2.0)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$6) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().iY(t$2$6, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.5)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$7) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().iY(t$2$7, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(8.0)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$8) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().iY(t$2$8, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.2)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$9) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().j1($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B(t$2$9, 6.283185307179586))))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$10) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().j1($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B(t$2$10, 3.141592653589793)))), new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((t$2$11) => $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().j1($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().p3($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B(t$2$11, 6.283185307179586), 6)))))];
   this.lq = 0.0;
   this.lt = 1.0;
@@ -2922,17 +2922,17 @@ function $c_Lsketches_gradients_Gradients$package$() {
   this.lo = 25.0;
   this.jg = 150.0;
   this.gk = new $c_Ltrivalibs_graphics_math_cpu_Vec3(1.05, 1.04, 1.14);
-  this.lp = (1.3 * $m_Lsketches_gradients_Gradients$package$().jg);
+  this.lp = (1.3 * $m_Lsketches_experiments_gradients_Gradients$package$().jg);
   this.jm = 0.4;
   this.h5 = 4.5;
-  this.lD = (((($m_Lsketches_gradients_Gradients$package$().h3.length | 0) * $m_Lsketches_gradients_Gradients$package$().h2) + (((($m_Lsketches_gradients_Gradients$package$().h3.length | 0) - 1) | 0) * $m_Lsketches_gradients_Gradients$package$().jd)) + (2.0 * $m_Lsketches_gradients_Gradients$package$().jl));
+  this.lD = (((($m_Lsketches_experiments_gradients_Gradients$package$().h3.length | 0) * $m_Lsketches_experiments_gradients_Gradients$package$().h2) + (((($m_Lsketches_experiments_gradients_Gradients$package$().h3.length | 0) - 1) | 0) * $m_Lsketches_experiments_gradients_Gradients$package$().jd)) + (2.0 * $m_Lsketches_experiments_gradients_Gradients$package$().jl));
   this.fA = 32.0;
   this.lu = 48.0;
   this.jc = 64.0;
-  this.jn = $m_Lsketches_gradients_Gradients$package$().j3(0.1);
-  this.ji = $m_Lsketches_gradients_Gradients$package$().j3(0.15);
-  this.je = $m_Lsketches_gradients_Gradients$package$().j3(0.9);
-  this.jk = $m_Lsketches_gradients_Gradients$package$().j3(2.07);
+  this.jn = $m_Lsketches_experiments_gradients_Gradients$package$().j3(0.1);
+  this.ji = $m_Lsketches_experiments_gradients_Gradients$package$().j3(0.15);
+  this.je = $m_Lsketches_experiments_gradients_Gradients$package$().j3(0.9);
+  this.jk = $m_Lsketches_experiments_gradients_Gradients$package$().j3(2.07);
   this.lw = 1.7;
   this.li = 0.8;
   this.jj = 0.3;
@@ -2946,23 +2946,23 @@ function $c_Lsketches_gradients_Gradients$package$() {
   this.ly = 2.7;
   this.lj = 0.004;
 }
-$p = $c_Lsketches_gradients_Gradients$package$.prototype = new $h_O();
-$p.constructor = $c_Lsketches_gradients_Gradients$package$;
+$p = $c_Lsketches_experiments_gradients_Gradients$package$.prototype = new $h_O();
+$p.constructor = $c_Lsketches_experiments_gradients_Gradients$package$;
 /** @constructor */
-function $h_Lsketches_gradients_Gradients$package$() {
+function $h_Lsketches_experiments_gradients_Gradients$package$() {
 }
-$h_Lsketches_gradients_Gradients$package$.prototype = $p;
+$h_Lsketches_experiments_gradients_Gradients$package$.prototype = $p;
 $p.px = (function(i) {
-  return (($m_Lsketches_gradients_Gradients$package$().jl + (0.5 * $m_Lsketches_gradients_Gradients$package$().h2)) + (i * ($m_Lsketches_gradients_Gradients$package$().h2 + $m_Lsketches_gradients_Gradients$package$().jd)));
+  return (($m_Lsketches_experiments_gradients_Gradients$package$().jl + (0.5 * $m_Lsketches_experiments_gradients_Gradients$package$().h2)) + (i * ($m_Lsketches_experiments_gradients_Gradients$package$().h2 + $m_Lsketches_experiments_gradients_Gradients$package$().jd)));
 });
 $p.j3 = (function(wanted) {
-  var p$proxy1 = ($m_Lsketches_gradients_Gradients$package$().fA * wanted);
+  var p$proxy1 = ($m_Lsketches_experiments_gradients_Gradients$package$().fA * wanted);
   var $x_1 = $m_RTLong$().kz((+Math.round(p$proxy1)));
   var x_$_lo = $x_1.l;
   var x_$_hi = $x_1.h;
   var p$proxy2 = $doubleToInt(((4.294967296E9 * x_$_hi) + (x_$_lo >>> 0.0)));
   var period = ((p$proxy2 > 1) ? p$proxy2 : 1);
-  return new $c_T2((period / $m_Lsketches_gradients_Gradients$package$().fA), period);
+  return new $c_T2((period / $m_Lsketches_experiments_gradients_Gradients$package$().fA), period);
 });
 $p.j7 = (function(period) {
   return $m_Ltrivalibs_graphics_math_gpu_vec3$().aF($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(period), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(period));
@@ -2971,19 +2971,19 @@ $p.oS = (function(wp) {
   return $m_Ltrivalibs_graphics_math_gpu_vec3$().aF($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().aN($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().aA(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().a8(wp), 0.2)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().a8(wp), 0.3), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().aN($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().gW(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().a8(wp), 0.25)));
 });
 $p.oT = (function(wp) {
-  return $m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Lsketches_gradients_Gradients$package$().oS(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_gradients_Gradients$package$().jn.U)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "4")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.28), $m_Lsketches_gradients_Gradients$package$().j7(($m_Lsketches_gradients_Gradients$package$().jn.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(120.0));
+  return $m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Lsketches_experiments_gradients_Gradients$package$().oS(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_experiments_gradients_Gradients$package$().jn.U)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "4")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.28), $m_Lsketches_experiments_gradients_Gradients$package$().j7(($m_Lsketches_experiments_gradients_Gradients$package$().jn.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(120.0));
 });
 $p.oF = (function(wp, normal) {
-  return $m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().kr($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Lsketches_gradients_Gradients$package$().oS(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_gradients_Gradients$package$().ji.U)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI(normal, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Lsketches_gradients_Gradients$package$().lw)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "3")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.3), $m_Lsketches_gradients_Gradients$package$().j7(($m_Lsketches_gradients_Gradients$package$().ji.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(70.0));
+  return $m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().kr($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Lsketches_experiments_gradients_Gradients$package$().oS(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_experiments_gradients_Gradients$package$().ji.U)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI(normal, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Lsketches_experiments_gradients_Gradients$package$().lw)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "3")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.3), $m_Lsketches_experiments_gradients_Gradients$package$().j7(($m_Lsketches_experiments_gradients_Gradients$package$().ji.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(70.0));
 });
 $p.ks = (function(world, orient, edge) {
-  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().i5($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_gradients_Gradients$package$().li), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().iO($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().aN(world, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().bm($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B(orient, $m_Lsketches_gradients_Gradients$package$().jj), edge)), (1.0 + $m_Lsketches_gradients_Gradients$package$().jj))));
+  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().i5($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_experiments_gradients_Gradients$package$().li), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().iO($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().aN(world, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().bm($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B(orient, $m_Lsketches_experiments_gradients_Gradients$package$().jj), edge)), (1.0 + $m_Lsketches_experiments_gradients_Gradients$package$().jj))));
 });
 $p.o9 = (function(xz) {
-  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Ltrivalibs_graphics_math_gpu_vec3$().aF($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().aA(xz), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().a8(xz)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_gradients_Gradients$package$().je.U)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "3")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.5), $m_Lsketches_gradients_Gradients$package$().j7(($m_Lsketches_gradients_Gradients$package$().je.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(41.0)));
+  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Ltrivalibs_graphics_math_gpu_vec3$().aF($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().aA(xz), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().a8(xz)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_experiments_gradients_Gradients$package$().je.U)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "3")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.5), $m_Lsketches_experiments_gradients_Gradients$package$().j7(($m_Lsketches_experiments_gradients_Gradients$package$().je.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(41.0)));
 });
 $p.oG = (function(xz) {
-  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Ltrivalibs_graphics_math_gpu_vec3$().aF($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().aA(xz), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().a8(xz)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_gradients_Gradients$package$().jk.U)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "3")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.5), $m_Lsketches_gradients_Gradients$package$().j7(($m_Lsketches_gradients_Gradients$package$().jk.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(9.0)));
+  return $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().hL($m_Ltrivalibs_graphics_shader_lib_noise_Extended$().iR($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().hI($m_Ltrivalibs_graphics_math_gpu_vec3$().aF($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().aA(xz), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$().a8(xz)), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), (+$m_Lsketches_experiments_gradients_Gradients$package$().jk.U)), ($m_Ltrivalibs_graphics_math_gpu_expr$package$(), $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "3")), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(2.0), $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(0.5), $m_Lsketches_experiments_gradients_Gradients$package$().j7(($m_Lsketches_experiments_gradients_Gradients$package$().jk.ag | 0)), null, $m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().aO(9.0)));
 });
 $p.oj = (function(dist, creep, patch) {
   return $m_Lsketchlib_shaders_room_Grime$package$().qe(dist, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().q0(creep), patch, 0.06, 0.85, 0.02, 0.3);
@@ -2992,17 +2992,17 @@ $p.qc = (function(canvas) {
   $m_Ltrivalibs_graphics_painter_Painter$().ql(canvas, new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((p$5) => {
     var sampler = p$5.i8();
     var tileSampler = p$5.oM("linear", "linear", "linear", "repeat", (void 0), (void 0));
-    var pos$1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.0, $m_Lsketches_gradients_Gradients$package$().jf, 9.0);
-    var cam = $m_Ltrivalibs_graphics_scene_PerspectiveCamera$().pc(0.85, 1.0, 0.1, $m_Lsketches_gradients_Gradients$package$().lp, 0.0, 0.0, pos$1);
+    var pos$1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.0, $m_Lsketches_experiments_gradients_Gradients$package$().jf, 9.0);
+    var cam = $m_Ltrivalibs_graphics_scene_PerspectiveCamera$().pc(0.85, 1.0, 0.1, $m_Lsketches_experiments_gradients_Gradients$package$().lp, 0.0, 0.0, pos$1);
     $m_Ltrivalibs_dev_devPreserve$().pj(cam, "camera");
-    var wallRing = $m_Lsketchlib_utils_room_Ring$().rw(new $c_Ltrivalibs_graphics_math_cpu_Vec2(0.0, 0.0), new $c_Ltrivalibs_graphics_math_cpu_Vec2(1.0, 0.0), $m_Lsketches_gradients_Gradients$package$().lD, $m_Lsketches_gradients_Gradients$package$().jm, (-1.0), $m_Lsketches_gradients_Gradients$package$().h5);
+    var wallRing = $m_Lsketchlib_utils_room_Ring$().rw(new $c_Ltrivalibs_graphics_math_cpu_Vec2(0.0, 0.0), new $c_Ltrivalibs_graphics_math_cpu_Vec2(1.0, 0.0), $m_Lsketches_experiments_gradients_Gradients$package$().lD, $m_Lsketches_experiments_gradients_Gradients$package$().jm, (-1.0), $m_Lsketches_experiments_gradients_Gradients$package$().h5);
     var wallBnd = $m_Lsketchlib_utils_room_Boundary$().pg(wallRing);
-    var walls = $m_Lsketchlib_utils_room_Walls$package$().si(wallBnd, $m_Lsketches_gradients_Gradients$package$().h5);
-    var x$proxy33 = new $c_T4((-$m_Lsketches_gradients_Gradients$package$().h4), (-$m_Lsketches_gradients_Gradients$package$().h4), $m_Lsketches_gradients_Gradients$package$().h4, $m_Lsketches_gradients_Gradients$package$().h4);
-    var groundForm = $p_Lsketches_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form(this, p$5, [$m_Lsketchlib_utils_room_Surfaces$package$().oH(x$proxy33, 0.0, false, 0.0)]);
-    var x$proxy34 = new $c_T4(0.0, 0.0, $m_Lsketches_gradients_Gradients$package$().fA, $m_Lsketches_gradients_Gradients$package$().fA);
-    var tileForm = $p_Lsketches_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form(this, p$5, [$m_Lsketchlib_utils_room_Surfaces$package$().oH(x$proxy34, 0.0, false, 0.0)]);
-    var tilePx = $doubleToInt(($m_Lsketches_gradients_Gradients$package$().fA * $m_Lsketches_gradients_Gradients$package$().lu));
+    var walls = $m_Lsketchlib_utils_room_Walls$package$().si(wallBnd, $m_Lsketches_experiments_gradients_Gradients$package$().h5);
+    var x$proxy33 = new $c_T4((-$m_Lsketches_experiments_gradients_Gradients$package$().h4), (-$m_Lsketches_experiments_gradients_Gradients$package$().h4), $m_Lsketches_experiments_gradients_Gradients$package$().h4, $m_Lsketches_experiments_gradients_Gradients$package$().h4);
+    var groundForm = $p_Lsketches_experiments_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form(this, p$5, [$m_Lsketchlib_utils_room_Surfaces$package$().oH(x$proxy33, 0.0, false, 0.0)]);
+    var x$proxy34 = new $c_T4(0.0, 0.0, $m_Lsketches_experiments_gradients_Gradients$package$().fA, $m_Lsketches_experiments_gradients_Gradients$package$().fA);
+    var tileForm = $p_Lsketches_experiments_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form(this, p$5, [$m_Lsketchlib_utils_room_Surfaces$package$().oH(x$proxy34, 0.0, false, 0.0)]);
+    var tilePx = $doubleToInt(($m_Lsketches_experiments_gradients_Gradients$package$().fA * $m_Lsketches_experiments_gradients_Gradients$package$().lu));
     $m_Lsketchlib_utils_bake_TextureBaker$();
     var transform$proxy1 = (void 0);
     $m_Lsketchlib_utils_bake_TextureBaker$();
@@ -3018,9 +3018,9 @@ $p.qc = (function(canvas) {
       var o = new $c_Ltrivalibs_graphics_math_gpu_LetExpr("o");
       var $x_4 = $m_Ltrivalibs_graphics_math_gpu_expr$package$Block$();
       var $x_3 = $m_sjsr_package$();
-      var $x_2 = w.a1($m_Lsketches_gradients_Gradients$package$().oT(wp$2));
-      var $x_1 = o.a1($m_Lsketches_gradients_Gradients$package$().oF(wp$2, normal$2));
-      var value$proxy1 = $m_Ltrivalibs_graphics_math_gpu_vec4$().o1($m_Lsketches_gradients_Gradients$package$().ks(w, o, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0)), $m_Lsketches_gradients_Gradients$package$().ks(w, o, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0)), $m_Lsketches_gradients_Gradients$package$().o9($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2)), $m_Lsketches_gradients_Gradients$package$().oG($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2)));
+      var $x_2 = w.a1($m_Lsketches_experiments_gradients_Gradients$package$().oT(wp$2));
+      var $x_1 = o.a1($m_Lsketches_experiments_gradients_Gradients$package$().oF(wp$2, normal$2));
+      var value$proxy1 = $m_Ltrivalibs_graphics_math_gpu_vec4$().o1($m_Lsketches_experiments_gradients_Gradients$package$().ks(w, o, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0)), $m_Lsketches_experiments_gradients_Gradients$package$().ks(w, o, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0)), $m_Lsketches_experiments_gradients_Gradients$package$().o9($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2)), $m_Lsketches_experiments_gradients_Gradients$package$().oG($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2)));
       $m_Ltrivalibs_graphics_math_gpu_expr$package$();
       return $x_4.bO(new $c_sjsr_WrappedVarArgs($x_3.e(new ($d_T.r().C)([$x_2, $x_1, (((("  " + out$2.S) + " = ") + value$proxy1.d) + ";")]))));
     }));
@@ -3097,8 +3097,8 @@ $p.qc = (function(canvas) {
       var amb = new $c_Ltrivalibs_graphics_math_gpu_LetExpr("amb");
       var $x_9 = $m_Ltrivalibs_graphics_math_gpu_expr$package$Block$();
       var $x_8 = $m_sjsr_package$();
-      var $x_7 = amb.a1($m_Lsketches_gradients_Gradients$package$().ks($m_Lsketches_gradients_Gradients$package$().oT(wp$2$1), $m_Lsketches_gradients_Gradients$package$().oF(wp$2$1, normal$2$1), $m_Lsketchlib_utils_room_Fields$package$().pO(wp$2$1, normal$2$1, wallBnd, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_gradients_Gradients$package$().h5), $m_Lsketches_gradients_Gradients$package$().jh)));
-      var value$proxy3 = $m_Ltrivalibs_graphics_math_gpu_vec4$().ai($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().kK($m_Lsketches_gradients_Gradients$package$().lE), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), amb), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Lsketches_gradients_Gradients$package$().oj($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().a8(wp$2$1), $m_Lsketches_gradients_Gradients$package$().o9($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2$1)), $m_Lsketches_gradients_Gradients$package$().oG($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2$1)))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
+      var $x_7 = amb.a1($m_Lsketches_experiments_gradients_Gradients$package$().ks($m_Lsketches_experiments_gradients_Gradients$package$().oT(wp$2$1), $m_Lsketches_experiments_gradients_Gradients$package$().oF(wp$2$1, normal$2$1), $m_Lsketchlib_utils_room_Fields$package$().pO(wp$2$1, normal$2$1, wallBnd, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h($m_Lsketches_experiments_gradients_Gradients$package$().h5), $m_Lsketches_experiments_gradients_Gradients$package$().jh)));
+      var value$proxy3 = $m_Ltrivalibs_graphics_math_gpu_vec4$().ai($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().kK($m_Lsketches_experiments_gradients_Gradients$package$().lE), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), amb), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Lsketches_experiments_gradients_Gradients$package$().oj($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().a8(wp$2$1), $m_Lsketches_experiments_gradients_Gradients$package$().o9($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2$1)), $m_Lsketches_experiments_gradients_Gradients$package$().oG($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp$2$1)))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
       $m_Ltrivalibs_graphics_math_gpu_expr$package$();
       return $x_9.bO(new $c_sjsr_WrappedVarArgs($x_8.e(new ($d_T.r().C)([$x_7, (((("  " + out$2$1.S) + " = ") + value$proxy3.d) + ";")]))));
     }));
@@ -3213,7 +3213,7 @@ $p.qc = (function(canvas) {
         var tex = $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "tex");
         var uv$1 = ctx$2$3.ac.k("uv");
         var sampler$1 = ctx$2$3.K.k("samp");
-        var value$proxy11 = $x_19.ai($p_Lsketches_gradients_Gradients$package$__fadeToEnv$1__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr(this, $x_18.fW($m_Ltrivalibs_graphics_math_gpu_expr$package$().aF(tex, uv$1, sampler$1)), ctx$2$3.ac.k("worldPos"), ctx$2$3.K.k("eye")), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
+        var value$proxy11 = $x_19.ai($p_Lsketches_experiments_gradients_Gradients$package$__fadeToEnv$1__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr(this, $x_18.fW($m_Ltrivalibs_graphics_math_gpu_expr$package$().aF(tex, uv$1, sampler$1)), ctx$2$3.ac.k("worldPos"), ctx$2$3.K.k("eye")), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
         $m_Ltrivalibs_graphics_math_gpu_expr$package$();
         return (((("  " + AssignTarget_this$1.S) + " = ") + value$proxy11.d) + ";");
       }));
@@ -3342,11 +3342,11 @@ $p.qc = (function(canvas) {
         var $x_39 = $m_Ltrivalibs_graphics_math_gpu_expr$package$Block$();
         var $x_38 = $m_sjsr_package$();
         var tex$1 = $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "tile");
-        var uv$3 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2ImmutableOpsG\uff3fFloatExpr\uff3fVec2Expr$().p4($m_Ltrivalibs_graphics_math_gpu_vec2$().ai($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().aA(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().j6($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().gW(wp))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$(), (1.0 / $m_Lsketches_gradients_Gradients$package$().fA));
+        var uv$3 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2ImmutableOpsG\uff3fFloatExpr\uff3fVec2Expr$().p4($m_Ltrivalibs_graphics_math_gpu_vec2$().ai($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().aA(wp), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().j6($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$().gW(wp))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$(), (1.0 / $m_Lsketches_experiments_gradients_Gradients$package$().fA));
         var sampler$2 = ctx$2$6.K.k("tileSamp");
         var $x_37 = f.a1($m_Ltrivalibs_graphics_math_gpu_expr$package$().aF(tex$1, uv$3, sampler$2));
         var $x_36 = dEdge.a1($m_Lsketchlib_utils_room_Fields$package$().od($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fV(wp), wallBnd));
-        var $x_35 = base.a1($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().kK($m_Lsketches_gradients_Gradients$package$().lv), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().i5($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().a8(f), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().aA(f), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().fS(dEdge, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h((+$m_Lsketches_gradients_Gradients$package$().jh.b0))))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Lsketches_gradients_Gradients$package$().oj(dEdge, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().gW(f), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().ic(f))));
+        var $x_35 = base.a1($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_cpu\uff3finterop$package$().kK($m_Lsketches_experiments_gradients_Gradients$package$().lv), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().i5($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().a8(f), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().aA(f), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$().fS(dEdge, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(0.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h((+$m_Lsketches_experiments_gradients_Gradients$package$().jh.b0))))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Lsketches_experiments_gradients_Gradients$package$().oj(dEdge, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().gW(f), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().ic(f))));
         var tex$2 = $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), "reflTex");
         var uv$4 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2ImmutableOpsG\uff3fFloatExpr\uff3fVec2Expr$().pK($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().gR(ctx$2$6.gH), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$(), ctx$2$6.K.k("res"));
         var sampler$3 = ctx$2$6.K.k("samp");
@@ -3355,7 +3355,7 @@ $p.qc = (function(canvas) {
         var e$proxy2 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumOps\uff3fFloatExpr$().B($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec4BaseG\uff3fFloatExpr\uff3fVec4Expr$().ic(refl), 0.4);
         var L$proxy1 = $m_Ltrivalibs_graphics_math_gpu_LeftScalar$().gP();
         $m_Ltrivalibs_graphics_math_gpu_expr$package$();
-        var $x_32 = reflMix.a1($x_33.B(L$proxy1.gT((((("(" + $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().aY(1.0)) + " - ") + e$proxy2.d) + ")")), $m_Lsketches_gradients_Gradients$package$().lx));
+        var $x_32 = reflMix.a1($x_33.B(L$proxy1.gT((((("(" + $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().aY(1.0)) + " - ") + e$proxy2.d) + ")")), $m_Lsketches_experiments_gradients_Gradients$package$().lx));
         var AssignTarget_this$5 = ctx$2$6.at.X("color");
         var $x_31 = $m_Ltrivalibs_graphics_math_gpu_vec4$();
         var $x_30 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$();
@@ -3363,7 +3363,7 @@ $p.qc = (function(canvas) {
         var $x_28 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$();
         var L$proxy3 = $m_Ltrivalibs_graphics_math_gpu_LeftScalar$().gP();
         $m_Ltrivalibs_graphics_math_gpu_expr$package$();
-        var value$proxy19 = $x_31.ai($p_Lsketches_gradients_Gradients$package$__fadeToEnv$1__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr(this, $x_30.kr($x_29.by(base, $x_28, L$proxy3.gT((((("(" + $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().aY(1.0)) + " - ") + reflMix.d) + ")"))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fW(refl), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), reflMix)), wp, ctx$2$6.K.k("eye")), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
+        var value$proxy19 = $x_31.ai($p_Lsketches_experiments_gradients_Gradients$package$__fadeToEnv$1__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr__Ltrivalibs_graphics_math_gpu_Expr(this, $x_30.kr($x_29.by(base, $x_28, L$proxy3.gT((((("(" + $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().aY(1.0)) + " - ") + reflMix.d) + ")"))), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3ImmutableOpsG\uff3fFloatExpr\uff3fVec3Expr$().by($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().fW(refl), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec3BaseG\uff3fFloatExpr\uff3fVec3Expr$(), reflMix)), wp, ctx$2$6.K.k("eye")), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().n().h(1.0));
         $m_Ltrivalibs_graphics_math_gpu_expr$package$();
         return $x_39.bO(new $c_sjsr_WrappedVarArgs($x_38.e(new ($d_T.r().C)([$x_37, $x_36, $x_35, $x_34, $x_32, (((("  " + AssignTarget_this$5.S) + " = ") + value$proxy19.d) + ";")]))));
       }));
@@ -3440,18 +3440,18 @@ $p.qc = (function(canvas) {
     }
     var pl$4 = $m_Ltrivalibs_graphics_shader_layouts$().R(p$5.f, allBgls$4);
     var groundShade = new $c_Ltrivalibs_graphics_painter_Shade(id$4, module$4, vbl$4, bgls$8[0], panelBgl$4, pl$4, false, dict$7, dict$8);
-    var hanging = new $c_Lsketchlib_utils_room_Hanging(p$5, $m_Lsketches_gradients_Gradients$package$().lA, $m_Lsketches_gradients_Gradients$package$().lB, $m_Lsketches_gradients_Gradients$package$().lz, $m_Lsketches_gradients_Gradients$package$().ly);
-    var gradientImages = $m_sjs_js_ArrayOps$().r0($m_Lsketches_gradients_Gradients$package$().h3, new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((p$9) => ((interp$2) => $p_Lsketches_gradients_Gradients$package$__gradientPanel$1__Ltrivalibs_graphics_painter_Painter__F1__Ltrivalibs_graphics_painter_Panel(this, p$9, interp$2)))(p$5)));
+    var hanging = new $c_Lsketchlib_utils_room_Hanging(p$5, $m_Lsketches_experiments_gradients_Gradients$package$().lA, $m_Lsketches_experiments_gradients_Gradients$package$().lB, $m_Lsketches_experiments_gradients_Gradients$package$().lz, $m_Lsketches_experiments_gradients_Gradients$package$().ly);
+    var gradientImages = $m_sjs_js_ArrayOps$().r0($m_Lsketches_experiments_gradients_Gradients$package$().h3, new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((p$9) => ((interp$2) => $p_Lsketches_experiments_gradients_Gradients$package$__gradientPanel$1__Ltrivalibs_graphics_painter_Painter__F1__Ltrivalibs_graphics_painter_Panel(this, p$9, interp$2)))(p$5)));
     var aboveGround = [];
     new $c_sci_Range$Exclusive(0, (walls.length | 0), 1).fQ(new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((p$10) => ((v1$2) => {
       var i$1 = (v1$2 | 0);
       var wall = walls[i$1];
-      var wallForm = $p_Lsketches_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form(this, p$10, [$m_Lsketchlib_utils_room_Walls$package$().ru(wall)]);
-      var pieces = $p_Lsketches_gradients_Gradients$package$__curate$1__Lsketchlib_utils_room_Hanging__sjs_js_Array__Lsketchlib_utils_room_Wall__sjs_js_Array(this, hanging, gradientImages, wall);
+      var wallForm = $p_Lsketches_experiments_gradients_Gradients$package$__form$1__Ltrivalibs_graphics_painter_Painter__sjs_js_Array__Ltrivalibs_graphics_painter_Form(this, p$10, [$m_Lsketchlib_utils_room_Walls$package$().ru(wall)]);
+      var pieces = $p_Lsketches_experiments_gradients_Gradients$package$__curate$1__Lsketchlib_utils_room_Hanging__sjs_js_Array__Lsketchlib_utils_room_Wall__sjs_js_Array(this, hanging, gradientImages, wall);
       var Bindable_this = p$10.j0(wallForm, surfaceShade, "none", (void 0));
       var e1$proxy1 = new $c_Ltrivalibs_graphics_painter_BindPair("samp", sampler);
       var e2$proxy1 = new $c_Ltrivalibs_graphics_painter_BindPair("eye", eyePos);
-      var e3$proxy1 = new $c_Ltrivalibs_graphics_painter_BindPair("tex", $p_Lsketches_gradients_Gradients$package$__wallTex$1__Lsketchlib_utils_room_Hanging__Lsketchlib_utils_bake_TextureBaker__Ltrivalibs_graphics_painter_Form__Lsketchlib_utils_room_Wall__sjs_js_Array__Ltrivalibs_graphics_painter_Panel(this, hanging, wallBaker, wallForm, wall, pieces));
+      var e3$proxy1 = new $c_Ltrivalibs_graphics_painter_BindPair("tex", $p_Lsketches_experiments_gradients_Gradients$package$__wallTex$1__Lsketchlib_utils_room_Hanging__Lsketchlib_utils_bake_TextureBaker__Ltrivalibs_graphics_painter_Form__Lsketchlib_utils_room_Wall__sjs_js_Array__Ltrivalibs_graphics_painter_Panel(this, hanging, wallBaker, wallForm, wall, pieces));
       var \u03b4scrutinee430 = e1$proxy1.s;
       var idx = (Bindable_this.Y.E.samp | 0);
       while (((Bindable_this.P.length | 0) <= idx)) {
@@ -3473,10 +3473,10 @@ $p.qc = (function(canvas) {
       aboveGround.push(Bindable_this);
       $m_sjs_js_ArrayOps$().a2(pieces, new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((piece$2) => (aboveGround.push(piece$2.gq) | 0))));
     }))(p$5)));
-    var xyz = $m_Lsketches_gradients_Gradients$package$().gk;
+    var xyz = $m_Lsketches_experiments_gradients_Gradients$package$().gk;
     var clearColor$2 = new $c_Ltrivalibs_graphics_math_cpu_Vec4(xyz.D, xyz.H, xyz.A, 0.0);
     var mirror$1 = $m_Ltrivalibs_graphics_geometry_Plane$().m1;
-    var mirror = $m_Lsketchlib_utils_mirror_GaussianMirrorReflection$().pi(p$5, cam, aboveGround, "vp", $m_Lsketches_gradients_Gradients$package$().h5, mirror$1, 4.0, 3.0, 0.0, 0.6, 0.5, 3.0, clearColor$2);
+    var mirror = $m_Lsketchlib_utils_mirror_GaussianMirrorReflection$().pi(p$5, cam, aboveGround, "vp", $m_Lsketches_experiments_gradients_Gradients$package$().h5, mirror$1, 4.0, 3.0, 0.0, 0.6, 0.5, 3.0, clearColor$2);
     var Bindable_this$1 = p$5.j0(groundForm, groundShade, "front", (void 0));
     var e1$proxy2 = new $c_Ltrivalibs_graphics_painter_BindPair("samp", sampler);
     var e2$proxy2 = new $c_Ltrivalibs_graphics_painter_BindPair("tileSamp", tileSampler);
@@ -3525,14 +3525,14 @@ $p.qc = (function(canvas) {
     var buffer$3 = new ArrayBuffer(64);
     var arr$proxy8 = new ($a_Ltrivalibs_bufferdata_BufferView())(new DataView(buffer$3), 1);
     var sceneVp = new $c_Ltrivalibs_graphics_buffers_BufferBinding(new ($a_Ltrivalibs_bufferdata_BufferView())(arr$proxy8.dv, 0), p$5.f, uv$proxy3);
-    var clearColor$3 = $m_Ltrivalibs_graphics_math_cpu_Vec4$().qa().h(new $c_T4($m_Lsketches_gradients_Gradients$package$().gk.D, $m_Lsketches_gradients_Gradients$package$().gk.H, $m_Lsketches_gradients_Gradients$package$().gk.A, 1.0));
+    var clearColor$3 = $m_Ltrivalibs_graphics_math_cpu_Vec4$().qa().h(new $c_T4($m_Lsketches_experiments_gradients_Gradients$package$().gk.D, $m_Lsketches_experiments_gradients_Gradients$package$().gk.H, $m_Lsketches_experiments_gradients_Gradients$package$().gk.A, 1.0));
     var shapes$2 = aboveGround.concat([Bindable_this$1]);
     var Panel_this = p$5.bz((void 0), (void 0), clearColor$3, true, true, (void 0), (void 0), "rgba16float", (void 0), (void 0), shapes$2, (void 0), (void 0));
     var e1$proxy3 = new $c_Ltrivalibs_graphics_painter_BindPair("vp", sceneVp);
     var \u03b4scrutinee569 = e1$proxy3.s;
     var dict$proxy1 = Panel_this.hv;
     dict$proxy1.vp = \u03b4scrutinee569;
-    var bloom = $m_Lsketchlib_utils_bloom_Bloom$().ph(p$5, Panel_this, $m_Lsketches_gradients_Gradients$package$().lj, 1.0, 0.6, 5, 0.94, 1.2);
+    var bloom = $m_Lsketchlib_utils_bloom_Bloom$().ph(p$5, Panel_this, $m_Lsketches_experiments_gradients_Gradients$package$().lj, 1.0, 0.6, 5, 0.94, 1.2);
     var input = $m_Ltrivalibs_utils_events_interactive\uff3fcanvas$package$().qn(p$5.gA, true, 400.0, 5.0, true, (void 0), 90.0, 50.0);
     var controller = new $c_Ltrivalibs_graphics_scene_BasicFirstPersonCameraController(cam, input, 2.5, 2.0);
     p$5.rd(new $c_sr_AbstractFunction2_$$Lambda$b4228bd32034ae3b2f0c5fc896319aa4b79b55f8(((v1$2$1, v2$2) => {
@@ -3559,7 +3559,7 @@ $p.qc = (function(canvas) {
       var tpf = (+arg1$2);
       input.fT(tpf);
       controller.fT(tpf);
-      cam.a5 = $m_Lsketchlib_utils_room_Confine$package$().pz(wallBnd, cam.a5, $m_Lsketches_gradients_Gradients$package$().lC, ($m_Ltrivalibs_dev_dev$package$().ob() ? cam.a5.H : $m_Lsketches_gradients_Gradients$package$().jf));
+      cam.a5 = $m_Lsketchlib_utils_room_Confine$package$().pz(wallBnd, cam.a5, $m_Lsketches_experiments_gradients_Gradients$package$().lC, ($m_Ltrivalibs_dev_dev$package$().ob() ? cam.a5.H : $m_Lsketches_experiments_gradients_Gradients$package$().jf));
       var vp = $f_Ltrivalibs_graphics_math_Mat4ImmutableOps__matMul__O__Ltrivalibs_graphics_math_Mat4Base__O__O($m_Ltrivalibs_graphics_math_cpu_Mat4$().gQ(), cam.iK, $m_Ltrivalibs_graphics_math_cpu_Mat4$given\uff3fMat4Mutable\uff3fMat4$(), cam.oR());
       sceneVp.G.z(sceneVp.j, vp);
       var $x_46 = sceneVp.F.queue;
@@ -3581,15 +3581,15 @@ $p.qc = (function(canvas) {
     }))(p$5));
   })));
 });
-var $d_Lsketches_gradients_Gradients$package$ = new $TypeData().i($c_Lsketches_gradients_Gradients$package$, "sketches.gradients.Gradients$package$", ({
+var $d_Lsketches_experiments_gradients_Gradients$package$ = new $TypeData().i($c_Lsketches_experiments_gradients_Gradients$package$, "sketches.experiments.gradients.Gradients$package$", ({
   dg: 1
 }));
-var $n_Lsketches_gradients_Gradients$package$;
-function $m_Lsketches_gradients_Gradients$package$() {
-  if ((!$n_Lsketches_gradients_Gradients$package$)) {
-    $n_Lsketches_gradients_Gradients$package$ = new $c_Lsketches_gradients_Gradients$package$();
+var $n_Lsketches_experiments_gradients_Gradients$package$;
+function $m_Lsketches_experiments_gradients_Gradients$package$() {
+  if ((!$n_Lsketches_experiments_gradients_Gradients$package$)) {
+    $n_Lsketches_experiments_gradients_Gradients$package$ = new $c_Lsketches_experiments_gradients_Gradients$package$();
   }
-  return $n_Lsketches_gradients_Gradients$package$;
+  return $n_Lsketches_experiments_gradients_Gradients$package$;
 }
 /** @constructor */
 function $c_Lsketchlib_shaders_room_Grime$package$() {
@@ -18974,6 +18974,6 @@ var $d_sjs_js_WrappedArray = new $TypeData().i($c_sjs_js_WrappedArray, "scala.sc
   a: 1
 }));
 let $e_sketch = (function(arg) {
-  $m_Lsketches_gradients_Gradients$package$().qc(arg);
+  $m_Lsketches_experiments_gradients_Gradients$package$().qc(arg);
 });
 export { $e_sketch as sketch };

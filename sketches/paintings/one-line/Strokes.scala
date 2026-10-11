@@ -1,4 +1,4 @@
-package sketches.strokes.base1
+package sketches.paintings.one_line
 
 import trivalibs.graphics.geometry.*
 import trivalibs.graphics.math.cpu.{*, given}

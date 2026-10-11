@@ -78,11 +78,11 @@ passing the canvas in lets the same bundle be driven by
 where the canvas comes from the native view tree and there is no `document`.
 
 That reasoning extends past the entry point: **DOM access anywhere in a sketch
-is a portability cost**, so keep it out of the sketch where a trivalibs /
-`src/` abstraction can carry it (input handling, resize, fullscreen). Where a
-sketch genuinely needs the browser today (`sketches/tests/bloom/` listens on
-`document` for keys), that is fine — it is just the part that will need a host
-abstraction later.
+is a portability cost**, so keep it out of the sketch where a trivalibs / `src/`
+abstraction can carry it (input handling, resize, fullscreen). Where a sketch
+genuinely needs the browser today (`sketches/tests/bloom/` listens on `document`
+for keys), that is fine — it is just the part that will need a host abstraction
+later.
 
 ### Always register a sketch in `sketches/index.html`
 
@@ -101,26 +101,26 @@ This is part of creating or moving a sketch, not a follow-up chore:
   change. A dead link here is as much a breakage as a broken build.
 - **Deleted sketch** → remove its entry.
 - **Changed controls or subject** → update the `<p>` description. It carries
-  whatever a visitor needs to know before clicking: the interaction (`WASD /
-arrows to move · Space / Shift up·down · drag to look`) or a one-line
+  whatever a visitor needs to know before clicking: the interaction
+  (`WASD / arrows to move · Space / Shift up·down · drag to look`) or a one-line
   description of what is on screen. One short line, no prose.
 
-Keep the entries in the same order as the plan or roadmap that produced them,
-so a template family reads top to bottom in the order it was built.
+Keep the entries in the same order as the plan or roadmap that produced them, so
+a template family reads top to bottom in the order it was built.
 
 ### Kinds of sketch
 
 Three folders are reserved by purpose; everything else keeps a domain folder.
 
-| Kind             | Where                                                | What it is                                                                                                                                                                 |
-| ---------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Template**     | `sketches/templates/`                                | Documented starting point. Enables a whole situation, meant to be read and copied.                                                                                         |
-| **Test**         | `sketches/tests/`                                    | Single-feature check of a `src/` util that has real machinery and renders something on its own — `bloom`, `texture-bake`. Minimal and focused, like `trivalibs/examples/`. |
-| **Experiment**   | `sketches/experiments/`                              | Unfinished or failed attempt at an idea, effect or scene. Kept as proof of concept, **not** intended to be continued.                                                      |
-| _Regular sketch_ | domain folder (`rooms/`, `textures/`, `strokes/`, …) | Everything else — finished results and work in progress alike.                                                                                                             |
+| Kind             | Where                                                  | What it is                                                                                                                                                                 |
+| ---------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Template**     | `sketches/templates/`                                  | Documented starting point. Enables a whole situation, meant to be read and copied.                                                                                         |
+| **Test**         | `sketches/tests/`                                      | Single-feature check of a `src/` util that has real machinery and renders something on its own — `bloom`, `texture-bake`. Minimal and focused, like `trivalibs/examples/`. |
+| **Experiment**   | `sketches/experiments/`                                | Unfinished or failed attempt at an idea, effect or scene. Kept as proof of concept, **not** intended to be continued.                                                      |
+| _Regular sketch_ | domain folder (`rooms/`, `textures/`, `paintings/`, …) | Everything else — finished results and work in progress alike.                                                                                                             |
 
 A regular sketch is **finished** (`rooms/canvases`, `rooms/base`, the
-`textures/` and `strokes/` sketches) or **in progress** (`rooms/columns`). One
+`textures/` and `paintings/` sketches) or **in progress** (`rooms/columns`). One
 that turns out to be a tried-but-incomplete attempt moves to `experiments/`
 rather than being deleted or left to look unfinished — individual aspects of it
 stay extractable later.
@@ -175,19 +175,19 @@ read by nobody, is dimmed to invisibility in the editor, and rots on the first
 tuning pass. It does not catch divergence; it manufactures it.
 
 That is not hypothetical. `sketches/experiments/strokes/study1` carried
-`// The line crosses itself constantly, so overlaps keep the highest alpha seen
-rather than compounding it.` above a blend state that had since been swapped
-while tuning and no longer did that at all. The comment survived precisely
-because a human tuning a visual effect swaps a blend function and never reads
-the paragraph above it. The AI agent that wrote the comment created a lie with a
-long shelf life. The whole comment is gone now — not just the false half. The
-true half was not worth keeping either.
+`// The line crosses itself constantly, so overlaps keep the highest alpha seen rather than compounding it.`
+above a blend state that had since been swapped while tuning and no longer did
+that at all. The comment survived precisely because a human tuning a visual
+effect swaps a blend function and never reads the paragraph above it. The AI
+agent that wrote the comment created a lie with a long shelf life. The whole
+comment is gone now — not just the false half. The true half was not worth
+keeping either.
 
 So, in every sketch that is not a template:
 
 - **Comments structure code; they do not describe it.** Section markers
-  (`// ---- shades ----`, `// ---- panels ----`) are the main legitimate use, and
-  they are worth having.
+  (`// ---- shades ----`, `// ---- panels ----`) are the main legitimate use,
+  and they are worth having.
 - **A short note on the _context_ a piece of code operates in can be fine, and
   the bar is high.** The reader has the rendered canvas open beside the source,
   so anything the running sketch shows them is not context either — "the stroke

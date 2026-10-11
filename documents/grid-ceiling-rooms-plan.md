@@ -151,7 +151,7 @@ reconcile — only a choice to expose properly, in place of the index-based
 
 None of this work is one room. It is the **stage** for numerous rooms, each
 showing unique procedurally generated content — the kind of thing
-`sketches/textures/*` produces in-shader, or `sketches/strokes/tile-strokes/`
+`sketches/textures/*` produces in-shader, or `sketches/paintings/tile-strokes/`
 builds on the CPU (`Painting.scala`: a recursive tiling, a hue palette, per-tile
 Bézier brush strokes). Each such exhibition gets its own room, and its walls,
 lights, tints and dimensions get **retuned for that content** — against the

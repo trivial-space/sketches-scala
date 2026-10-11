@@ -1,4 +1,4 @@
-package sketches.strokes.base1
+package sketches.paintings.one_line
 
 import org.scalajs.dom.HTMLCanvasElement
 import trivalibs.graphics.geometry.*
@@ -73,7 +73,7 @@ def canvasWeave(fragCoord: Vec2Expr): FloatExpr =
   (fragCoord.hash1 + threads * 0.6) / 1.6
 
 @JSExportTopLevel("sketch")
-def baseStroke1(canvas: HTMLCanvasElement): Unit =
+def oneLine(canvas: HTMLCanvasElement): Unit =
   Painter.init(canvas): p =>
     val col1hsv =
       Vec3(rand(), 0.2 * randNormal01(), 0.5 + 0.5 * randNormal01())
