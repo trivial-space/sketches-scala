@@ -2347,9 +2347,13 @@ $p.bp = (function(canvas) {
           var rw = (+entry.contentRect.width);
           var rh = (+entry.contentRect.height);
           if (((rw > 0.0) && (rh > 0.0))) {
-            canvas.width = $doubleToInt(rw);
-            canvas.height = $doubleToInt(rh);
-            painter.bg(rw, rh);
+            var w$1 = $doubleToInt(rw);
+            var h$1 = $doubleToInt(rh);
+            if (((w$1 !== (canvas.width | 0)) || (h$1 !== (canvas.height | 0)))) {
+              canvas.width = w$1;
+              canvas.height = h$1;
+              painter.bg(rw, rh);
+            }
           }
         }));
         observer.observe(canvas);
