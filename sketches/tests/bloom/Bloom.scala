@@ -2,7 +2,6 @@ package sketches.tests.bloom
 
 import org.scalajs.dom.HTMLCanvasElement
 import org.scalajs.dom.KeyboardEvent
-import org.scalajs.dom.console
 import org.scalajs.dom.document
 import sketchlib.utils.bloom.Bloom
 import trivalibs.prelude.core.{*, given}
@@ -114,7 +113,7 @@ def bloom(canvas: HTMLCanvasElement): Unit =
     val modeNames = Arr("radius only", "intensity only", "both")
     var mode = 2
 
-    def logMode(): Unit = console.log(s"bloom mode: ${modeNames(mode)}")
+    def logMode(): Unit = log(s"bloom mode: ${modeNames(mode)}")
     logMode()
 
     document.addEventListener[KeyboardEvent](
