@@ -124,7 +124,7 @@ class TextureBaker[
   ): (panel: Panel, shape: Shape[BakeBindings[U], EmptyTuple]) =
     // Own model binding per call (set once, static) so geometries keep distinct
     // transforms while sharing the one shade / pipeline.
-    val model = painter.binding(transform.orElse(Mat4.identity))
+    val model = painter.binding(transform.getOr(Mat4.identity))
     val shape = painter
       .shape(form, shade, cullMode = CullMode.None)
       .bind("model" := model)
@@ -132,7 +132,7 @@ class TextureBaker[
       width = width,
       height = height,
       mips = mips,
-      format = format.orElse(TextureFormat.Rgba8Unorm),
+      format = format.getOr(TextureFormat.Rgba8Unorm),
       clearColor = clearColor,
       shape = shape,
     )

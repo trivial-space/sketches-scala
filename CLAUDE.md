@@ -336,6 +336,12 @@ Metals only loads one config:
 //> using exclude trivalibs/examples/**
 ```
 
+It also sets `//> using option -Yexplicit-nulls`, which must stay: trivalibs'
+`Opt` operations (`get` / `getOr` / `orElse`) only stay off non-nullable values,
+and off `js.Dynamic` / `Selectable` members of the same name, when `Null` is not
+a subtype of every reference type. Nullable values are typed `Opt[…]`; test them
+with `x == null` / `x != null` (see `trivalibs/CLAUDE.md`, "No `Option`").
+
 ## Scala Conventions
 
 - make use of named tuples @trivalibs/documents/scala-reference/named-tuples.md

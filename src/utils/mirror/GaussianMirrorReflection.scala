@@ -576,7 +576,7 @@ object GaussianMirrorReflection:
         deriveRefH()
         // The crop target is the visible frame — the guard band lives only on
         // the panels feeding it.
-        if cropPanel.notNull then cropPanel.get.set(width = sw, height = sh)
+        if cropPanel != null then cropPanel.set(width = sw, height = sh)
         applySizing()
       def setCamera(camera: PerspectiveCamera): Unit =
         curCamera = camera
@@ -593,12 +593,12 @@ object GaussianMirrorReflection:
         applySizing()
       def setStrengthOffset(v: Double): Unit = uStrengthOffset.set(v)
       def paint(vp: Maybe[Mat4]): Unit =
-        val cameraVP = vp.orElse(curCamera.viewProjMat)
+        val cameraVP = vp.getOr(curCamera.viewProjMat)
         // Pre-multiply in NDC to widen the frustum onto the overscanned panel
         // (identity when there is no guard band).
         val m = Mat4.fromScale(frustumScaleX, frustumScaleY, 1.0) *
           (cameraVP * reflMat)
         uVp.set(m)
         uInvVp.set(m.inverse)
-        if cropPanel.notNull then p.paint(mirrorPanel, blurPanel, cropPanel.get)
+        if cropPanel != null then p.paint(mirrorPanel, blurPanel, cropPanel)
         else p.paint(mirrorPanel, blurPanel)

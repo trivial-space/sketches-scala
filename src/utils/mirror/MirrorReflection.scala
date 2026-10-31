@@ -579,7 +579,7 @@ object MirrorReflection:
         curStretch = v
         applySizing()
       def paint(vp: Maybe[Mat4]): Unit =
-        val cameraVP = vp.orElse(curCamera.viewProjMat)
+        val cameraVP = vp.getOr(curCamera.viewProjMat)
         // Pre-multiply in NDC to widen the frustum onto the overscanned panel
         // (identity when there is no guard band).
         val m = Mat4.fromScale(frustumScaleX, frustumScaleY, 1.0) *

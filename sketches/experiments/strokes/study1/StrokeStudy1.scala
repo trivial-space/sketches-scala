@@ -141,9 +141,9 @@ def strokeGeometry(aspect: Double): Arr[BufferedGeometry[LineAttribsBuffer]] =
     )
 
   val subdivided = line.flatMapWithNeighbours: (prev, curr, next) =>
-    if next.isNull then Arr(curr.copy)
+    if next == null then Arr(curr.copy)
     else
-      val n = next.get
+      val n = next
       val verts = Arr(LineVertex(curr.pos, curr.width))
       for i <- 1 to SubdivPerSegment do
         val t = i.toDouble / (SubdivPerSegment + 1)
