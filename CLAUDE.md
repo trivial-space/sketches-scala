@@ -19,6 +19,7 @@ bun run sketch <path>        # Build one sketch → sketches/<path>/main.js
 bun run sketch:watch <path>  # Incremental build of one sketch with file watching
 bun run dev                  # Vite dev server (root: sketches/, port 3000)
 bun run build                # Vite static build → dist/
+bun run ide:reset [-n] [-f]  # Compile-check, then stop Metals/BSP/bloop, wipe .metals/.bsp/.scala-build here + trivalibs/, re-run setup-ide (-n dry run, -f skip check)
 ```
 
 Each sketch builds in isolation via `scripts/sketch.ts`, which passes only that
