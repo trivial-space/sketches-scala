@@ -3410,15 +3410,15 @@ $p.cf = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.cG;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.cT;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.cG;
   }),
   "configurable": true
 }));
@@ -4593,7 +4593,7 @@ function $h_Ltrivalibs_graphics_shader_lib_color_Color$wgsl$() {
 $h_Ltrivalibs_graphics_shader_lib_color_Color$wgsl$.prototype = $p;
 $p.eD = (function() {
   if ((!this.d6)) {
-    this.d5 = new ($a_Ltrivalibs_graphics_shader_dsl_WgslFnData())("color_hsv2rgb_smooth", "fn color_hsv2rgb_smooth(c: vec3<f32>) -> vec3<f32> {\n  let t = clamp(abs(((c.x * 6.0 + vec3<f32>(0.0, 4.0, 2.0)) % 6.0) - 3.0) - 1.0, vec3<f32>(0.0), vec3<f32>(1.0));\n    let rgb = t * t * (vec3<f32>(3.0) - 2.0 * t);\n    return c.z * mix(vec3<f32>(1.0), rgb, c.y);\n}");
+    this.d5 = new ($a_Ltrivalibs_graphics_shader_dsl_WgslFnData())("color_hsv2rgb_smooth", "fn color_hsv2rgb_smooth(c: vec3<f32>) -> vec3<f32> {\n  let h = fract(c.x + vec3<f32>(0.0, 2.0 / 3.0, 1.0 / 3.0)) * 6.0;\n    let t = clamp(abs(h - 3.0) - 1.0, vec3<f32>(0.0), vec3<f32>(1.0));\n    let rgb = t * t * (vec3<f32>(3.0) - 2.0 * t);\n    return c.z * mix(vec3<f32>(1.0), rgb, c.y);\n}");
     this.d6 = true;
   }
   return this.d5;

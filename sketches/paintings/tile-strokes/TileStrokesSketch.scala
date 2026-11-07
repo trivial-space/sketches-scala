@@ -10,12 +10,12 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 
 // ---------------------------------------------------------------------------
 // Generative brush painting — a subdivided canvas where every tile is filled
-// with zig-zag brush strokes in one colour. Port of the Rust sketch
+// with zig-zag brush strokes in one color. Port of the Rust sketch
 // `sketches/strokes/1`, minus the gallery room it hung in.
 //
 // PIPELINE. Four panels:
 //
-//   bgPanel       2x2, one flat colour picked from the palette. Sampled up to
+//   bgPanel       2x2, one flat color picked from the palette. Sampled up to
 //                 full size by the canvas layer; the painting's undercoat.
 //   strokePanel   painting-sized, cleared to transparent on every paint. Holds
 //                 exactly ONE tile's stroke — during the animation, the part of
@@ -45,7 +45,7 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 // cleared, the brush rests for `TilePauseMs`, and the next tile begins.
 //
 // Every `TilesPerRecolor` finished tiles, one tile is moved onto a different
-// colour from the painting's palette, so the composition itself drifts over a
+// color from the painting's palette, so the composition itself drifts over a
 // long run instead of only its brushwork.
 //
 // A partial stroke has to be told the lengths it will *finish* at, in two
@@ -106,10 +106,10 @@ val TilePauseMsMax = 3000.0
   */
 val TipFadeBrushWidths = 1.0
 
-/** Tiles painted between one tile being moved onto a different palette colour.
+/** Tiles painted between one tile being moved onto a different palette color.
   *
   * A fixed count rather than a fraction of the tiling on purpose: a coarse
-  * painting holds its base colours for many passes, while a heavily subdivided
+  * painting holds its base colors for many passes, while a heavily subdivided
   * one — where any single tile matters less — keeps visibly shifting.
   */
 val TilesPerRecolor = 8
@@ -226,7 +226,7 @@ def tileStrokes(canvas: HTMLCanvasElement): Unit =
       .shape(
         form,
         lineShade,
-        // Strokes overwrite colour outright but keep the highest alpha seen —
+        // Strokes overwrite color outright but keep the highest alpha seen —
         // so overlapping strokes inside one batch don't darken each other.
         blendState = BlendState(
           color = BlendFn(BlendFactor.One, BlendFactor.Zero, BlendOp.Add),
@@ -400,7 +400,7 @@ def tileStrokes(canvas: HTMLCanvasElement): Unit =
           pauseLeft = randInRange(TilePauseMsMin, TilePauseMsMax)
 
           // Every so often, nudge the composition: one tile takes a different
-          // colour from the palette, which shows next time its turn comes up.
+          // color from the palette, which shows next time its turn comes up.
           sinceRecolor += 1
           if sinceRecolor >= TilesPerRecolor then
             sinceRecolor = 0

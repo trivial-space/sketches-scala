@@ -7844,15 +7844,15 @@ $p.kG = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.mq;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.mD;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.mq;
   }),
   "configurable": true
 }));

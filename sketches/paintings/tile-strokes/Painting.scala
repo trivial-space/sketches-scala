@@ -15,7 +15,7 @@ import trivalibs.utils.random.*
 // `Line.toBufferedGeometries` turns into stroke geometry.
 // ---------------------------------------------------------------------------
 
-/** A tile's colour intent, resolved to RGB per stroke by [[calculateColor]] (so
+/** A tile's color intent, resolved to RGB per stroke by [[calculateColor]] (so
   * every stroke in a tile varies slightly around the same hue).
   */
 class Color(val hue: Double, val lightness: Double)
@@ -33,7 +33,7 @@ class Tile(
 )
 
 /** A finished tiling: the canvas dimensions, the tiles, the base brush width
-  * the strokes are drawn with, and the hue palette the tiles were coloured
+  * the strokes are drawn with, and the hue palette the tiles were colored
   * from.
   */
 class Painting(
@@ -43,10 +43,10 @@ class Painting(
     val tiles: Arr[Tile],
     val palette: Arr[Color],
 ):
-  /** Move one random tile onto a different palette colour.
+  /** Move one random tile onto a different palette color.
     *
     * The change only shows once that tile's turn comes round again, so the
-    * composition drifts rather than flickering. A single-colour palette has
+    * composition drifts rather than flickering. A single-color palette has
     * nothing to switch to, so this is a no-op there.
     */
   def recolorRandomTile(): Unit =
@@ -206,7 +206,7 @@ def randomSplit(v: Arr[Double]): Arr[Double] =
 
 /** Build a painting for a `width` x `height` canvas with a `colorCount`-hue
   * palette: 1–4 rounds of subdivision over the whole canvas, each tile taking a
-  * random colour from the palette.
+  * random color from the palette.
   */
 def createPainting(width: Double, height: Double, colorCount: Int): Painting =
   var hues = Arr(0.0, 1.0)
@@ -215,8 +215,7 @@ def createPainting(width: Double, height: Double, colorCount: Int): Painting =
 
   val hueShift = rand()
   val colors = hues.map: h =>
-    val hue = h + hueShift
-    Color(hue.fract, (rand() + rand()) * 0.4 + 0.1)
+    Color(h + hueShift, (rand() + rand()) * 0.4 + 0.1)
 
   def getColor(): Color = colors.pick()
 
@@ -246,7 +245,7 @@ def createPainting(width: Double, height: Double, colorCount: Int): Painting =
   */
 def calculateColor(color: Color): Vec3 =
   Vec3(
-    (color.hue + randNormal01() * 0.1).fract,
+    color.hue + randNormal01() * 0.1,
     ((rand() + rand()) * 0.5).pow(1.5),
     (color.lightness + randNormal11() * 0.4).clamp01,
   ).hsv2rgb

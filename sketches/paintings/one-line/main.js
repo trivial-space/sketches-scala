@@ -1655,12 +1655,11 @@ var $d_Lsketches_paintings_one\uff3fline_BrushStroke = new $TypeData().i($c_Lske
   bg: 1
 }));
 function $p_Lsketches_paintings_one\uff3fline_OneLine$package$__strokeColor$1__Ltrivalibs_graphics_math_cpu_Vec3__Ltrivalibs_graphics_math_cpu_Vec3($thiz, colStrokeHsv$1) {
-  var p$proxy5 = (colStrokeHsv$1.W + (0.12 * $m_Ltrivalibs_utils_random_random$package$().aa()));
-  var x = (p$proxy5 - (+Math.floor(p$proxy5)));
-  var p$proxy6 = (colStrokeHsv$1.X + (0.15 * $m_Ltrivalibs_utils_random_random$package$().aa()));
-  var y = ((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6));
-  var p$proxy7 = (colStrokeHsv$1.a5 + (0.12 * $m_Ltrivalibs_utils_random_random$package$().aa()));
-  var c$proxy1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, y, ((p$proxy7 < 0.0) ? 0.0 : ((p$proxy7 > 1.0) ? 1.0 : p$proxy7)));
+  var x = (colStrokeHsv$1.W + (0.12 * $m_Ltrivalibs_utils_random_random$package$().aa()));
+  var p$proxy3 = (colStrokeHsv$1.X + (0.15 * $m_Ltrivalibs_utils_random_random$package$().aa()));
+  var y = ((p$proxy3 < 0.0) ? 0.0 : ((p$proxy3 > 1.0) ? 1.0 : p$proxy3));
+  var p$proxy4 = (colStrokeHsv$1.a5 + (0.12 * $m_Ltrivalibs_utils_random_random$package$().aa()));
+  var c$proxy1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, y, ((p$proxy4 < 0.0) ? 0.0 : ((p$proxy4 > 1.0) ? 1.0 : p$proxy4)));
   return $m_Ltrivalibs_graphics_lib_color_Color$kernel$().dp(c$proxy1.W, c$proxy1.X, c$proxy1.a5, new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.0, 0.0, 0.0));
 }
 function $p_Lsketches_paintings_one\uff3fline_OneLine$package$__repaint$1__Ltrivalibs_graphics_painter_Panel__Ltrivalibs_graphics_painter_Layer__Ltrivalibs_graphics_painter_Panel__Ltrivalibs_graphics_painter_Painter__Ltrivalibs_graphics_painter_Panel__Ltrivalibs_graphics_buffers_BufferBinding__Ltrivalibs_graphics_buffers_BufferBinding__Ltrivalibs_graphics_painter_Form__Ltrivalibs_graphics_math_cpu_Vec3__D__D__V($thiz, canvasPanel$1, canvasLayer$1, bgPanel$1, p$3, strokePanel$1, uColor$1, uRandOffset$1, form$1, colStrokeHsv$2, width, height) {
@@ -1738,14 +1737,12 @@ $p.f3 = (function(fragCoord) {
 $p.gV = (function(canvas) {
   $m_Ltrivalibs_graphics_painter_Painter$().gy(canvas, new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((p$4) => {
     var col1hsv = new $c_Ltrivalibs_graphics_math_cpu_Vec3($m_Ltrivalibs_utils_random_random$package$().aU(), (0.2 * $m_Ltrivalibs_utils_random_random$package$().bz()), (0.5 + (0.5 * $m_Ltrivalibs_utils_random_random$package$().bz())));
-    var p$proxy2 = (col1hsv.W + (0.35 * $m_Ltrivalibs_utils_random_random$package$().aa()));
-    var col2hsv = new $c_Ltrivalibs_graphics_math_cpu_Vec3((p$proxy2 - (+Math.floor(p$proxy2))), (col1hsv.X + (0.14 * $m_Ltrivalibs_utils_random_random$package$().bz())), (col1hsv.a5 - (0.12 * $m_Ltrivalibs_utils_random_random$package$().bz())));
+    var col2hsv = new $c_Ltrivalibs_graphics_math_cpu_Vec3((col1hsv.W + (0.35 * $m_Ltrivalibs_utils_random_random$package$().aa())), (col1hsv.X + (0.14 * $m_Ltrivalibs_utils_random_random$package$().bz())), (col1hsv.a5 - (0.12 * $m_Ltrivalibs_utils_random_random$package$().bz())));
     var col1 = $m_Ltrivalibs_graphics_lib_color_Color$kernel$().dp(col1hsv.W, col1hsv.X, col1hsv.a5, new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.0, 0.0, 0.0));
     var col2 = $m_Ltrivalibs_graphics_lib_color_Color$kernel$().dp(col2hsv.W, col2hsv.X, col2hsv.a5, new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.0, 0.0, 0.0));
-    var p$proxy3 = (col2hsv.W + (0.37 * $m_Ltrivalibs_utils_random_random$package$().aa()));
-    var x$2 = (p$proxy3 - (+Math.floor(p$proxy3)));
-    var p$proxy4 = ((col2hsv.X + 0.5) + (0.25 * $m_Ltrivalibs_utils_random_random$package$().aa()));
-    var colStrokeHsv = new $c_Ltrivalibs_graphics_math_cpu_Vec3(x$2, ((p$proxy4 < 0.0) ? 0.0 : ((p$proxy4 > 1.0) ? 1.0 : p$proxy4)), ((0.8 * $m_Ltrivalibs_utils_random_random$package$().aU()) + 0.1));
+    var x$2 = (col2hsv.W + (0.37 * $m_Ltrivalibs_utils_random_random$package$().aa()));
+    var p$proxy2 = ((col2hsv.X + 0.5) + (0.25 * $m_Ltrivalibs_utils_random_random$package$().aa()));
+    var colStrokeHsv = new $c_Ltrivalibs_graphics_math_cpu_Vec3(x$2, ((p$proxy2 < 0.0) ? 0.0 : ((p$proxy2 > 1.0) ? 1.0 : p$proxy2)), ((0.8 * $m_Ltrivalibs_utils_random_random$package$().aU()) + 0.1));
     var build$proxy1 = new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((program$3) => {
       var body$proxy1 = new $c_sr_AbstractFunction1_$$Lambda$7afc3dd0acc1681fb022ef921c83979087aaa919(((ctx$2) => {
         $m_Ltrivalibs_graphics_math_gpu_expr$package$();
@@ -2815,18 +2812,20 @@ function $h_Ltrivalibs_graphics_lib_color_Color$kernel$() {
 }
 $h_Ltrivalibs_graphics_lib_color_Color$kernel$.prototype = $p;
 $p.dp = (function(h, s, v, out) {
-  var h6 = (6.0 * h);
-  var p$proxy7 = (((h6 + 0.0) % 6.0) - 3.0);
-  var p$proxy8 = ((+Math.abs(p$proxy7)) - 1.0);
-  var t$proxy1 = ((p$proxy8 < 0.0) ? 0.0 : ((p$proxy8 > 1.0) ? 1.0 : p$proxy8));
-  out.W = (v * (1.0 + ((((t$proxy1 * t$proxy1) * (3.0 - (2.0 * t$proxy1))) - 1.0) * s)));
-  var p$proxy9 = (((h6 + 4.0) % 6.0) - 3.0);
-  var p$proxy10 = ((+Math.abs(p$proxy9)) - 1.0);
-  var t$proxy2 = ((p$proxy10 < 0.0) ? 0.0 : ((p$proxy10 > 1.0) ? 1.0 : p$proxy10));
-  out.X = (v * (1.0 + ((((t$proxy2 * t$proxy2) * (3.0 - (2.0 * t$proxy2))) - 1.0) * s)));
-  var p$proxy11 = (((h6 + 2.0) % 6.0) - 3.0);
+  var p$proxy10 = (h + 0.0);
+  var p$proxy11 = ((6.0 * (p$proxy10 - (+Math.floor(p$proxy10)))) - 3.0);
   var p$proxy12 = ((+Math.abs(p$proxy11)) - 1.0);
-  var t$proxy3 = ((p$proxy12 < 0.0) ? 0.0 : ((p$proxy12 > 1.0) ? 1.0 : p$proxy12));
+  var t$proxy1 = ((p$proxy12 < 0.0) ? 0.0 : ((p$proxy12 > 1.0) ? 1.0 : p$proxy12));
+  out.W = (v * (1.0 + ((((t$proxy1 * t$proxy1) * (3.0 - (2.0 * t$proxy1))) - 1.0) * s)));
+  var p$proxy13 = (h + 0.6666666666666666);
+  var p$proxy14 = ((6.0 * (p$proxy13 - (+Math.floor(p$proxy13)))) - 3.0);
+  var p$proxy15 = ((+Math.abs(p$proxy14)) - 1.0);
+  var t$proxy2 = ((p$proxy15 < 0.0) ? 0.0 : ((p$proxy15 > 1.0) ? 1.0 : p$proxy15));
+  out.X = (v * (1.0 + ((((t$proxy2 * t$proxy2) * (3.0 - (2.0 * t$proxy2))) - 1.0) * s)));
+  var p$proxy16 = (h + 0.3333333333333333);
+  var p$proxy17 = ((6.0 * (p$proxy16 - (+Math.floor(p$proxy16)))) - 3.0);
+  var p$proxy18 = ((+Math.abs(p$proxy17)) - 1.0);
+  var t$proxy3 = ((p$proxy18 < 0.0) ? 0.0 : ((p$proxy18 > 1.0) ? 1.0 : p$proxy18));
   out.a5 = (v * (1.0 + ((((t$proxy3 * t$proxy3) * (3.0 - (2.0 * t$proxy3))) - 1.0) * s)));
   return out;
 });
@@ -4498,15 +4497,15 @@ $p.dl = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.e1;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.ee;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.e1;
   }),
   "configurable": true
 }));
@@ -5789,7 +5788,7 @@ $p.ha = (function() {
 });
 $p.gw = (function() {
   if ((!this.ev)) {
-    this.eu = new ($a_Ltrivalibs_graphics_shader_dsl_WgslFnData())("color_hsv2rgb", "fn color_hsv2rgb(c: vec3<f32>) -> vec3<f32> {\n  let rgb = clamp(abs(((c.x * 6.0 + vec3<f32>(0.0, 4.0, 2.0)) % 6.0) - 3.0) - 1.0, vec3<f32>(0.0), vec3<f32>(1.0));\n    return c.z * mix(vec3<f32>(1.0), rgb, c.y);\n}");
+    this.eu = new ($a_Ltrivalibs_graphics_shader_dsl_WgslFnData())("color_hsv2rgb", "fn color_hsv2rgb(c: vec3<f32>) -> vec3<f32> {\n  let h = fract(c.x + vec3<f32>(0.0, 2.0 / 3.0, 1.0 / 3.0)) * 6.0;\n    let rgb = clamp(abs(h - 3.0) - 1.0, vec3<f32>(0.0), vec3<f32>(1.0));\n    return c.z * mix(vec3<f32>(1.0), rgb, c.y);\n}");
     this.ev = true;
   }
   return this.eu;

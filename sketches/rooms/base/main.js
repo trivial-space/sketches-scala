@@ -6945,15 +6945,15 @@ $p.jL = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.la;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.ln;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.la;
   }),
   "configurable": true
 }));

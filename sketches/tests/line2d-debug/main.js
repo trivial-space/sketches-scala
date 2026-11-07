@@ -4007,15 +4007,15 @@ $p.cA = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.dr;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.dE;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.dr;
   }),
   "configurable": true
 }));

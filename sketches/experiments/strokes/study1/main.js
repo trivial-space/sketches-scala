@@ -1585,9 +1585,9 @@ function $c_Lsketches_experiments_strokes_study1_StrokeStudy1$package$() {
     var t = $ct_Ltrivalibs_graphics_math_gpu_LetExpr__T__(new $c_Ltrivalibs_graphics_math_gpu_LetExpr(), "t");
     var $x_2 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fNumExt\uff3fFloatExpr$();
     var p$proxy1 = $m_Ltrivalibs_graphics_math_gpu_int\uff3fexpr$package$().cd(cell);
-    var WgslFn$_this = $m_Ltrivalibs_graphics_shader_dsl_fn$package$WgslFn$();
+    var WgslFn$_this$1 = $m_Ltrivalibs_graphics_shader_dsl_fn$package$WgslFn$();
     var fn$proxy1 = $m_Ltrivalibs_graphics_shader_lib_random_Hash$wgsl$().c9();
-    var s$proxy1 = WgslFn$_this.bl(fn$proxy1, p$proxy1);
+    var s$proxy1 = WgslFn$_this$1.bl(fn$proxy1, p$proxy1);
     $m_Ltrivalibs_graphics_math_gpu_expr$package$();
     var $x_1 = $ct_Ltrivalibs_graphics_math_gpu_Expr__T__(new $c_Ltrivalibs_graphics_math_gpu_Expr(), s$proxy1);
     var v$proxy1 = $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2ImmutableOpsG\uff3fFloatExpr\uff3fVec2Expr$().c3(cell, $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$given\uff3fVec2BaseG\uff3fFloatExpr\uff3fVec2Expr$(), $m_Ltrivalibs_graphics_math_gpu_vec2$().V($m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().s().f(1.0), $m_Ltrivalibs_graphics_math_gpu_float\uff3fexpr$package$().s().f(0.0)));
@@ -2724,18 +2724,20 @@ function $h_Ltrivalibs_graphics_lib_color_Color$kernel$() {
 }
 $h_Ltrivalibs_graphics_lib_color_Color$kernel$.prototype = $p;
 $p.gf = (function(h, s, v, out) {
-  var h6 = (6.0 * h);
-  var p$proxy7 = (((h6 + 0.0) % 6.0) - 3.0);
-  var p$proxy8 = ((+Math.abs(p$proxy7)) - 1.0);
-  var t$proxy1 = ((p$proxy8 < 0.0) ? 0.0 : ((p$proxy8 > 1.0) ? 1.0 : p$proxy8));
-  out.bA = (v * (1.0 + ((((t$proxy1 * t$proxy1) * (3.0 - (2.0 * t$proxy1))) - 1.0) * s)));
-  var p$proxy9 = (((h6 + 4.0) % 6.0) - 3.0);
-  var p$proxy10 = ((+Math.abs(p$proxy9)) - 1.0);
-  var t$proxy2 = ((p$proxy10 < 0.0) ? 0.0 : ((p$proxy10 > 1.0) ? 1.0 : p$proxy10));
-  out.bB = (v * (1.0 + ((((t$proxy2 * t$proxy2) * (3.0 - (2.0 * t$proxy2))) - 1.0) * s)));
-  var p$proxy11 = (((h6 + 2.0) % 6.0) - 3.0);
+  var p$proxy10 = (h + 0.0);
+  var p$proxy11 = ((6.0 * (p$proxy10 - (+Math.floor(p$proxy10)))) - 3.0);
   var p$proxy12 = ((+Math.abs(p$proxy11)) - 1.0);
-  var t$proxy3 = ((p$proxy12 < 0.0) ? 0.0 : ((p$proxy12 > 1.0) ? 1.0 : p$proxy12));
+  var t$proxy1 = ((p$proxy12 < 0.0) ? 0.0 : ((p$proxy12 > 1.0) ? 1.0 : p$proxy12));
+  out.bA = (v * (1.0 + ((((t$proxy1 * t$proxy1) * (3.0 - (2.0 * t$proxy1))) - 1.0) * s)));
+  var p$proxy13 = (h + 0.6666666666666666);
+  var p$proxy14 = ((6.0 * (p$proxy13 - (+Math.floor(p$proxy13)))) - 3.0);
+  var p$proxy15 = ((+Math.abs(p$proxy14)) - 1.0);
+  var t$proxy2 = ((p$proxy15 < 0.0) ? 0.0 : ((p$proxy15 > 1.0) ? 1.0 : p$proxy15));
+  out.bB = (v * (1.0 + ((((t$proxy2 * t$proxy2) * (3.0 - (2.0 * t$proxy2))) - 1.0) * s)));
+  var p$proxy16 = (h + 0.3333333333333333);
+  var p$proxy17 = ((6.0 * (p$proxy16 - (+Math.floor(p$proxy16)))) - 3.0);
+  var p$proxy18 = ((+Math.abs(p$proxy17)) - 1.0);
+  var t$proxy3 = ((p$proxy18 < 0.0) ? 0.0 : ((p$proxy18 > 1.0) ? 1.0 : p$proxy18));
   out.bC = (v * (1.0 + ((((t$proxy3 * t$proxy3) * (3.0 - (2.0 * t$proxy3))) - 1.0) * s)));
   return out;
 });
@@ -4388,15 +4390,15 @@ $p.db = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.dZ;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.ec;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.dZ;
   }),
   "configurable": true
 }));

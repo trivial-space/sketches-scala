@@ -78,7 +78,7 @@ def oneLine(canvas: HTMLCanvasElement): Unit =
     val col1hsv =
       Vec3(rand(), 0.2 * randNormal01(), 0.5 + 0.5 * randNormal01())
     val col2hsv = Vec3(
-      (col1hsv.x + randNormal11() * 0.35).fract,
+      col1hsv.x + randNormal11() * 0.35,
       col1hsv.y + randNormal01() * 0.14,
       col1hsv.z - randNormal01() * 0.12,
     )
@@ -87,7 +87,7 @@ def oneLine(canvas: HTMLCanvasElement): Unit =
 
     val colStrokeHsv =
       Vec3(
-        (col2hsv.x + randNormal11() * 0.37).fract,
+        col2hsv.x + randNormal11() * 0.37,
         (col2hsv.y + 0.5 + randNormal11() * 0.25).clamp01,
         rand() * 0.8 + 0.1,
       )
@@ -97,7 +97,7 @@ def oneLine(canvas: HTMLCanvasElement): Unit =
       */
     def strokeColor() =
       Vec3(
-        (colStrokeHsv.x + randNormal11() * 0.12).fract,
+        colStrokeHsv.x + randNormal11() * 0.12,
         (colStrokeHsv.y + randNormal11() * 0.15).clamp01,
         (colStrokeHsv.z + randNormal11() * 0.12).clamp01,
       ).hsv2rgbSmooth

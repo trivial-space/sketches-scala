@@ -1920,16 +1920,18 @@ function $h_Ltrivalibs_graphics_lib_color_Color$kernel$() {
 }
 $h_Ltrivalibs_graphics_lib_color_Color$kernel$.prototype = $p;
 $p.ey = (function(h, s, v, out) {
-  var h6 = (6.0 * h);
-  var p$proxy1 = (((h6 + 0.0) % 6.0) - 3.0);
-  var p$proxy2 = ((+Math.abs(p$proxy1)) - 1.0);
-  out.a8 = (v * (1.0 + ((((p$proxy2 < 0.0) ? 0.0 : ((p$proxy2 > 1.0) ? 1.0 : p$proxy2)) - 1.0) * s)));
-  var p$proxy3 = (((h6 + 4.0) % 6.0) - 3.0);
-  var p$proxy4 = ((+Math.abs(p$proxy3)) - 1.0);
-  out.a9 = (v * (1.0 + ((((p$proxy4 < 0.0) ? 0.0 : ((p$proxy4 > 1.0) ? 1.0 : p$proxy4)) - 1.0) * s)));
-  var p$proxy5 = (((h6 + 2.0) % 6.0) - 3.0);
+  var p$proxy1 = (h + 0.0);
+  var p$proxy2 = ((6.0 * (p$proxy1 - (+Math.floor(p$proxy1)))) - 3.0);
+  var p$proxy3 = ((+Math.abs(p$proxy2)) - 1.0);
+  out.a8 = (v * (1.0 + ((((p$proxy3 < 0.0) ? 0.0 : ((p$proxy3 > 1.0) ? 1.0 : p$proxy3)) - 1.0) * s)));
+  var p$proxy4 = (h + 0.6666666666666666);
+  var p$proxy5 = ((6.0 * (p$proxy4 - (+Math.floor(p$proxy4)))) - 3.0);
   var p$proxy6 = ((+Math.abs(p$proxy5)) - 1.0);
-  out.aa = (v * (1.0 + ((((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)) - 1.0) * s)));
+  out.a9 = (v * (1.0 + ((((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)) - 1.0) * s)));
+  var p$proxy7 = (h + 0.3333333333333333);
+  var p$proxy8 = ((6.0 * (p$proxy7 - (+Math.floor(p$proxy7)))) - 3.0);
+  var p$proxy9 = ((+Math.abs(p$proxy8)) - 1.0);
+  out.aa = (v * (1.0 + ((((p$proxy9 < 0.0) ? 0.0 : ((p$proxy9 > 1.0) ? 1.0 : p$proxy9)) - 1.0) * s)));
   return out;
 });
 var $d_Ltrivalibs_graphics_lib_color_Color$kernel$ = new $TypeData().i($c_Ltrivalibs_graphics_lib_color_Color$kernel$, "trivalibs.graphics.lib.color.Color$kernel$", ({
@@ -3392,15 +3394,15 @@ $p.c3 = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.cF;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.cS;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.cF;
   }),
   "configurable": true
 }));

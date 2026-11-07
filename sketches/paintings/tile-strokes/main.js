@@ -1651,11 +1651,7 @@ $p.gf = (function(width, height, colorCount) {
   var res = new Array(len);
   var i$1 = 0;
   while ((i$1 < len)) {
-    var $x_1 = i$1;
-    var x0$1 = array[i$1];
-    var h$2 = (+x0$1);
-    var hue = (h$2 + hueShift);
-    res[$x_1] = new $c_Lsketches_paintings_tile\uff3fstrokes_Color((hue - (+Math.floor(hue))), ((0.4 * ($m_Ltrivalibs_utils_random_random$package$().U() + $m_Ltrivalibs_utils_random_random$package$().U())) + 0.1));
+    res[i$1] = new $c_Lsketches_paintings_tile\uff3fstrokes_Color(((+array[i$1]) + hueShift), ((0.4 * ($m_Ltrivalibs_utils_random_random$package$().U() + $m_Ltrivalibs_utils_random_random$package$().U())) + 0.1));
     i$1 = ((1 + i$1) | 0);
   }
   var brushSize = (height / 17.0);
@@ -1744,22 +1740,21 @@ $p.gf = (function(width, height, colorCount) {
   return new $c_Lsketches_paintings_tile\uff3fstrokes_Painting(width, height, brushSize, elem$3, res);
 });
 $p.fc = (function(color) {
-  var p$proxy5 = (color.e5 + (0.1 * $m_Ltrivalibs_utils_random_random$package$().fs()));
-  var x = (p$proxy5 - (+Math.floor(p$proxy5)));
-  var p$proxy6 = (0.5 * ($m_Ltrivalibs_utils_random_random$package$().U() + $m_Ltrivalibs_utils_random_random$package$().U()));
-  var y = (+Math.pow(p$proxy6, 1.5));
-  var p$proxy7 = (color.e6 + (0.4 * $m_Ltrivalibs_utils_random_random$package$().ha()));
-  var c$proxy1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, y, ((p$proxy7 < 0.0) ? 0.0 : ((p$proxy7 > 1.0) ? 1.0 : p$proxy7)));
+  var x = (color.e5 + (0.1 * $m_Ltrivalibs_utils_random_random$package$().fs()));
+  var p$proxy5 = (0.5 * ($m_Ltrivalibs_utils_random_random$package$().U() + $m_Ltrivalibs_utils_random_random$package$().U()));
+  var y = (+Math.pow(p$proxy5, 1.5));
+  var p$proxy6 = (color.e6 + (0.4 * $m_Ltrivalibs_utils_random_random$package$().ha()));
+  var c$proxy1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, y, ((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)));
   return $m_Ltrivalibs_graphics_lib_color_Color$kernel$().gF(c$proxy1.c9, c$proxy1.ca, c$proxy1.cb, new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.0, 0.0, 0.0));
 });
 $p.gA = (function(tile, brushSize) {
-  var p$proxy8 = (((2.6 * tile.an) * $m_Ltrivalibs_utils_random_random$package$().fr(0.8, 1.2)) / brushSize);
-  var p$proxy9 = (+Math.floor(p$proxy8));
-  var steps = (+Math.max(p$proxy9, 4.0));
+  var p$proxy7 = (((2.6 * tile.an) * $m_Ltrivalibs_utils_random_random$package$().fr(0.8, 1.2)) / brushSize);
+  var p$proxy8 = (+Math.floor(p$proxy7));
+  var steps = (+Math.max(p$proxy8, 4.0));
   var step = (tile.an / steps);
   var pointWOffset = (0.09 * step);
-  var p$proxy10 = ((2.64 * tile.a3) / (+Math.pow(brushSize, 1.4)));
-  var widthJitter = (+Math.max(p$proxy10, 2.2));
+  var p$proxy9 = ((2.64 * tile.a3) / (+Math.pow(brushSize, 1.4)));
+  var widthJitter = (+Math.max(p$proxy9, 2.2));
   var elem = $m_Ltrivalibs_utils_random_random$package$().h9();
   var elem$1 = false;
   elem$1 = elem;
@@ -1788,12 +1783,12 @@ $p.gA = (function(tile, brushSize) {
   return new $c_T2(points, elem$1);
 });
 $p.gQ = (function(width, brushSize, p1, p2, reverse) {
-  var p$proxy12 = ((2.0 * width) / brushSize);
-  var normalScale = ((brushSize / 12.0) * (+Math.min(p$proxy12, 15.0)));
+  var p$proxy11 = ((2.0 * width) / brushSize);
+  var normalScale = ((brushSize / 12.0) * (+Math.min(p$proxy11, 15.0)));
   var line = $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__subVec__O__Ltrivalibs_graphics_math_Vec2Base__O__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().f(), p2, $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), p1);
-  var p$proxy13 = ($f_Ltrivalibs_graphics_math_Vec2Base__length__O__D($m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), line) / 35.0);
-  var p$proxy14 = $doubleToInt((+Math.floor(p$proxy13)));
-  var steps = ((p$proxy14 > 8) ? p$proxy14 : 8);
+  var p$proxy12 = ($f_Ltrivalibs_graphics_math_Vec2Base__length__O__D($m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), line) / 35.0);
+  var p$proxy13 = $doubleToInt((+Math.floor(p$proxy12)));
+  var steps = ((p$proxy13 > 8) ? p$proxy13 : 8);
   var normal = $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__normalize__O__Ltrivalibs_graphics_math_Vec2Base__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().f(), (reverse ? new $c_Ltrivalibs_graphics_math_cpu_Vec2((-line.s), line.r) : new $c_Ltrivalibs_graphics_math_cpu_Vec2(line.s, (-line.r))), $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$());
   var mid = $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__addVec__O__Ltrivalibs_graphics_math_Vec2Base__O__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().f(), p1, $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__mulScalar__O__Ltrivalibs_graphics_math_Vec2Base__D__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().f(), line, $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), 0.5));
   var c1 = $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__addVec__O__Ltrivalibs_graphics_math_Vec2Base__O__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().f(), mid, $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__mulScalar__O__Ltrivalibs_graphics_math_Vec2Base__D__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().f(), normal, $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), (($m_Ltrivalibs_utils_random_random$package$().U() - 0.6) * normalScale)));
@@ -1814,12 +1809,12 @@ $p.gQ = (function(width, brushSize, p1, p2, reverse) {
   return points;
 });
 $p.dR = (function(painting, tile) {
-  var p$proxy15 = (2.0 * tile.an);
-  var other$proxy4 = ((+Math.pow(p$proxy15, 0.8)) / 5.0);
+  var p$proxy14 = (2.0 * tile.an);
+  var other$proxy4 = ((+Math.pow(p$proxy14, 0.8)) / 5.0);
   var a = painting.cK;
-  var p$proxy16 = (+Math.max(a, other$proxy4));
+  var p$proxy15 = (+Math.max(a, other$proxy4));
   var other$proxy5 = (3.0 * painting.cK);
-  var brushSize = (+Math.min(p$proxy16, other$proxy5));
+  var brushSize = (+Math.min(p$proxy15, other$proxy5));
   var edges = $m_Lsketches_paintings_tile\uff3fstrokes_Painting$package$().gA(tile, brushSize);
   var points = edges.F;
   var elem = (!(!edges.a1));
@@ -3145,16 +3140,18 @@ function $h_Ltrivalibs_graphics_lib_color_Color$kernel$() {
 }
 $h_Ltrivalibs_graphics_lib_color_Color$kernel$.prototype = $p;
 $p.gF = (function(h, s, v, out) {
-  var h6 = (6.0 * h);
-  var p$proxy1 = (((h6 + 0.0) % 6.0) - 3.0);
-  var p$proxy2 = ((+Math.abs(p$proxy1)) - 1.0);
-  out.c9 = (v * (1.0 + ((((p$proxy2 < 0.0) ? 0.0 : ((p$proxy2 > 1.0) ? 1.0 : p$proxy2)) - 1.0) * s)));
-  var p$proxy3 = (((h6 + 4.0) % 6.0) - 3.0);
-  var p$proxy4 = ((+Math.abs(p$proxy3)) - 1.0);
-  out.ca = (v * (1.0 + ((((p$proxy4 < 0.0) ? 0.0 : ((p$proxy4 > 1.0) ? 1.0 : p$proxy4)) - 1.0) * s)));
-  var p$proxy5 = (((h6 + 2.0) % 6.0) - 3.0);
+  var p$proxy1 = (h + 0.0);
+  var p$proxy2 = ((6.0 * (p$proxy1 - (+Math.floor(p$proxy1)))) - 3.0);
+  var p$proxy3 = ((+Math.abs(p$proxy2)) - 1.0);
+  out.c9 = (v * (1.0 + ((((p$proxy3 < 0.0) ? 0.0 : ((p$proxy3 > 1.0) ? 1.0 : p$proxy3)) - 1.0) * s)));
+  var p$proxy4 = (h + 0.6666666666666666);
+  var p$proxy5 = ((6.0 * (p$proxy4 - (+Math.floor(p$proxy4)))) - 3.0);
   var p$proxy6 = ((+Math.abs(p$proxy5)) - 1.0);
-  out.cb = (v * (1.0 + ((((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)) - 1.0) * s)));
+  out.ca = (v * (1.0 + ((((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)) - 1.0) * s)));
+  var p$proxy7 = (h + 0.3333333333333333);
+  var p$proxy8 = ((6.0 * (p$proxy7 - (+Math.floor(p$proxy7)))) - 3.0);
+  var p$proxy9 = ((+Math.abs(p$proxy8)) - 1.0);
+  out.cb = (v * (1.0 + ((((p$proxy9 < 0.0) ? 0.0 : ((p$proxy9 > 1.0) ? 1.0 : p$proxy9)) - 1.0) * s)));
   return out;
 });
 var $d_Ltrivalibs_graphics_lib_color_Color$kernel$ = new $TypeData().i($c_Ltrivalibs_graphics_lib_color_Color$kernel$, "trivalibs.graphics.lib.color.Color$kernel$", ({
@@ -4747,15 +4744,15 @@ $p.dF = (function(panel) {
     i = ((1 + i) | 0);
   }
 });
-Object.defineProperty($p, "adapter", ({
-  "get": (function() {
-    return this.ek;
-  }),
-  "configurable": true
-}));
 Object.defineProperty($p, "gpu", ({
   "get": (function() {
     return this.ex;
+  }),
+  "configurable": true
+}));
+Object.defineProperty($p, "adapter", ({
+  "get": (function() {
+    return this.ek;
   }),
   "configurable": true
 }));
