@@ -3114,23 +3114,23 @@ $h_Ltrivalibs_graphics_geometry_polygon$package$Quad$.prototype = $p;
 $p.ax = (function(tl, bl, br, tr) {
   return [tl, bl, br, tr];
 });
-$p.mJ = (function(q, evidence$1) {
+$p.mJ = (function(q) {
   return q[0];
 });
-$p.kQ = (function(q, evidence$1) {
+$p.kQ = (function(q) {
   return q[1];
 });
-$p.kS = (function(q, evidence$1) {
+$p.kS = (function(q) {
   return q[2];
 });
-$p.mL = (function(q, evidence$1) {
+$p.mL = (function(q) {
   return q[3];
 });
 $p.hQ = (function(q, evidence$1) {
-  var a = evidence$1.a4(this.mJ(q, evidence$1));
-  var b = evidence$1.a4(this.kQ(q, evidence$1));
-  var c = evidence$1.a4(this.kS(q, evidence$1));
-  var d = evidence$1.a4(this.mL(q, evidence$1));
+  var a = evidence$1.a4(this.mJ(q));
+  var b = evidence$1.a4(this.kQ(q));
+  var c = evidence$1.a4(this.kS(q));
+  var d = evidence$1.a4(this.mL(q));
   var d1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3((c.n - a.n), (c.o - a.o), (c.p - a.p));
   var d2 = new $c_Ltrivalibs_graphics_math_cpu_Vec3((d.n - b.n), (d.o - b.o), (d.p - b.p));
   return $f_Ltrivalibs_graphics_math_Vec3ImmutableOps__normalize__O__Ltrivalibs_graphics_math_Vec3Base__O($m_Ltrivalibs_graphics_math_cpu_Vec3$().gC(), $f_Ltrivalibs_graphics_math_Vec3ImmutableOps__cross__O__Ltrivalibs_graphics_math_Vec3Base__O__O($m_Ltrivalibs_graphics_math_cpu_Vec3$().gC(), d1, $m_Ltrivalibs_graphics_math_cpu_Vec3$given\uff3fVec3Mutable\uff3fVec3$(), d2), $m_Ltrivalibs_graphics_math_cpu_Vec3$given\uff3fVec3Mutable\uff3fVec3$());
@@ -3154,19 +3154,19 @@ $p.constructor = $c_Ltrivalibs_graphics_geometry_polygon$package$Triangle$;
 function $h_Ltrivalibs_graphics_geometry_polygon$package$Triangle$() {
 }
 $h_Ltrivalibs_graphics_geometry_polygon$package$Triangle$.prototype = $p;
-$p.kC = (function(tri, evidence$1) {
+$p.kC = (function(tri) {
   return tri[0];
 });
-$p.kO = (function(tri, evidence$1) {
+$p.kO = (function(tri) {
   return tri[1];
 });
-$p.kT = (function(tri, evidence$1) {
+$p.kT = (function(tri) {
   return tri[2];
 });
 $p.hQ = (function(tri, evidence$1) {
-  var pa = evidence$1.a4(this.kC(tri, evidence$1));
-  var pb = evidence$1.a4(this.kO(tri, evidence$1));
-  var pc = evidence$1.a4(this.kT(tri, evidence$1));
+  var pa = evidence$1.a4(this.kC(tri));
+  var pb = evidence$1.a4(this.kO(tri));
+  var pc = evidence$1.a4(this.kT(tri));
   var e1 = new $c_Ltrivalibs_graphics_math_cpu_Vec3((pb.n - pa.n), (pb.o - pa.o), (pb.p - pa.p));
   var e2 = new $c_Ltrivalibs_graphics_math_cpu_Vec3((pc.n - pa.n), (pc.o - pa.o), (pc.p - pa.p));
   return $f_Ltrivalibs_graphics_math_Vec3ImmutableOps__normalize__O__Ltrivalibs_graphics_math_Vec3Base__O($m_Ltrivalibs_graphics_math_cpu_Vec3$().gC(), $f_Ltrivalibs_graphics_math_Vec3ImmutableOps__cross__O__Ltrivalibs_graphics_math_Vec3Base__O__O($m_Ltrivalibs_graphics_math_cpu_Vec3$().gC(), e1, $m_Ltrivalibs_graphics_math_cpu_Vec3$given\uff3fVec3Mutable\uff3fVec3$(), e2), $m_Ltrivalibs_graphics_math_cpu_Vec3$given\uff3fVec3Mutable\uff3fVec3$());
