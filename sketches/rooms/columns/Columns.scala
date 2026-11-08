@@ -18,12 +18,12 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 // (remapped to [0,1]), other cells take the raw UV with B = 0.5.
 // ---------------------------------------------------------------------------
 
-private val ColSpace = 12.0
+private val ColSpace = 14.0
 private val ColHeight = 40.0
 private val ColWidth = 2.0
 private val BalkHeight = ColWidth * 3.4
-private val ColsZHalf = 8
-private val ColsXHalf = 4
+private val ColsZHalf = 6
+private val ColsXHalf = 3
 
 @JSExportTopLevel("sketch")
 def roomsColumns(canvas: HTMLCanvasElement): Unit =

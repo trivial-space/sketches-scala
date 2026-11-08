@@ -2539,12 +2539,12 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.W = 0;
   this.V = 0;
   $n_Lsketches_rooms_columns_Columns$package$ = this;
-  this.F = 12.0;
+  this.F = 14.0;
   this.fc = 40.0;
   this.fH = 2.0;
   this.hA = (3.4 * $m_Lsketches_rooms_columns_Columns$package$().fH);
-  this.W = 8;
-  this.V = 4;
+  this.W = 6;
+  this.V = 3;
 }
 $p = $c_Lsketches_rooms_columns_Columns$package$.prototype = new $h_O();
 $p.constructor = $c_Lsketches_rooms_columns_Columns$package$;
