@@ -133,12 +133,12 @@ form with a non-overlapping UV layout bakes into one texture. Noise continuity
 across partitions is then **free**: the field is world-space, every texel reads
 the same function regardless of which texture it lands in.
 
-| Partition      | Layout                                                                                                                     | Count (currently) |
-| -------------- | -------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| perimeter side | the notched ring's walls of one side, **unwrapped in ring order** into one strip (bay, pilaster side, front, side, bay, …) | 4                 |
-| free column    | its 4 faces unwrapped around it into one strip                                                                             | 28                |
-| balks          | one `BeamAtlas` per family (or half family) — it takes any `Arr[Beam]`, so partitioning is just calling it per subset      | 2–4               |
-| floor          | the bounding box, split into a grid of quads only when a side × scale would exceed the texture limit (computed, see below) | 1 (currently)     |
+| Partition   | Layout                                                                                                                                                                                                     | Count (currently) |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| perimeter   | the notched ring's walls **unwrapped in ring order** (bay, pilaster side, front, side, bay, …), cut greedily into strips at a face edge whenever the next face would push the strip past the texture limit | 2 (currently)     |
+| free column | its 4 faces unwrapped around it into one strip                                                                                                                                                             | 28                |
+| balks       | one `BeamAtlas` for all balks while it fits the limit; it takes any `Arr[Beam]`, so splitting per family is just calling it per subset                                                                     | 1 (currently)     |
+| floor       | the bounding box, split into a grid of quads only when a side × scale would exceed the texture limit (computed, see below)                                                                                 | 1 (currently)     |
 
 Two rules make partition breaks invisible:
 
@@ -225,17 +225,20 @@ on the CPU at mesh build only; the shader sees per-face attributes. Only the
 left/right edges vary per face; every other edge is deterministic in this
 geometry:
 
-| Edge                      | Kind                                                                                                                                                                                                            | Data                                         |
-| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| wall / column left, right | arris or corner, per face, from `Edge.arrisAtA`                                                                                                                                                                 | `edgeInfo = (s, width, leftKind, rightKind)` |
-| wall / column bottom      | always the floor junction at `y = 0` — a wrapping corner, both faces visible: soft `Fades.plane` + grime                                                                                                        | none (`wp.y`)                                |
-| wall / column top         | **never an arris**: column and pilaster faces continue flush into balk sides (no edge at all — balks are `ColWidth` wide by construction); bays and pilaster sides meet the soffit overhead as an inside corner | none (`SoffitY − wp.y`, one `Fades.top`)     |
-| balk run                  | never faded — a run ends in a wall or a crossing, handled by `atWall` / `crossing`                                                                                                                              | —                                            |
-| balk soffit ↔ side        | arris. On the soffit, the neighbor is a side face → view-dependent. On a side, the neighbor is the soffit, which faces down and is always visible from below → always open                                      | from atlas UV (`across`, band) + normal      |
-| balk side ↔ top           | arris whose top face is **never** visible from eye height → always radius 0                                                                                                                                     | from atlas UV                                |
+| Edge                      | Kind                                                                                                                                                                                                                                                                                   | Data                                         |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| wall / column left, right | arris or corner, per face, from `Edge.arrisAtA`                                                                                                                                                                                                                                        | `edgeInfo = (s, width, leftKind, rightKind)` |
+| wall / column bottom      | always the floor junction at `y = 0` — a wrapping corner, both faces visible: soft `Fades.plane` + grime                                                                                                                                                                               | none (`wp.y`)                                |
+| wall / column top         | **never an arris**: column and pilaster faces continue flush into balk sides (no edge at all — balks are `ColWidth` wide by construction); bays and pilaster sides meet the soffit overhead as an inside corner                                                                        | none (`SoffitY − wp.y`, one `Fades.top`)     |
+| balk run                  | never faded — a run ends in a wall or a crossing                                                                                                                                                                                                                                       | —                                            |
+| balk soffit ↔ side        | arris. The soffit carries **only the world term everywhere** (as in the templates), so it has no fade to depict a hidden side with. A side face's neighbor is the soffit, always visible from below → fixed `Fades.arris`; the soffit/side tint blend also ramps on the side face only | from atlas UV (`soffitCenterDist`)           |
+| balk side ↔ top           | arris whose top face is **never** visible from eye height → always radius 0                                                                                                                                                                                                            | none                                         |
 
-So walls and columns need exactly one `vec4` per vertex; balks derive it all
-from their atlas UV; the floor uses the lattice distance.
+So walls and columns need exactly one `vec4` per vertex (plus their tangent);
+balks need no view term at all and derive everything from their atlas UV; the
+floor uses the lattice distance. A column face fades to the world term at
+`SoffitY`, and the balk side above it starts there at its arris, also at the
+world term — so the flush column-into-balk plane stays continuous.
 
 One real shading change this exposes and keeps: a free column's vertical arris
 becomes an **inside** corner at `SoffitY`, where the two crossing balks' sides
@@ -319,12 +322,13 @@ with the overhang **derived** by the template's formula (`LightY`, `SoffitY`,
 room depth, eye height) — currently ~66 m at a 5 m coffer. Baked at a low
 `LightTexScale` (~4–8 /m, it is smooth), `Rgba16Float`.
 
-The emitter shader is the exhibition's slot. Here: **`LightColor` × a
-low-frequency world-meter fbm**, remapped so the field dips **below the bloom
-threshold** in places — some coffers glow and halo, others read as plain bright
-sky. That is the "irregular bloom contribution". Constraints carried over: the
-peaks stay under the mirror re-bloom cap (`LightColor · reflMix` + floor base <
-1.0), and structure is in world meters.
+The emitter shader is the exhibition's slot. Here: **a low-frequency world-meter
+fbm blending `LightDimColor` → `LightBrightColor`**, so the field dips **below
+the bloom threshold** in places — some coffers glow and halo, others read as
+plain sky. The dim end is a blue-gray, not a darkened warm white: a dimmed warm
+emitter reads brown. That is the "irregular bloom contribution". Constraints
+carried over: the peaks stay under the mirror re-bloom cap
+(`LightColor · reflMix` + floor base < 1.0), and structure is in world meters.
 
 **Pure world noise, no per-cell pattern.** The openings are big enough for light
 to mix across them, and the space wide enough for it to bounce until a
