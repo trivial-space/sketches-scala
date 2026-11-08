@@ -26,7 +26,7 @@ val VertexJitter = 0.04
 /** Per-quad HSV variation around its pair's palette color. */
 val HueJitter = 0.015
 val SaturationJitter = 0.23
-val ValueJitter = 0.23
+val ValueJitter = 0.3
 
 class Palette:
   val colorOffset = rand() * (1.0 / PaletteColorChoiseCount)
@@ -40,7 +40,7 @@ class Palette:
     colorChoises.push(
       Vec3(
         n / PaletteColorChoiseCount + randNormal11() * 0.1,
-        (randNormal01() * 0.7 + 0.4).clamp01,
+        (randNormal01() * 0.8 + 0.45).clamp01,
         if j == 0 then randNormal01() * 0.65 else randNormal01() * 0.65 + 0.45,
       ),
     )
@@ -94,7 +94,7 @@ class Pillar(val outerWidth: Double, val outerHeight: Double, palette: Palette):
       hsv.x + randNormal11() * HueJitter,
       (hsv.y + randNormal11() * SaturationJitter).clamp01,
       (hsv.z + randNormal11() * ValueJitter).clamp01,
-    ).hsv2rgbSmooth
+    )
 
   val quads = Arr[ColoredQuad]()
   var segmentBottom = bottom
@@ -108,6 +108,8 @@ class Pillar(val outerWidth: Double, val outerHeight: Double, palette: Palette):
         ),
       )
     segmentBottom += segmentHeight
+
+  quads.sort((quad1, quad2) => if quad1.color.z < quad2.color.z then -1 else 1)
 
 type QuadAttribs = (position: Vec2)
 type QuadVaryings = (pos: Vec2)
@@ -135,14 +137,14 @@ def pillar(canvas: HTMLCanvasElement): Unit =
     val shapes = pillar.quads.map: coloredQuad =>
       val form = p.form(geometry = coloredQuad.quad.toBufferedGeometry)
       p.shape(form, shade, blendState = BlendState.Alpha)
-        .bind("color" := p.binding(coloredQuad.color))
+        .bind("color" := p.binding(coloredQuad.color.hsv2rgbSmooth))
 
     val panel = p.panel(
       width = Width,
       height = Height,
       clearColor = (0.9, 0.88, 0.84, 1.0),
       multisample = true,
-      shapes = shapes.shuffled(),
+      shapes = shapes,
     )
 
     p.paintAndShow(panel)
