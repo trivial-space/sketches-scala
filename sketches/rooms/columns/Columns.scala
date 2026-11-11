@@ -73,6 +73,8 @@ private val PatchScale = 2.07
 // ---- tints ----
 private val WallTintLow = Vec3(0.97, 0.97, 0.96)
 private val WallTintHigh = Vec3(0.88, 0.88, 0.87)
+// how much grayer plain walls and columns are than the painting frames
+private val WallGray = 0.04
 private val TopFadeDepth = 4.0
 private val CeilTint = Vec3(0.87, 0.87, 0.86)
 private val BalkSideTopTint = Vec3(1.0, 0.99, 0.97)
@@ -95,15 +97,21 @@ private val LightBrightColor = Vec3(1.9, 1.82, 1.71)
 private val LightNoiseScale = 1.0 / 30.0
 
 // ---- paintings ----
-// pillar width as a fraction of the bay's clear width
+// frame margin on all sides, as a fraction of the bay's clear width
+private val FrameMargin = 0.06
+// meters
+private val FrameEdgeSoftness = 0.01
+// pillar width and height as fractions of the frame's
 private val PillarWidthMin = 0.36
-private val PillarWidthMax = 0.46
-// pillar height as a fraction of SoffitY
+private val PillarWidthMax = 0.69
 private val PillarHeightMin = 1.0 / 3.0
 private val PillarHeightMax = 0.95
-private val PillarFloorGap = 0.4
+// meters above the frame's bottom edge
+private val PillarFrameGap = 0.4
 private val PaintAlpha = 0.75
-private val PaintTexScale = 48.0
+// neighboring bays sharing one color group, counted along the perimeter
+private val PillarGroupSize = ColsXHalf * 2
+private val PaintTexScale = 64.0
 
 // ---- paint grain ----
 private val GrainSize = 0.01
@@ -392,11 +400,17 @@ private def wallEdge(
 private def wallLight(amb: Vec4Expr, edge: FloatExpr, y: FloatExpr): FloatExpr =
   lerp(amb.y, amb.x, edge) * grime(y, amb.z.fit0111, amb.w)
 
-private def wallTint(y: FloatExpr): Vec3Expr =
+private def frameTint(y: FloatExpr): Vec3Expr =
   vec3(WallTintLow).lerp(
     WallTintHigh,
     (SoffitY - y).smoothstep(TopFadeDepth, 0.0),
   )
+
+private def wallTint(y: FloatExpr): Vec3Expr = frameTint(y) - WallGray
+
+private def insideRect(pos: Vec2Expr, rect: Vec4Expr): FloatExpr =
+  val dist = (pos - rect.xy).min(rect.xy + rect.zw - pos)
+  dist.x.min(dist.y).smoothstep(0.0, FrameEdgeSoftness)
 
 private def vfloor(v: Vec2Expr): Vec2Expr = v - v.fract
 
@@ -598,11 +612,27 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
             ctx.out.color := vec4(ctx.in.color, PaintAlpha)
 
     val palette = RoomPalette()
+    var group = palette.pillarGroup()
+    var baysInGroup = 0
 
-    def paintBay(bay: Wall): (panel: Panel, rect: Vec4) =
-      val pillarW = bay.width * randInRange(PillarWidthMin, PillarWidthMax)
-      val pillarH = SoffitY * randInRange(PillarHeightMin, PillarHeightMax)
-      val pillar = PillarPainting(pillarW, pillarH, palette.pillarColors())
+    def nextPillarColors(): Arr[Vec3] =
+      if baysInGroup == PillarGroupSize then
+        group = palette.pillarGroup()
+        baysInGroup = 0
+      baysInGroup += 1
+      group.pillarColors()
+
+    def paintBay(bay: Wall): (panel: Panel, rect: Vec4, frame: Vec4) =
+      val frameMargin = bay.width * FrameMargin
+      val frame = Vec4(
+        frameMargin,
+        frameMargin,
+        bay.width - 2.0 * frameMargin,
+        SoffitY - 2.0 * frameMargin,
+      )
+      val pillarW = frame.z * randInRange(PillarWidthMin, PillarWidthMax)
+      val pillarH = frame.w * randInRange(PillarHeightMin, PillarHeightMax)
+      val pillar = PillarPainting(pillarW, pillarH, nextPillarColors())
       val margin = pillarW * PillarMarginRatio
       val size = Vec2(pillarW + 2.0 * margin, pillarH + 2.0 * margin)
 
@@ -634,11 +664,11 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       p.paint(panel)
       val rect = Vec4(
         (bay.width - pillarW) / 2.0 - margin,
-        PillarFloorGap - margin,
+        frame.y + PillarFrameGap - margin,
         size.x,
         size.y,
       )
-      (panel = panel, rect = rect)
+      (panel = panel, rect = rect, frame = frame)
 
     // ---- shades ----
 
@@ -707,6 +737,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
         samp: FragmentUniform[Sampler],
         tileSamp: FragmentUniform[Sampler],
         paintRect: FragmentUniform[Vec4],
+        frameRect: FragmentUniform[Vec4],
         grainOffset: FragmentUniform[Vec2],
     )
     type BayPanels = (
@@ -736,6 +767,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
             val paintUv = LetVec2("paintUv")
             val paint = LetVec4("paintColor")
             val grain = LetFloat("grain")
+            val tint = LetVec3("tint")
             Block(
               amb := ctx.textures.tex(ctx.in.uv, ctx.bindings.samp),
               toEye := (ctx.bindings.eye - wp).normalize,
@@ -745,6 +777,10 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
                 wp.y,
               ),
               bayPos := vec2(ctx.in.edgeInfo.x, wp.y),
+              tint := wallTint(wp.y).lerp(
+                frameTint(wp.y),
+                insideRect(bayPos, ctx.bindings.frameRect),
+              ),
               paintUv := vec2(
                 bayPos.x - rect.x,
                 rect.w - (bayPos.y - rect.y),
@@ -762,7 +798,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
                 )
                 .x * 2.0 - 1.0) * GrainStrength,
               ctx.out.color := vec4(
-                wallTint(wp.y) * light * (1.0 - paint.a * grain)
+                tint * light * (1.0 - paint.a * grain)
                   + paint.rgb * grain * light,
                 1.0,
               ),
@@ -794,7 +830,10 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
             ctx.out.color := vec4(
               vec3(WallTintHigh)
                 .lerp(BalkSideTopTint, sideLift)
-                .lerp(CeilTint, 1.0 - fromArris.smoothstep(0.0, ArrisSoften))
+                .lerp(
+                  vec3(CeilTint) - WallGray,
+                  1.0 - fromArris.smoothstep(0.0, ArrisSoften),
+                )
                 * (lit + (1.0 - lit) * sideLift * BalkTopGlow),
               1.0,
             ),
@@ -891,10 +930,12 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
               "tileSamp" := tileSampler,
               "eye" := eyePos,
               "paintRect" := painting.rect,
+              "frameRect" := painting.frame,
               "grainOffset" := Vec2(
                 rand() * GrainTileWorld,
                 rand() * GrainTileWorld,
               ),
+            ).bind(
               "tex" := tex,
               "paint" := painting.panel,
               "grain" := grainTex,
