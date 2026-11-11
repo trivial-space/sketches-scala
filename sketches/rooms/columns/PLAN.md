@@ -350,13 +350,18 @@ detail.
 
 A slab pattern on the floor in addition to the monochrome tint:
 
-- Slab grid in world meters, `SlabSize` absolute (start 1.6 m), anchored at the
-  origin — which is a lattice node, so joints meet the central columns;
-  elsewhere they line up only when `ColSpace` happens to be a multiple.
-- **Pattern baked once as a small periodic panel** (one slab period, joints and
-  edge bevel), sampled with a Repeat sampler at `xz / period` — mips give the
-  joint lines antialiasing for free (the shader DSL has no `fwidth`).
-- Per-slab tint variation at runtime from a hash of `floor(xz / slab)`.
+- Slab grid in world meters, `SlabSize` absolute, anchored at the origin — which
+  is a lattice node, so joints meet the central columns; elsewhere they line up
+  only when `ColSpace` happens to be a multiple.
+- **A repeating AREA of `SlabTileCount²` slabs is baked once** — joints, bevels
+  and each slab's tone together — and sampled with an anisotropic Repeat sampler
+  at `xz / (SlabSize · SlabTileCount)`. Tone and joints therefore go through the
+  same mips and anisotropic filtering: crisp up close, averaged far away. Pick
+  the area size off a multiple of `ColSpace` so the repeat never aligns with the
+  columns.
+- **Not a single slab with a per-pixel hash tone** (the first version): the hash
+  is computed, not sampled, so it is never filtered — its hard tone steps alias
+  at distance. Baking the tone into an area is what filters it.
 - Composited multiplicatively with the ambience bake in the floor shade, before
   the reflection mix (reflection takes `reflStrength` out of whatever the floor
   shows).

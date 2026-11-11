@@ -43,6 +43,7 @@ private val BeamCrossTexScale = 16.0
 private val LightTexScale = 6.0
 private val SlabTexScale = 160.0
 private val MaxTexSize = 8192
+private val MaxAnisotropy = 16
 
 // ---- ambience field ----
 private val WorldNoiseScale = 0.025
@@ -79,11 +80,13 @@ private val BalkTopGlow = 0.7
 private val FloorTint = Vec3(0.80, 0.78, 0.75)
 
 // ---- floor slabs ----
-private val SlabSize = 1.6
+private val SlabSize = 1.0
 private val JointHalfWidth = 0.004
 private val JointBevel = 0.012
 private val JointDarken = 0.6
-private val SlabTintJitter = 0.08
+private val SlabTintJitter = 0.13
+// slabs per side of the baked, repeating slab area
+private val SlabTileCount = 12
 
 // ---- light ----
 // dim regions stay below the bloom threshold and read as sky
@@ -407,6 +410,9 @@ private def latticeDist(p: Vec2Expr): FloatExpr =
   val wallDist = (HalfX - p.x.abs).min(HalfZ - p.y.abs)
   (boxDist + (1.0 - hasColumn) * 1000.0).min(wallDist)
 
+private def insideUnit(v: FloatExpr): FloatExpr =
+  v.smoothstep(-0.002, 0.0) * (1.0 - v.smoothstep(1.0, 1.002))
+
 private def cellHash(cell: Vec2Expr): FloatExpr =
   (cell.dot(Vec2(12.9898, 78.233)).sin * 43758.5453).fract
 
@@ -417,12 +423,18 @@ private def cellHash(cell: Vec2Expr): FloatExpr =
 @JSExportTopLevel("sketch")
 def roomsColumns(canvas: HTMLCanvasElement): Unit =
   Painter.init(canvas): p =>
-    val sampler = p.samplerLinear
+    val sampler = p.sampler(
+      FilterMode.Linear,
+      FilterMode.Linear,
+      FilterMode.Linear,
+      maxAnisotropy = MaxAnisotropy,
+    )
     val tileSampler = p.sampler(
       FilterMode.Linear,
       FilterMode.Linear,
       FilterMode.Linear,
       AddressMode.Repeat,
+      maxAnisotropy = MaxAnisotropy,
     )
 
     val cam = PerspectiveCamera(
@@ -526,18 +538,30 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
 
     // ---- floor slabs ----
 
-    val slabBounds = (minX = 0.0, minZ = 0.0, maxX = SlabSize, maxZ = SlabSize)
+    val slabAreaSize = SlabSize * SlabTileCount
+    val slabBounds =
+      (minX = 0.0, minZ = 0.0, maxX = slabAreaSize, maxZ = slabAreaSize)
     val slabForm = form(Arr(planeQuad(slabBounds, 0.0, faceUp = false)))
-    val slabPx = Math.ceil(SlabSize * SlabTexScale).toInt
-    val slabTex = TextureBaker.bake(p, slabForm, slabPx, slabPx): (_, _, uv) =>
-      val fromJoint = uv.min(1.0 - uv)
-      val d = fromJoint.x.min(fromJoint.y) * SlabSize
-      val v = lerp(
-        JointDarken,
-        1.0,
-        d.smoothstep(JointHalfWidth, JointHalfWidth + JointBevel),
-      )
-      vec4(v, v, v, 1.0)
+    val slabPx = Math.ceil(slabAreaSize * SlabTexScale).toInt
+    checkTexSize("slab area", slabPx, slabPx)
+    val slabTex = TextureBaker.bakeBlock(p, slabForm, slabPx, slabPx):
+      (_, _, uv, out) =>
+        val slabUv = LetVec2("slabUv")
+        val fromJoint = LetVec2("fromJoint")
+        val joint = LetFloat("joint")
+        val tone = LetFloat("tone")
+        Block(
+          slabUv := uv * SlabTileCount,
+          fromJoint := slabUv.fract.min(1.0 - slabUv.fract),
+          joint := lerp(
+            JointDarken,
+            1.0,
+            (fromJoint.x.min(fromJoint.y) * SlabSize)
+              .smoothstep(JointHalfWidth, JointHalfWidth + JointBevel),
+          ),
+          tone := 1.0 + (cellHash(vfloor(slabUv)) - 0.5) * SlabTintJitter,
+          out := vec4(vec3(joint * tone), 1.0),
+        )
 
     // ---- paint grain ----
 
@@ -709,6 +733,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
             val toEye = LetVec3("toEye")
             val light = LetFloat("light")
             val bayPos = LetVec2("bayPos")
+            val paintUv = LetVec2("paintUv")
             val paint = LetVec4("paintColor")
             val grain = LetFloat("grain")
             Block(
@@ -720,10 +745,16 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
                 wp.y,
               ),
               bayPos := vec2(ctx.in.edgeInfo.x, wp.y),
-              paint := ctx.textures.paint(
-                vec2(bayPos.x - rect.x, rect.w - (bayPos.y - rect.y)) / rect.zw,
-                ctx.bindings.samp,
-              ),
+              paintUv := vec2(
+                bayPos.x - rect.x,
+                rect.w - (bayPos.y - rect.y),
+              ) / rect.zw,
+              // Clamp-to-edge repeats the edge texels outside the rect, and at
+              // higher mips those already hold averaged paint — without this
+              // mask they smear a ghost of the pillar across the wall.
+              paint := ctx.textures.paint(paintUv, ctx.bindings.samp)
+                * insideUnit(paintUv.x)
+                * insideUnit(paintUv.y),
               grain := 1.0 + (ctx.textures
                 .grain(
                   (bayPos + ctx.bindings.grainOffset) / GrainTileWorld,
@@ -798,17 +829,19 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
           val wp = ctx.in.worldPos
           val amb = LetVec4("amb")
           val dist = LetFloat("dist")
-          val slabCoord = LetVec2("slabCoord")
           val base = LetVec3("base")
           val refl = LetVec4("refl")
           val reflMix = LetFloat("reflMix")
           Block(
             amb := ctx.textures.tex(ctx.in.uv, ctx.bindings.samp),
             dist := latticeDist(wp.xz),
-            slabCoord := wp.xz / SlabSize,
             base := vec3(FloorTint)
-              * (1.0 + (cellHash(vfloor(slabCoord)) - 0.5) * SlabTintJitter)
-              * ctx.textures.slabTex(slabCoord, ctx.bindings.tileSamp).x
+              * ctx.textures
+                .slabTex(
+                  wp.xz / (SlabSize * SlabTileCount),
+                  ctx.bindings.tileSamp,
+                )
+                .x
               * lerp(amb.y, amb.x, dist.smoothstep(0.0, Fades.plane))
               * grime(dist, amb.z.fit0111, amb.w),
             refl := ctx.textures.reflTex(
