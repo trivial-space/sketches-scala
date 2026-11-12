@@ -455,7 +455,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       fov = 0.9,
       near = NearPlane,
       far = FarPlane,
-      pos = Vec3(0.0, EyeHeight, HalfZ - ColSpace / 2.0),
+      pos = Vec3(0.0, EyeHeight, ColSpace),
     )
     devPreserve(cam)
 
