@@ -3020,7 +3020,7 @@ function $p_Lsketches_rooms_columns_Columns$package$__paintBay$1__Ltrivalibs_gra
     var $x_3 = b;
   }
   $f_Ltrivalibs_graphics_painter_Bindable__setValueSlot__I__O__V(Bindable_this, idx, $x_3);
-  var panel = p$7.cf(width$2, height$2, clearColor$3, (void 0), true, (void 0), true, (void 0), (void 0), Bindable_this, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0));
+  var panel = p$7.cf(width$2, height$2, clearColor$3, (void 0), false, (void 0), true, (void 0), (void 0), Bindable_this, (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0), (void 0));
   $p_Ltrivalibs_graphics_painter_Painter__paintPanel__Ltrivalibs_graphics_painter_Panel__V(p$7, panel);
   return new $c_T3(panel, new $c_Ltrivalibs_graphics_math_cpu_Vec4(((0.5 * (bay.av - pillarW)) - margin), ((frame.c3 + $m_Lsketches_rooms_columns_Columns$package$().nl) - margin), size.l, size.k), frame);
 }
