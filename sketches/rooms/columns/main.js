@@ -3118,7 +3118,7 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.mZ = 0.75;
   this.g3 = 16.0;
   this.mW = 16.0;
-  this.ne = 6.0;
+  this.ne = 2.0;
   this.ns = 160.0;
   this.g7 = 8192;
   this.kh = 16;

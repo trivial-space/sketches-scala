@@ -41,7 +41,7 @@ private val CofferDepthRatio = 0.75
 // ---- texture resolution, texels per meter ----
 private val AmbienceTexScale = 16.0
 private val BeamCrossTexScale = 16.0
-private val LightTexScale = 6.0
+private val LightTexScale = 2.0
 private val SlabTexScale = 160.0
 private val MaxTexSize = 8192
 private val MaxAnisotropy = 16
