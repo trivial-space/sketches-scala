@@ -26,11 +26,12 @@ private val ColSpace = 16.0
 private val ColHeight = 40.0
 private val ColWidth = 1.6
 private val BalkHeight = ColWidth * 4.8
-private val ColsZHalf = 6
-private val ColsXHalf = 3
+// bays between columns along each side
+private val BaysX = 5
+private val BaysZ = 10
 
 // ---- space ----
-private val EyeHeight = 1.7
+private val EyeHeight = 1.9
 private val WallClearance = 0.5
 private val NearPlane = 0.1
 private val WalkSpeed = 4.0
@@ -110,7 +111,7 @@ private val PillarHeightMax = 0.95
 private val PillarFrameGap = 0.4
 private val PaintAlpha = 0.75
 // neighboring bays sharing one color group, counted along the perimeter
-private val PillarGroupSize = ColsXHalf * 2
+private val PillarGroupSize = 5
 private val PaintTexScale = 64.0
 
 // ---- paint grain ----
@@ -128,8 +129,8 @@ private val BloomIntensity = 0.0035
 // Derived
 // ---------------------------------------------------------------------------
 
-private val HalfX = ColsXHalf * ColSpace
-private val HalfZ = ColsZHalf * ColSpace
+private val HalfX = BaysX * ColSpace / 2.0
+private val HalfZ = BaysZ * ColSpace / 2.0
 private val ColHalf = ColWidth / 2.0
 private val SoffitY = ColHeight - BalkHeight
 private val LightY = ColHeight + BalkHeight * CofferDepthRatio
@@ -160,13 +161,13 @@ private val GrainPeriod =
 private def perimeterRing: Ring =
   val points = Arr[Vec2]()
 
-  def side(corner: Vec2, along: Vec2, inward: Vec2, colsHalf: Int): Unit =
+  def side(corner: Vec2, along: Vec2, inward: Vec2, bays: Int): Unit =
     def at(alongDist: Double, inwardDist: Double): Vec2 =
       corner + along * alongDist + inward * inwardDist
-    val length = colsHalf * 2 * ColSpace
+    val length = bays * ColSpace
     points.push(at(ColHalf, ColHalf))
     points.push(at(ColHalf, 0.0))
-    for k <- 1 until colsHalf * 2 do
+    for k <- 1 until bays do
       val center = k * ColSpace
       points.push(at(center - ColHalf, 0.0))
       points.push(at(center - ColHalf, ColHalf))
@@ -174,24 +175,22 @@ private def perimeterRing: Ring =
       points.push(at(center + ColHalf, 0.0))
     points.push(at(length - ColHalf, 0.0))
 
-  side(Vec2(-HalfX, -HalfZ), Vec2(1.0, 0.0), Vec2(0.0, 1.0), ColsXHalf)
-  side(Vec2(HalfX, -HalfZ), Vec2(0.0, 1.0), Vec2(-1.0, 0.0), ColsZHalf)
-  side(Vec2(HalfX, HalfZ), Vec2(-1.0, 0.0), Vec2(0.0, -1.0), ColsXHalf)
-  side(Vec2(-HalfX, HalfZ), Vec2(0.0, -1.0), Vec2(1.0, 0.0), ColsZHalf)
+  side(Vec2(-HalfX, -HalfZ), Vec2(1.0, 0.0), Vec2(0.0, 1.0), BaysX)
+  side(Vec2(HalfX, -HalfZ), Vec2(0.0, 1.0), Vec2(-1.0, 0.0), BaysZ)
+  side(Vec2(HalfX, HalfZ), Vec2(-1.0, 0.0), Vec2(0.0, -1.0), BaysX)
+  side(Vec2(-HalfX, HalfZ), Vec2(0.0, -1.0), Vec2(1.0, 0.0), BaysZ)
   Ring(points, Facing.Inward, SoffitY)
 
 private def freeColumnRings: Arr[Ring] =
-  val ixMax = ColsXHalf - 1
-  val izMax = ColsZHalf - 1
   val rings = Arr[Ring]()
   for
-    ix <- -ixMax to ixMax
-    iz <- -izMax to izMax
-    if Math.abs(ix) == ixMax || Math.abs(iz) == izMax
+    ix <- 1 until BaysX
+    iz <- 1 until BaysZ
+    if ix == 1 || ix == BaysX - 1 || iz == 1 || iz == BaysZ - 1
   do
     rings.push(
       Ring.rect(
-        center = Vec2(ix * ColSpace, iz * ColSpace),
+        center = Vec2(ix * ColSpace - HalfX, iz * ColSpace - HalfZ),
         dir = Vec2(1.0, 0.0),
         length = ColWidth,
         thickness = ColWidth,
@@ -214,8 +213,8 @@ private def balkClip: Boundary =
 
 private def balksWithin(clip: Boundary): Arr[Beam] =
   val families = Arr(
-    BeamFamily(Vec2(1.0, 0.0), ColSpace, 0.0, ColWidth),
-    BeamFamily(Vec2(0.0, 1.0), ColSpace, 0.0, ColWidth),
+    BeamFamily(Vec2(1.0, 0.0), ColSpace, HalfZ, ColWidth),
+    BeamFamily(Vec2(0.0, 1.0), ColSpace, HalfX, ColWidth),
   )
   val balks = Arr[Beam]()
   for i <- 0 until families.length do
@@ -415,12 +414,15 @@ private def insideRect(pos: Vec2Expr, rect: Vec4Expr): FloatExpr =
 private def vfloor(v: Vec2Expr): Vec2Expr = v - v.fract
 
 private def latticeDist(p: Vec2Expr): FloatExpr =
-  val node = vfloor(p / ColSpace + 0.5)
-  val q = (p - node * ColSpace).abs - ColHalf
+  val fromCorner = p + vec2(HalfX, HalfZ)
+  val node = vfloor(fromCorner / ColSpace + 0.5)
+  val q = (fromCorner - node * ColSpace).abs - ColHalf
   val boxDist = q.max(vec2(0.0, 0.0)).length
-  val hasColumn = node.x.abs
-    .smoothstep(ColsXHalf - 1.6, ColsXHalf - 1.4)
-    .max(node.y.abs.smoothstep(ColsZHalf - 1.6, ColsZHalf - 1.4))
+  val midX = BaysX / 2.0
+  val midZ = BaysZ / 2.0
+  val hasColumn = (node.x - midX).abs
+    .smoothstep(midX - 1.6, midX - 1.4)
+    .max((node.y - midZ).abs.smoothstep(midZ - 1.6, midZ - 1.4))
   val wallDist = (HalfX - p.x.abs).min(HalfZ - p.y.abs)
   (boxDist + (1.0 - hasColumn) * 1000.0).min(wallDist)
 

@@ -22,7 +22,34 @@
 <body>
   <canvas id="canvas"></canvas>
   <script type="module">
-    import { sketch } from "./main.js"
+    if (new URLSearchParams(location.search).has("debug")) {
+      await new Promise((resolve, reject) => {
+        const s = document.createElement("script")
+        s.src = "https://cdn.jsdelivr.net/npm/eruda@3.4.1/eruda.js"
+        s.onload = resolve
+        s.onerror = reject
+        document.head.appendChild(s)
+      })
+      eruda.init()
+      eruda.show()
+
+      if (!navigator.gpu) console.error("WebGPU not available")
+      else {
+        const requestDevice = GPUAdapter.prototype.requestDevice
+        GPUAdapter.prototype.requestDevice = async function (...args) {
+          const device = await requestDevice.apply(this, args)
+          device.lost.then((info) =>
+            console.error(`GPU device lost (${info.reason}): ${info.message}`),
+          )
+          device.addEventListener("uncapturederror", (e) =>
+            console.error(`GPU error: ${e.error.message}`),
+          )
+          return device
+        }
+      }
+    }
+
+    const { sketch } = await import("./main.js")
     sketch(document.getElementById("canvas"))
   </script>
 </body>
