@@ -19,8 +19,8 @@ private val MaxSegment = 0.45
 private val SegmentGap = 0.004
 
 // segment rect variation, as a fraction of the pillar width
-private val SegmentWidthJitter = 0.06
-private val SegmentShiftJitter = 0.04
+private val SegmentWidthJitter = 0.11
+private val SegmentShiftJitter = 0.08
 
 // corner displacement, as a fraction of the pillar width
 private val VertexJitter = 0.04
@@ -54,7 +54,9 @@ class RoomPalette:
       ),
     )
 
-  def pillarGroup(): PillarGroup = PillarGroup(pickMany(choices, GroupColorCount))
+  def pillarGroup(): PillarGroup = PillarGroup(
+    pickMany(choices, GroupColorCount),
+  )
 
 class PillarGroup(val choices: Arr[Vec3]):
   def pillarColors(): Arr[Vec3] = pickMany(choices, PillarColorCount)

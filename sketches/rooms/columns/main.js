@@ -3106,10 +3106,10 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.nf = 0.0;
   this.iZ = 0.0;
   $n_Lsketches_rooms_columns_Columns$package$ = this;
-  this.b0 = 14.0;
+  this.b0 = 16.0;
   this.iX = 40.0;
-  this.g6 = 2.0;
-  this.hA = (3.4 * $m_Lsketches_rooms_columns_Columns$package$().g6);
+  this.g6 = 1.6;
+  this.hA = (4.8 * $m_Lsketches_rooms_columns_Columns$package$().g6);
   this.g7 = 6;
   this.bU = 3;
   this.iY = 1.7;
@@ -3146,7 +3146,7 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.mU = new $c_Ltrivalibs_graphics_math_cpu_Vec3(1.0, 0.99, 0.97);
   this.mV = 0.7;
   this.n3 = new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.8, 0.78, 0.75);
-  this.j0 = 1.0;
+  this.j0 = 0.8;
   this.kf = 0.004;
   this.n9 = 0.012;
   this.na = 0.6;
@@ -3157,9 +3157,9 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.nd = 0.03333333333333333;
   this.n5 = 0.06;
   this.n4 = 0.01;
-  this.nq = 0.36;
-  this.np = 0.69;
-  this.no = 0.3333333333333333;
+  this.nq = 0.35;
+  this.np = 0.83;
+  this.no = 0.8;
   this.nn = 0.95;
   this.nl = 0.4;
   this.ni = 0.75;
@@ -5055,8 +5055,8 @@ function $c_Lsketches_rooms_columns_Pillars$package$() {
   this.nD = 0.1;
   this.kn = 0.45;
   this.nH = 0.004;
-  this.kp = 0.06;
-  this.ko = 0.04;
+  this.kp = 0.11;
+  this.ko = 0.08;
   this.j6 = 0.04;
   this.nC = 0.015;
   this.nG = 0.23;

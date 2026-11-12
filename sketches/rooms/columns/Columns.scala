@@ -22,10 +22,10 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 // ---------------------------------------------------------------------------
 
 // ---- geometry ----
-private val ColSpace = 14.0
+private val ColSpace = 16.0
 private val ColHeight = 40.0
-private val ColWidth = 2.0
-private val BalkHeight = ColWidth * 3.4
+private val ColWidth = 1.6
+private val BalkHeight = ColWidth * 4.8
 private val ColsZHalf = 6
 private val ColsXHalf = 3
 
@@ -82,7 +82,7 @@ private val BalkTopGlow = 0.7
 private val FloorTint = Vec3(0.80, 0.78, 0.75)
 
 // ---- floor slabs ----
-private val SlabSize = 1.0
+private val SlabSize = 0.8
 private val JointHalfWidth = 0.004
 private val JointBevel = 0.012
 private val JointDarken = 0.6
@@ -102,9 +102,9 @@ private val FrameMargin = 0.06
 // meters
 private val FrameEdgeSoftness = 0.01
 // pillar width and height as fractions of the frame's
-private val PillarWidthMin = 0.36
-private val PillarWidthMax = 0.69
-private val PillarHeightMin = 1.0 / 3.0
+private val PillarWidthMin = 0.35
+private val PillarWidthMax = 0.83
+private val PillarHeightMin = 0.8
 private val PillarHeightMax = 0.95
 // meters above the frame's bottom edge
 private val PillarFrameGap = 0.4
