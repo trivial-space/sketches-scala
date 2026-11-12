@@ -439,18 +439,10 @@ private def cellHash(cell: Vec2Expr): FloatExpr =
 @JSExportTopLevel("sketch")
 def roomsColumns(canvas: HTMLCanvasElement): Unit =
   Painter.init(canvas): p =>
-    val sampler = p.sampler(
-      FilterMode.Linear,
-      FilterMode.Linear,
-      FilterMode.Linear,
+    val sampler = p.samplerLinear(maxAnisotropy = MaxAnisotropy)
+    val tileSampler = p.samplerLinear(
       maxAnisotropy = MaxAnisotropy,
-    )
-    val tileSampler = p.sampler(
-      FilterMode.Linear,
-      FilterMode.Linear,
-      FilterMode.Linear,
-      AddressMode.Repeat,
-      maxAnisotropy = MaxAnisotropy,
+      addressMode = AddressMode.Repeat,
     )
 
     val cam = PerspectiveCamera(
@@ -657,13 +649,14 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
         width = px.w,
         height = px.h,
         clearColor = (0.0, 0.0, 0.0, 0.0),
-        multisample = false,
+        multisample = true,
         mips = true,
         shape = p
           .shape(paintForm, paintShade, blendState = BlendState.Alpha)
           .bind("size" := size),
       )
       p.paint(panel)
+      panel.freeze()
       val rect = Vec4(
         (bay.width - pillarW) / 2.0 - margin,
         frame.y + PillarFrameGap - margin,
