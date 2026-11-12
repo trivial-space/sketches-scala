@@ -3115,10 +3115,10 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.kl = 0.5;
   this.ki = 0.1;
   this.nw = 4.0;
-  this.mZ = 0.75;
+  this.mZ = 3.0;
   this.g3 = 16.0;
-  this.mW = 16.0;
-  this.ne = 2.0;
+  this.mW = 12.0;
+  this.ne = 1.0;
   this.ns = 160.0;
   this.g7 = 8192;
   this.kh = 16;
@@ -3153,7 +3153,7 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.j1 = 12;
   this.nc = new $c_Ltrivalibs_graphics_math_cpu_Vec3(0.72, 0.78, 0.86);
   this.nb = new $c_Ltrivalibs_graphics_math_cpu_Vec3(1.9, 1.82, 1.71);
-  this.nd = 0.03333333333333333;
+  this.nd = 0.023809523809523808;
   this.n5 = 0.06;
   this.n4 = 0.01;
   this.nq = 0.35;
@@ -3163,7 +3163,7 @@ function $c_Lsketches_rooms_columns_Columns$package$() {
   this.nl = 0.4;
   this.ni = 0.75;
   this.nm = 5;
-  this.nj = 64.0;
+  this.nj = 56.0;
   this.n6 = 0.01;
   this.bV = 1.0;
   this.n8 = 512.0;

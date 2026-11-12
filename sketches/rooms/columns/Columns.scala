@@ -36,12 +36,12 @@ private val WallClearance = 0.5
 private val NearPlane = 0.1
 private val WalkSpeed = 4.0
 // distance from the balk tops up to the light plane, as a fraction of BalkHeight
-private val CofferDepthRatio = 0.75
+private val CofferDepthRatio = 3.0
 
 // ---- texture resolution, texels per meter ----
 private val AmbienceTexScale = 16.0
-private val BeamCrossTexScale = 16.0
-private val LightTexScale = 2.0
+private val BeamCrossTexScale = 12.0
+private val LightTexScale = 1.0
 private val SlabTexScale = 160.0
 private val MaxTexSize = 8192
 private val MaxAnisotropy = 16
@@ -95,7 +95,7 @@ private val SlabTileCount = 12
 // dim regions stay below the bloom threshold and read as sky
 private val LightDimColor = Vec3(0.72, 0.78, 0.86)
 private val LightBrightColor = Vec3(1.9, 1.82, 1.71)
-private val LightNoiseScale = 1.0 / 30.0
+private val LightNoiseScale = 1.0 / 42.0
 
 // ---- paintings ----
 // frame margin on all sides, as a fraction of the bay's clear width
@@ -112,7 +112,7 @@ private val PillarFrameGap = 0.4
 private val PaintAlpha = 0.75
 // neighboring bays sharing one color group, counted along the perimeter
 private val PillarGroupSize = 5
-private val PaintTexScale = 64.0
+private val PaintTexScale = 56.0
 
 // ---- paint grain ----
 private val GrainSize = 0.01
