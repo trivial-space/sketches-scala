@@ -16,22 +16,28 @@ private val PillarColorCount = 4
 // segment height, as a fraction of the height still to fill
 private val MinSegment = 0.1
 private val MaxSegment = 0.45
-private val SegmentGap = 0.004
+private val SegmentGap = 0.005
 
 // segment rect variation, as a fraction of the pillar width
 private val SegmentWidthJitter = 0.11
-private val SegmentShiftJitter = 0.08
+private val SegmentShiftJitter = 0.09
 
-// corner displacement, as a fraction of the pillar width
-private val VertexJitter = 0.04
+// reference block corner displacement, as a fraction of the pillar width
+private val VertexJitter = 0.018
+
+// each of a block's two quads against its reference block, as a fraction of
+// the pillar width: a whole-quad shift in any direction, then its own corners
+private val InstanceShift = 0.025
+private val InstanceVertexJitter = 0.015
 
 private val HueJitter = 0.015
 private val SaturationJitter = 0.23
-private val ValueJitter = 0.3
+private val ValueJitter = 0.31
 
 // how far jittered corners can reach past the pillar rect, as a fraction of width
 val PillarMarginRatio =
-  (VertexJitter + SegmentShiftJitter + SegmentWidthJitter * 0.5) * 2.0
+  (VertexJitter + InstanceShift + InstanceVertexJitter + SegmentShiftJitter
+    + SegmentWidthJitter * 0.5) * 2.0
 
 // ---------------------------------------------------------------------------
 // Palette
@@ -73,18 +79,15 @@ private def pickMany(from: Arr[Vec3], count: Int): Arr[Vec3] =
 class PaintedQuad(val quad: Quad[Vec2], val hsv: Vec3)
 
 class PillarPainting(val width: Double, val height: Double, colors: Arr[Vec3]):
-  private def jitteredCorner(x: Double, y: Double): Vec2 =
-    Vec2(
-      x + randNormal11() * VertexJitter * width,
-      y + randNormal11() * VertexJitter * width,
-    )
+  private def randomOffset(scale: Double): Vec2 =
+    Vec2(rand().fit0111, rand().fit0111) * (scale * width)
 
   private def segmentSpan(): (left: Double, right: Double) =
     val segmentWidth = width * (1.0 + randNormal11() * SegmentWidthJitter)
     val center = width * (0.5 + randNormal11() * SegmentShiftJitter)
     (left = center - segmentWidth * 0.5, right = center + segmentWidth * 0.5)
 
-  private def jitteredQuad(
+  private def referenceBlock(
       span: (left: Double, right: Double),
       bottom: Double,
       segment: Double,
@@ -92,11 +95,22 @@ class PillarPainting(val width: Double, val height: Double, colors: Arr[Vec3]):
     val gap = SegmentGap * height
     val top = bottom + segment - gap
     val low = bottom + gap
+    def corner(x: Double, y: Double) = Vec2(x, y) + randomOffset(VertexJitter)
     Quad(
-      jitteredCorner(span.left, top),
-      jitteredCorner(span.left, low),
-      jitteredCorner(span.right, low),
-      jitteredCorner(span.right, top),
+      corner(span.left, top),
+      corner(span.left, low),
+      corner(span.right, low),
+      corner(span.right, top),
+    )
+
+  private def instanceOf(reference: Quad[Vec2]): Quad[Vec2] =
+    val shift = randomOffset(InstanceShift)
+    def corner(c: Vec2) = c + shift + randomOffset(InstanceVertexJitter)
+    Quad(
+      corner(reference.tl),
+      corner(reference.bl),
+      corner(reference.br),
+      corner(reference.tr),
     )
 
   private def variedColor(hsv: Vec3): Vec3 =
@@ -119,11 +133,9 @@ class PillarPainting(val width: Double, val height: Double, colors: Arr[Vec3]):
   private var bottom = 0.0
   for segment <- segments do
     val pairColor = colors.pick()
-    val span = segmentSpan()
+    val reference = referenceBlock(segmentSpan(), bottom, segment)
     for _ <- 0 to 1 do
-      quads.push(
-        PaintedQuad(jitteredQuad(span, bottom, segment), variedColor(pairColor)),
-      )
+      quads.push(PaintedQuad(instanceOf(reference), variedColor(pairColor)))
     bottom += segment
 
   quads.sort((a, b) => if a.hsv.z < b.hsv.z then -1 else 1)

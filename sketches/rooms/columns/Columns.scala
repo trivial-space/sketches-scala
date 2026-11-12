@@ -31,10 +31,10 @@ private val BaysX = 5
 private val BaysZ = 10
 
 // ---- space ----
-private val EyeHeight = 1.9
-private val WallClearance = 0.5
+private val EyeHeight = 2.3
+private val WallClearance = 2.5
 private val NearPlane = 0.1
-private val WalkSpeed = 4.0
+private val WalkSpeed = 3.2
 // distance from the balk tops up to the light plane, as a fraction of BalkHeight
 private val CofferDepthRatio = 3.0
 
@@ -54,11 +54,11 @@ private val NoiseVerticalScale = 0.3
 // horizontal drift per meter of height; tilt angle ≈ atan(shear / vertical scale)
 private val NoiseShear = 0.03
 private val AmbienceLow = 0.74
-private val OrientWeight = 0.3
+private val OrientWeight = 0.5
 
 // ---- edge fades, meters ----
 // arris: radius at full visibility of the hidden neighbor face
-private val Fades = (plane = 0.3, top = 0.6, corner = 0.4, arris = 0.2)
+private val Fades = (plane = 0.3, top = 0.6, corner = 0.3, arris = 0.2)
 // how quickly an arris fade opens as its neighbor face turns toward the eye
 private val VisBand = 0.25
 private val ArrisSoften = 0.06
@@ -99,17 +99,17 @@ private val LightNoiseScale = 1.0 / 42.0
 
 // ---- paintings ----
 // frame margin on all sides, as a fraction of the bay's clear width
-private val FrameMargin = 0.06
+private val FrameMargin = 0.035
 // meters
 private val FrameEdgeSoftness = 0.01
 // pillar width and height as fractions of the frame's
-private val PillarWidthMin = 0.35
-private val PillarWidthMax = 0.83
+private val PillarWidthMin = 0.33
+private val PillarWidthMax = 0.81
 private val PillarHeightMin = 0.8
 private val PillarHeightMax = 0.95
 // meters above the frame's bottom edge
 private val PillarFrameGap = 0.4
-private val PaintAlpha = 0.75
+private val PaintAlpha = 0.8
 // neighboring bays sharing one color group, counted along the perimeter
 private val PillarGroupSize = 5
 private val PaintTexScale = 56.0
@@ -949,7 +949,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       shapes = aboveGround,
       vpName = "vp",
       alphaScale = LightY,
-      blurStrength = 5.0,
+      blurStrength = 6.0,
       blurRatioVertical = 3.0,
       clearColor = Vec4(0.9, 0.9, 0.9, 0.0),
     )
@@ -1016,7 +1016,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       BasicFirstPersonCameraController(
         cam,
         input,
-        sensitivity = 2.5,
+        sensitivity = 2.0,
         speed = WalkSpeed,
       )
 
