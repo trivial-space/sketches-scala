@@ -16,18 +16,18 @@ private val PillarColorCount = 4
 // segment height, as a fraction of the height still to fill
 private val MinSegment = 0.1
 private val MaxSegment = 0.45
-private val SegmentGap = 0.005
+private val SegmentGap = 0.004
 
 // segment rect variation, as a fraction of the pillar width
-private val SegmentWidthJitter = 0.11
-private val SegmentShiftJitter = 0.09
+private val SegmentWidthJitter = 0.06
+private val SegmentShiftJitter = 0.06
 
 // reference block corner displacement, as a fraction of the pillar width
-private val VertexJitter = 0.018
+private val VertexJitter = 0.015
 
 // each of a block's two quads against its reference block, as a fraction of
 // the pillar width: a whole-quad shift in any direction, then its own corners
-private val InstanceShift = 0.025
+private val InstanceShift = 0.022
 private val InstanceVertexJitter = 0.015
 
 private val HueJitter = 0.015
@@ -56,7 +56,14 @@ class RoomPalette:
       Vec3(
         n / PaletteHueCount + randNormal11() * 0.1,
         (randNormal01() * 0.8 + 0.45).clamp01,
-        if j == 0 then randNormal01() * 0.65 else randNormal01() * 0.65 + 0.45,
+
+        // tested with hsl
+        // if j == 0 then randNormal01() * 0.55
+        // else (randNormal01() * 0.55 + 0.4).clamp01,
+
+        // good woth hsv
+        if j == 0 then randNormal01() * 0.68
+        else (randNormal01() * 0.75 + 0.45).clamp01,
       ),
     )
 

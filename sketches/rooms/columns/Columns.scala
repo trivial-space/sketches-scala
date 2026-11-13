@@ -633,7 +633,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       def vertex(v: Vec2, color: Vec3): PaintVertex =
         (position = Vec3(v.x + margin, v.y + margin, 0.0), color = color)
       val quads = pillar.quads.map: pq =>
-        val rgb = pq.hsv.hsv2rgbSmooth
+        val rgb = pq.hsv.hsv2rgb // Smooth
         Quad(
           vertex(pq.quad.tl, rgb),
           vertex(pq.quad.bl, rgb),

@@ -4979,10 +4979,10 @@ function $p_Lsketches_rooms_columns_PillarPainting__instanceOf__sjs_js_Array__sj
 }
 function $p_Lsketches_rooms_columns_PillarPainting__variedColor__Ltrivalibs_graphics_math_cpu_Vec3__Ltrivalibs_graphics_math_cpu_Vec3($thiz, hsv) {
   var x = (hsv.w + ($m_Ltrivalibs_utils_random_random$package$().hy() * $m_Lsketches_rooms_columns_Pillars$package$().nI));
-  var p$proxy4 = (hsv.A + ($m_Ltrivalibs_utils_random_random$package$().hy() * $m_Lsketches_rooms_columns_Pillars$package$().nM));
-  var y = ((p$proxy4 < 0.0) ? 0.0 : ((p$proxy4 > 1.0) ? 1.0 : p$proxy4));
-  var p$proxy5 = (hsv.u + ($m_Ltrivalibs_utils_random_random$package$().hy() * $m_Lsketches_rooms_columns_Pillars$package$().nO));
-  return new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, y, ((p$proxy5 < 0.0) ? 0.0 : ((p$proxy5 > 1.0) ? 1.0 : p$proxy5)));
+  var p$proxy5 = (hsv.A + ($m_Ltrivalibs_utils_random_random$package$().hy() * $m_Lsketches_rooms_columns_Pillars$package$().nM));
+  var y = ((p$proxy5 < 0.0) ? 0.0 : ((p$proxy5 > 1.0) ? 1.0 : p$proxy5));
+  var p$proxy6 = (hsv.u + ($m_Ltrivalibs_utils_random_random$package$().hy() * $m_Lsketches_rooms_columns_Pillars$package$().nO));
+  return new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, y, ((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)));
 }
 function $p_Lsketches_rooms_columns_PillarPainting__corner$1__D__D__Ltrivalibs_graphics_math_cpu_Vec2($thiz, x, y) {
   return $f_Ltrivalibs_graphics_math_Vec2ImmutableOps__addVec__O__Ltrivalibs_graphics_math_Vec2Base__O__O($m_Ltrivalibs_graphics_math_cpu_Vec2$().bO(), new $c_Ltrivalibs_graphics_math_cpu_Vec2(x, y), $m_Ltrivalibs_graphics_math_cpu_Vec2$given\uff3fVec2Mutable\uff3fVec2$(), $p_Lsketches_rooms_columns_PillarPainting__randomOffset__D__Ltrivalibs_graphics_math_cpu_Vec2($thiz, $m_Lsketches_rooms_columns_Pillars$package$().ku));
@@ -5063,11 +5063,11 @@ function $c_Lsketches_rooms_columns_Pillars$package$() {
   this.nK = 4;
   this.nJ = 0.1;
   this.kr = 0.45;
-  this.nN = 0.005;
-  this.kt = 0.11;
-  this.ks = 0.09;
-  this.ku = 0.018;
-  this.kp = 0.025;
+  this.nN = 0.004;
+  this.kt = 0.06;
+  this.ks = 0.06;
+  this.ku = 0.015;
+  this.kp = 0.022;
   this.kq = 0.015;
   this.nI = 0.015;
   this.nM = 0.23;
@@ -5123,10 +5123,16 @@ function $c_Lsketches_rooms_columns_RoomPalette() {
       var i$1 = 0;
       while (true) {
         var x0$1 = i$1;
-        var $x_2 = this.kv;
+        var $x_3 = this.kv;
         var x = ((n / $m_Lsketches_rooms_columns_Pillars$package$().ja) + (0.1 * $m_Ltrivalibs_utils_random_random$package$().hy()));
         var p$proxy1 = ((0.8 * $m_Ltrivalibs_utils_random_random$package$().jY()) + 0.45);
-        var $x_1 = $x_2.push(new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, ((p$proxy1 < 0.0) ? 0.0 : ((p$proxy1 > 1.0) ? 1.0 : p$proxy1)), ((x0$1 === 0) ? (0.65 * $m_Ltrivalibs_utils_random_random$package$().jY()) : ((0.65 * $m_Ltrivalibs_utils_random_random$package$().jY()) + 0.45))));
+        if ((x0$1 === 0)) {
+          var $x_2 = (0.68 * $m_Ltrivalibs_utils_random_random$package$().jY());
+        } else {
+          var p$proxy2 = ((0.75 * $m_Ltrivalibs_utils_random_random$package$().jY()) + 0.45);
+          var $x_2 = ((p$proxy2 < 0.0) ? 0.0 : ((p$proxy2 > 1.0) ? 1.0 : p$proxy2));
+        }
+        var $x_1 = $x_3.push(new $c_Ltrivalibs_graphics_math_cpu_Vec3(x, ((p$proxy1 < 0.0) ? 0.0 : ((p$proxy1 > 1.0) ? 1.0 : p$proxy1)), $x_2));
         if ((i$1 === 1)) {
           break;
         }
@@ -7407,21 +7413,18 @@ function $h_Ltrivalibs_graphics_lib_color_Color$kernel$() {
 }
 $h_Ltrivalibs_graphics_lib_color_Color$kernel$.prototype = $p;
 $p.tj = (function(h, s, v, out) {
-  var p$proxy10 = (h + 0.0);
-  var p$proxy11 = ((6.0 * (p$proxy10 - (+Math.floor(p$proxy10)))) - 3.0);
-  var p$proxy12 = ((+Math.abs(p$proxy11)) - 1.0);
-  var t$proxy1 = ((p$proxy12 < 0.0) ? 0.0 : ((p$proxy12 > 1.0) ? 1.0 : p$proxy12));
-  out.w = (v * (1.0 + ((((t$proxy1 * t$proxy1) * (3.0 - (2.0 * t$proxy1))) - 1.0) * s)));
-  var p$proxy13 = (h + 0.6666666666666666);
-  var p$proxy14 = ((6.0 * (p$proxy13 - (+Math.floor(p$proxy13)))) - 3.0);
-  var p$proxy15 = ((+Math.abs(p$proxy14)) - 1.0);
-  var t$proxy2 = ((p$proxy15 < 0.0) ? 0.0 : ((p$proxy15 > 1.0) ? 1.0 : p$proxy15));
-  out.A = (v * (1.0 + ((((t$proxy2 * t$proxy2) * (3.0 - (2.0 * t$proxy2))) - 1.0) * s)));
-  var p$proxy16 = (h + 0.3333333333333333);
-  var p$proxy17 = ((6.0 * (p$proxy16 - (+Math.floor(p$proxy16)))) - 3.0);
-  var p$proxy18 = ((+Math.abs(p$proxy17)) - 1.0);
-  var t$proxy3 = ((p$proxy18 < 0.0) ? 0.0 : ((p$proxy18 > 1.0) ? 1.0 : p$proxy18));
-  out.u = (v * (1.0 + ((((t$proxy3 * t$proxy3) * (3.0 - (2.0 * t$proxy3))) - 1.0) * s)));
+  var p$proxy1 = (h + 0.0);
+  var p$proxy2 = ((6.0 * (p$proxy1 - (+Math.floor(p$proxy1)))) - 3.0);
+  var p$proxy3 = ((+Math.abs(p$proxy2)) - 1.0);
+  out.w = (v * (1.0 + ((((p$proxy3 < 0.0) ? 0.0 : ((p$proxy3 > 1.0) ? 1.0 : p$proxy3)) - 1.0) * s)));
+  var p$proxy4 = (h + 0.6666666666666666);
+  var p$proxy5 = ((6.0 * (p$proxy4 - (+Math.floor(p$proxy4)))) - 3.0);
+  var p$proxy6 = ((+Math.abs(p$proxy5)) - 1.0);
+  out.A = (v * (1.0 + ((((p$proxy6 < 0.0) ? 0.0 : ((p$proxy6 > 1.0) ? 1.0 : p$proxy6)) - 1.0) * s)));
+  var p$proxy7 = (h + 0.3333333333333333);
+  var p$proxy8 = ((6.0 * (p$proxy7 - (+Math.floor(p$proxy7)))) - 3.0);
+  var p$proxy9 = ((+Math.abs(p$proxy8)) - 1.0);
+  out.u = (v * (1.0 + ((((p$proxy9 < 0.0) ? 0.0 : ((p$proxy9 > 1.0) ? 1.0 : p$proxy9)) - 1.0) * s)));
   return out;
 });
 var $d_Ltrivalibs_graphics_lib_color_Color$kernel$ = new $TypeData().i($c_Ltrivalibs_graphics_lib_color_Color$kernel$, "trivalibs.graphics.lib.color.Color$kernel$", ({
