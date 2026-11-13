@@ -62,7 +62,7 @@ class RoomPalette:
         // else (randNormal01() * 0.55 + 0.4).clamp01,
 
         // good woth hsv
-        if j == 0 then randNormal01() * 0.65
+        if j == 0 then randNormal01() * 0.68
         else (randNormal01() * 0.75 + 0.45).clamp01,
       ),
     )
