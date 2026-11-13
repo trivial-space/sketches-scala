@@ -22,143 +22,144 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 // ---------------------------------------------------------------------------
 
 // ---- geometry ----
-private val ColSpace = 16.0
-private val ColHeight = 40.0
-private val ColWidth = 1.6
-private val BalkHeight = ColWidth * 4.8
+val ColSpace = 16.0
+val ColHeight = 40.0
+val ColWidth = 1.6
+val BalkHeight = ColWidth * 4.8
 // bays between columns along each side
-private val BaysX = 5
-private val BaysZ = 10
+val BaysX = 5
+val BaysZ = 10
 
 // ---- space ----
-private val EyeHeight = 2.3
-private val WallClearance = 2.5
-private val NearPlane = 0.1
-private val WalkSpeed = 3.2
+val EyeHeight = 2.3
+val WallClearance = 2.5
+val NearPlane = 0.1
+val WalkSpeed = 3.2
 // distance from the balk tops up to the light plane, as a fraction of BalkHeight
-private val CofferDepthRatio = 3.0
+val CofferDepthRatio = 3.0
 
 // ---- texture resolution, texels per meter ----
-private val AmbienceTexScale = 16.0
-private val BeamCrossTexScale = 12.0
-private val LightTexScale = 1.0
-private val SlabTexScale = 160.0
-private val MaxTexSize = 8192
-private val MaxAnisotropy = 16
+val AmbienceTexScale = 16.0
+val BeamCrossTexScale = 12.0
+val LightTexScale = 1.0
+val SlabTexScale = 160.0
+val MaxTexSize = 8192
+val MaxAnisotropy = 16
 
 // ---- ambience field ----
-private val WorldNoiseScale = 0.025
-private val OrientNoiseScale = 0.04
+val WorldNoiseScale = 0.025
+val OrientNoiseScale = 0.04
 // vertical stretch of the field (< 1 elongates features upward)
-private val NoiseVerticalScale = 0.3
+val NoiseVerticalScale = 0.3
 // horizontal drift per meter of height; tilt angle ≈ atan(shear / vertical scale)
-private val NoiseShear = 0.03
-private val AmbienceLow = 0.74
-private val OrientWeight = 0.5
+val NoiseShear = 0.03
+val AmbienceLow = 0.74
+val OrientWeight = 0.5
 
 // ---- edge fades, meters ----
 // arris: radius at full visibility of the hidden neighbor face
-private val Fades = (plane = 0.3, top = 0.6, corner = 0.3, arris = 0.2)
+val Fades = (plane = 0.3, top = 0.6, corner = 0.3, arris = 0.2)
 // how quickly an arris fade opens as its neighbor face turns toward the eye
-private val VisBand = 0.25
-private val ArrisSoften = 0.06
+val VisBand = 0.25
+val ArrisSoften = 0.06
 
 // ---- grime ----
-private val GrimeWidth = 0.15
-private val GrimeDarken = 0.85
-private val GrimeCreep = 0.05
-private val GrimePatchiness = 0.3
-private val CreepScale = 0.9
-private val PatchScale = 2.07
+val GrimeWidth = 0.15
+val GrimeDarken = 0.85
+val GrimeCreep = 0.05
+val GrimePatchiness = 0.3
+val CreepScale = 0.9
+val PatchScale = 2.07
 
 // ---- tints ----
-private val WallTintLow = Vec3(0.97, 0.97, 0.96)
-private val WallTintHigh = Vec3(0.88, 0.88, 0.87)
+val WallTintLow = Vec3(0.97, 0.97, 0.96)
+val WallTintHigh = Vec3(0.88, 0.88, 0.87)
 // how much grayer plain walls and columns are than the painting frames
-private val WallGray = 0.04
-private val TopFadeDepth = 4.0
-private val CeilTint = Vec3(0.87, 0.87, 0.86)
-private val BalkSideTopTint = Vec3(1.0, 0.99, 0.97)
-private val BalkTopGlow = 0.7
-private val FloorTint = Vec3(0.80, 0.78, 0.75)
+val WallGray = 0.04
+val TopFadeDepth = 4.0
+val CeilTint = Vec3(0.87, 0.87, 0.86)
+val BalkSideTopTint = Vec3(1.0, 0.99, 0.97)
+val BalkTopGlow = 0.7
+val FloorTint = Vec3(0.80, 0.78, 0.75)
 
 // ---- floor slabs ----
-private val SlabSize = 0.8
-private val JointHalfWidth = 0.004
-private val JointBevel = 0.012
-private val JointDarken = 0.6
-private val SlabTintJitter = 0.13
+val SlabSize = 0.8
+val JointHalfWidth = 0.004
+val JointBevel = 0.012
+val JointDarken = 0.6
+val SlabTintJitter = 0.13
 // slabs per side of the baked, repeating slab area
-private val SlabTileCount = 12
+val SlabTileCount = 12
 
 // ---- light ----
 // dim regions stay below the bloom threshold and read as sky
-private val LightDimColor = Vec3(0.72, 0.78, 0.86)
-private val LightBrightColor = Vec3(1.9, 1.82, 1.71)
-private val LightNoiseScale = 1.0 / 42.0
+val LightDimColor = Vec3(0.72, 0.78, 0.86)
+val LightBrightColor = Vec3(1.9, 1.82, 1.71)
+val LightNoiseScale = 1.0 / 42.0
 
 // ---- paintings ----
 // frame margin on all sides, as a fraction of the bay's clear width
-private val FrameMargin = 0.035
+val FrameMargin = 0.035
 // meters
-private val FrameEdgeSoftness = 0.01
+val FrameEdgeSoftness = 0.01
 // pillar width and height as fractions of the frame's
-private val PillarWidthMin = 0.33
-private val PillarWidthMax = 0.81
-private val PillarHeightMin = 0.8
-private val PillarHeightMax = 0.95
+val PillarWidthMin = 0.33
+val PillarWidthMax = 0.81
+val PillarHeightMin = 0.8
+val PillarHeightMax = 0.95
 // meters above the frame's bottom edge
-private val PillarFrameGap = 0.4
-private val PaintAlpha = 0.8
+val PillarFrameGap = 0.4
+val PaintAlpha = 0.8
 // neighboring bays sharing one color group, counted along the perimeter
-private val PillarGroupSize = 5
-private val PaintTexScale = 56.0
+val PillarGroupSize = 5
+val PaintTexScale = 56.0
 
 // ---- paint grain ----
-private val GrainSize = 0.01
-private val GrainTileWorld = 1.0
-private val GrainTexScale = 512.0
+val GrainSize = 0.01
+val GrainTileWorld = 1.0
+val GrainTexScale = 512.0
 // ± coverage modulation (pillar sketch: 0.12 on 0.75 alpha)
-private val GrainStrength = 0.16
+val GrainStrength = 0.16
 
 // ---- mirror, bloom ----
-private val ReflStrength = 0.25
-private val BloomIntensity = 0.0035
+val ReflStrength = 0.25
+val BloomIntensity = 0.0035
 
 // ---------------------------------------------------------------------------
 // Derived
 // ---------------------------------------------------------------------------
 
-private val HalfX = BaysX * ColSpace / 2.0
-private val HalfZ = BaysZ * ColSpace / 2.0
-private val ColHalf = ColWidth / 2.0
-private val SoffitY = ColHeight - BalkHeight
-private val LightY = ColHeight + BalkHeight * CofferDepthRatio
+val HalfX = BaysX * ColSpace / 2.0
+val HalfZ = BaysZ * ColSpace / 2.0
+val ColHalf = ColWidth / 2.0
+val SoffitY = ColHeight - BalkHeight
+val BayWidth = ColSpace - ColWidth
+val LightY = ColHeight + BalkHeight * CofferDepthRatio
 
-private val LightOverhang =
+val LightOverhang =
   (LightY - SoffitY) * (HalfX.max(HalfZ) * 2.0 - WallClearance)
     / (SoffitY - EyeHeight) * 1.05
 
-private val FarPlane =
+val FarPlane =
   val spanX = 2.0 * (HalfX + LightOverhang)
   val spanZ = 2.0 * (HalfZ + LightOverhang)
   (spanX * spanX + spanZ * spanZ + LightY * LightY).sqrt
 
 // 20× the depth buffer's resolution at soffit height
-private val FamilyYStagger =
+val FamilyYStagger =
   20.0 * SoffitY * SoffitY / NearPlane / 16777216.0
 
-private val MaxStripWidth = MaxTexSize / AmbienceTexScale
+val MaxStripWidth = MaxTexSize / AmbienceTexScale
 
 // integer noise periods per grain tile, so the tile repeats seamlessly
-private val GrainPeriod =
+val GrainPeriod =
   Math.round(GrainTileWorld / GrainSize).toDouble.max(1.0)
 
 // ---------------------------------------------------------------------------
 // Plan
 // ---------------------------------------------------------------------------
 
-private def perimeterRing: Ring =
+def perimeterRing: Ring =
   val points = Arr[Vec2]()
 
   def side(corner: Vec2, along: Vec2, inward: Vec2, bays: Int): Unit =
@@ -181,7 +182,7 @@ private def perimeterRing: Ring =
   side(Vec2(-HalfX, HalfZ), Vec2(0.0, -1.0), Vec2(1.0, 0.0), BaysZ)
   Ring(points, Facing.Inward, SoffitY)
 
-private def freeColumnRings: Arr[Ring] =
+def freeColumnRings: Arr[Ring] =
   val rings = Arr[Ring]()
   for
     ix <- 1 until BaysX
@@ -200,7 +201,7 @@ private def freeColumnRings: Arr[Ring] =
     )
   rings
 
-private def balkClip: Boundary =
+def balkClip: Boundary =
   val hx = HalfX + ColHalf
   val hz = HalfZ + ColHalf
   Boundary(
@@ -211,7 +212,7 @@ private def balkClip: Boundary =
     ),
   )
 
-private def balksWithin(clip: Boundary): Arr[Beam] =
+def balksWithin(clip: Boundary): Arr[Beam] =
   val families = Arr(
     BeamFamily(Vec2(1.0, 0.0), ColSpace, HalfZ, ColWidth),
     BeamFamily(Vec2(0.0, 1.0), ColSpace, HalfX, ColWidth),
@@ -228,9 +229,9 @@ private def balksWithin(clip: Boundary): Arr[Beam] =
 
 type WallVertex = (position: Vec3, uv: Vec2, edgeInfo: Vec4, tangent: Vec3)
 
-private case class Face(wall: Wall, leftArris: Boolean, rightArris: Boolean)
+case class Face(wall: Wall, leftArris: Boolean, rightArris: Boolean)
 
-private def ringFaces(r: Ring): Arr[Face] =
+def ringFaces(r: Ring): Arr[Face] =
   val bnd = r.boundary
   val edges = bnd.edges
   val walls = wallsFrom(bnd, SoffitY)
@@ -251,12 +252,12 @@ private def ringFaces(r: Ring): Arr[Face] =
     )
   faces
 
-private def totalWidth(faces: Arr[Face]): Double =
+def totalWidth(faces: Arr[Face]): Double =
   var w = 0.0
   for f <- faces do w += f.wall.width
   w
 
-private def stripsOf(faces: Arr[Face]): Arr[Arr[Face]] =
+def stripsOf(faces: Arr[Face]): Arr[Arr[Face]] =
   val strips = Arr[Arr[Face]]()
   var current = Arr[Face]()
   var width = 0.0
@@ -270,7 +271,7 @@ private def stripsOf(faces: Arr[Face]): Arr[Arr[Face]] =
   if current.length > 0 then strips.push(current)
   strips
 
-private def stripQuads[V](
+def stripQuads[V](
     faces: Arr[Face],
     vertex: (pos: Vec3, uv: Vec2, face: Face, fromLeft: Double) => V,
 ): Arr[Quad[V]] =
@@ -297,10 +298,10 @@ private def stripQuads[V](
     offset += w.width
   quads
 
-private def bakeVertex(pos: Vec3, uv: Vec2, f: Face, fromLeft: Double) =
+def bakeVertex(pos: Vec3, uv: Vec2, f: Face, fromLeft: Double) =
   (position = pos, uv = uv): RoomVertex
 
-private def renderVertex(pos: Vec3, uv: Vec2, f: Face, fromLeft: Double) =
+def renderVertex(pos: Vec3, uv: Vec2, f: Face, fromLeft: Double) =
   (
     position = pos,
     uv = uv,
@@ -313,36 +314,55 @@ private def renderVertex(pos: Vec3, uv: Vec2, f: Face, fromLeft: Double) =
     tangent = Vec3.Y.cross(f.wall.inwardNormal),
   ): WallVertex
 
-private def texSize(widthM: Double, heightM: Double, scale: Double) =
+def texSize(widthM: Double, heightM: Double, scale: Double) =
   (
     w = Math.ceil(widthM * scale).toInt.max(1),
     h = Math.ceil(heightM * scale).toInt.max(1),
   )
 
-private def checkTexSize(label: String, w: Int, h: Int): Unit =
+def checkTexSize(label: String, w: Int, h: Int): Unit =
   if w > MaxTexSize || h > MaxTexSize then
     dom.console.warn(s"columns: $label texture $w×$h exceeds $MaxTexSize")
+
+// ---------------------------------------------------------------------------
+// Painting layout
+// ---------------------------------------------------------------------------
+
+def bayFrame(bayWidth: Double): Vec4 =
+  val frameMargin = bayWidth * FrameMargin
+  Vec4(
+    frameMargin,
+    frameMargin,
+    bayWidth - 2.0 * frameMargin,
+    SoffitY - 2.0 * frameMargin,
+  )
+
+def randomPillarSize(frame: Vec4): Vec2 =
+  Vec2(
+    frame.z * randInRange(PillarWidthMin, PillarWidthMax),
+    frame.w * randInRange(PillarHeightMin, PillarHeightMax),
+  )
 
 // ---------------------------------------------------------------------------
 // Shader fields
 // ---------------------------------------------------------------------------
 
-private def warp(wp: Vec3Expr): Vec3Expr =
+def warp(wp: Vec3Expr): Vec3Expr =
   vec3(
     wp.x + wp.y * NoiseShear,
     wp.y * NoiseVerticalScale,
     wp.z * 0.8 + wp.y * NoiseShear,
   )
 
-private def worldNoise(wp: Vec3Expr): FloatExpr =
+def worldNoise(wp: Vec3Expr): FloatExpr =
   (warp(wp) * WorldNoiseScale)
     .simplexFbm(octaves = 5, lacunarity = 3.0, gain = 0.3, seed = 120.0)
 
-private def orientNoise(wp: Vec3Expr, normal: Vec3Expr): FloatExpr =
+def orientNoise(wp: Vec3Expr, normal: Vec3Expr): FloatExpr =
   (warp(wp).cross(normal) * OrientNoiseScale)
     .simplexFbm(octaves = 3, lacunarity = 2.1, gain = 0.25, seed = 70.0)
 
-private def ambience(
+def ambience(
     world: FloatExpr,
     orient: FloatExpr,
     edge: FloatExpr,
@@ -353,15 +373,15 @@ private def ambience(
     ((world + orient * OrientWeight * edge) / (1.0 + OrientWeight)).fit1101,
   )
 
-private def creepField(xz: Vec2Expr): FloatExpr =
+def creepField(xz: Vec2Expr): FloatExpr =
   (vec3(xz.x, 0.0, xz.y) * CreepScale).simplexFbm(octaves = 3, seed = 41.0)
 
-private def patchField(xz: Vec2Expr): FloatExpr =
+def patchField(xz: Vec2Expr): FloatExpr =
   (vec3(xz.x, 0.0, xz.y) * PatchScale)
     .simplexFbm(octaves = 3, seed = 9.0)
     .fit1101
 
-private def grime(
+def grime(
     dist: FloatExpr,
     creep: FloatExpr,
     patch: FloatExpr,
@@ -376,7 +396,7 @@ private def grime(
     patchiness = GrimePatchiness,
   )
 
-private def sideFade(
+def sideFade(
     dist: FloatExpr,
     isArris: FloatExpr,
     neighborFacing: FloatExpr,
@@ -385,7 +405,7 @@ private def sideFade(
   val radius = (arrisRadius - Fades.corner) * isArris + Fades.corner
   dist.smoothstep(0.0, radius.max(0.001))
 
-private def wallEdge(
+def wallEdge(
     wp: Vec3Expr,
     info: Vec4Expr,
     tangent: Vec3Expr,
@@ -396,24 +416,24 @@ private def wallEdge(
     * wp.y.smoothstep(0.0, Fades.plane)
     * (SoffitY - wp.y).smoothstep(0.0, Fades.top)
 
-private def wallLight(amb: Vec4Expr, edge: FloatExpr, y: FloatExpr): FloatExpr =
+def wallLight(amb: Vec4Expr, edge: FloatExpr, y: FloatExpr): FloatExpr =
   lerp(amb.y, amb.x, edge) * grime(y, amb.z.fit0111, amb.w)
 
-private def frameTint(y: FloatExpr): Vec3Expr =
+def frameTint(y: FloatExpr): Vec3Expr =
   vec3(WallTintLow).lerp(
     WallTintHigh,
     (SoffitY - y).smoothstep(TopFadeDepth, 0.0),
   )
 
-private def wallTint(y: FloatExpr): Vec3Expr = frameTint(y) - WallGray
+def wallTint(y: FloatExpr): Vec3Expr = frameTint(y) - WallGray
 
-private def insideRect(pos: Vec2Expr, rect: Vec4Expr): FloatExpr =
+def insideRect(pos: Vec2Expr, rect: Vec4Expr): FloatExpr =
   val dist = (pos - rect.xy).min(rect.xy + rect.zw - pos)
   dist.x.min(dist.y).smoothstep(0.0, FrameEdgeSoftness)
 
-private def vfloor(v: Vec2Expr): Vec2Expr = v - v.fract
+def vfloor(v: Vec2Expr): Vec2Expr = v - v.fract
 
-private def latticeDist(p: Vec2Expr): FloatExpr =
+def latticeDist(p: Vec2Expr): FloatExpr =
   val fromCorner = p + vec2(HalfX, HalfZ)
   val node = vfloor(fromCorner / ColSpace + 0.5)
   val q = (fromCorner - node * ColSpace).abs - ColHalf
@@ -426,10 +446,10 @@ private def latticeDist(p: Vec2Expr): FloatExpr =
   val wallDist = (HalfX - p.x.abs).min(HalfZ - p.y.abs)
   (boxDist + (1.0 - hasColumn) * 1000.0).min(wallDist)
 
-private def insideUnit(v: FloatExpr): FloatExpr =
+def insideUnit(v: FloatExpr): FloatExpr =
   v.smoothstep(-0.002, 0.0) * (1.0 - v.smoothstep(1.0, 1.002))
 
-private def cellHash(cell: Vec2Expr): FloatExpr =
+def cellHash(cell: Vec2Expr): FloatExpr =
   (cell.dot(Vec2(12.9898, 78.233)).sin * 43758.5453).fract
 
 // ---------------------------------------------------------------------------
@@ -617,15 +637,10 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       group.pillarColors()
 
     def paintBay(bay: Wall): (panel: Panel, rect: Vec4, frame: Vec4) =
-      val frameMargin = bay.width * FrameMargin
-      val frame = Vec4(
-        frameMargin,
-        frameMargin,
-        bay.width - 2.0 * frameMargin,
-        SoffitY - 2.0 * frameMargin,
-      )
-      val pillarW = frame.z * randInRange(PillarWidthMin, PillarWidthMax)
-      val pillarH = frame.w * randInRange(PillarHeightMin, PillarHeightMax)
+      val frame = bayFrame(bay.width)
+      val pillarSize = randomPillarSize(frame)
+      val pillarW = pillarSize.x
+      val pillarH = pillarSize.y
       val pillar = PillarPainting(pillarW, pillarH, nextPillarColors())
       val margin = pillarW * PillarMarginRatio
       val size = Vec2(pillarW + 2.0 * margin, pillarH + 2.0 * margin)
@@ -633,7 +648,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       def vertex(v: Vec2, color: Vec3): PaintVertex =
         (position = Vec3(v.x + margin, v.y + margin, 0.0), color = color)
       val quads = pillar.quads.map: pq =>
-        val rgb = pq.hsv.hsv2rgb // Smooth
+        val rgb = pq.hsv.hsv2rgbSmooth
         Quad(
           vertex(pq.quad.tl, rgb),
           vertex(pq.quad.bl, rgb),

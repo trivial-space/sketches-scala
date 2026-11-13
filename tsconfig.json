@@ -12,5 +12,5 @@
 		"skipLibCheck": true,
 		"types": ["bun"]
 	},
-	"include": ["scripts", "vite.config.ts"]
+	"include": ["scripts", "sketches/**/*.ts", "vite.config.ts"]
 }

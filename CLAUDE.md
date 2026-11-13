@@ -26,6 +26,13 @@ Each sketch builds in isolation via `scripts/sketch.ts`, which passes only that
 sketch dir + `trivalibs/src` + `project.scala` to scala-cli — never a bare `.`.
 Never use sbt.
 
+`*.node.scala` files in a sketch dir are offline renderers, left out of the
+browser `main.js`. A sibling `*.ts` script compiles the whole dir with
+`nodePackageArgs` and drives it headless via node-webgpu (see
+`trivalibs/docs/guide/painter-setup-guide.md`), e.g.
+`bun sketches/rooms/columns/pillars-png.ts`. Wrap their code in an `object`: a
+dotted file name breaks the top-level package object.
+
 Assume the Vite dev server (`bun run dev`, port 3000) is **already running** —
 don't launch it yourself as part of a checkpoint/verification. Rebuilding a
 sketch (`bun run sketch <path>`) is fine and produces the `main.js` the running

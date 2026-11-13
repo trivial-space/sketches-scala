@@ -9,3 +9,5 @@ node_modules
 dist
 *.semanticdb
 .mcp.json
+# offline renders, see sketches/rooms/columns/pillars-png.ts
+sketches/rooms/columns/renders/

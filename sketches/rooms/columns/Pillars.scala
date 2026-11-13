@@ -9,30 +9,30 @@ import trivalibs.utils.random.*
 // Tunables — the pillar algorithm, all relative to the pillar's own size
 // ---------------------------------------------------------------------------
 
-private val PaletteHueCount = 6
-private val GroupColorCount = 5
-private val PillarColorCount = 4
+val PaletteHueCount = 6
+val GroupColorCount = 5
+val PillarColorCount = 4
 
 // segment height, as a fraction of the height still to fill
-private val MinSegment = 0.1
-private val MaxSegment = 0.45
-private val SegmentGap = 0.004
+val MinSegment = 0.1
+val MaxSegment = 0.45
+val SegmentGap = 0.004
 
 // segment rect variation, as a fraction of the pillar width
-private val SegmentWidthJitter = 0.06
-private val SegmentShiftJitter = 0.06
+val SegmentWidthJitter = 0.06
+val SegmentShiftJitter = 0.06
 
 // reference block corner displacement, as a fraction of the pillar width
-private val VertexJitter = 0.015
+val VertexJitter = 0.015
 
 // each of a block's two quads against its reference block, as a fraction of
 // the pillar width: a whole-quad shift in any direction, then its own corners
-private val InstanceShift = 0.022
-private val InstanceVertexJitter = 0.015
+val InstanceShift = 0.022
+val InstanceVertexJitter = 0.015
 
-private val HueJitter = 0.015
-private val SaturationJitter = 0.23
-private val ValueJitter = 0.31
+val HueJitter = 0.015
+val SaturationJitter = 0.23
+val ValueJitter = 0.31
 
 // how far jittered corners can reach past the pillar rect, as a fraction of width
 val PillarMarginRatio =
@@ -62,7 +62,7 @@ class RoomPalette:
         // else (randNormal01() * 0.55 + 0.4).clamp01,
 
         // good woth hsv
-        if j == 0 then randNormal01() * 0.68
+        if j == 0 then randNormal01() * 0.65
         else (randNormal01() * 0.75 + 0.45).clamp01,
       ),
     )
@@ -74,7 +74,7 @@ class RoomPalette:
 class PillarGroup(val choices: Arr[Vec3]):
   def pillarColors(): Arr[Vec3] = pickMany(choices, PillarColorCount)
 
-private def pickMany(from: Arr[Vec3], count: Int): Arr[Vec3] =
+def pickMany(from: Arr[Vec3], count: Int): Arr[Vec3] =
   val picked = Arr[Vec3]()
   for _ <- 0 until count do picked.push(from.pick())
   picked
