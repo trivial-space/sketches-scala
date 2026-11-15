@@ -90,15 +90,18 @@ def pillarColorStrategy(palette: RoomPalette): PillarColorStrategy =
 class GroupedColors(
     palette: RoomPalette,
     pillarsPerGroup: Int = 5,
-    groupColorCount: Int = 5,
-    pillarColorCount: Int = 4,
+    groupColorCount: Int = 4,
+    pillarColorCount: Int = 3,
+    dropFromPalette: Int = 3,
 ) extends PillarColorStrategy:
-  private var group = pickDistinct(palette.choices, groupColorCount)
+  private val candidates =
+    palette.choices.shuffled().jsSlice(dropFromPalette)
+  private var group = pickDistinct(candidates, groupColorCount)
   private var pillarsInGroup = 0
 
   def next(): Arr[Vec3] =
     if pillarsInGroup == pillarsPerGroup then
-      group = pickDistinct(palette.choices, groupColorCount)
+      group = pickDistinct(candidates, groupColorCount)
       pillarsInGroup = 0
     pillarsInGroup += 1
     pickMany(group, pillarColorCount)

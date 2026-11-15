@@ -12506,8 +12506,8 @@ function $c_Lsketches_rooms_columns_DriftingColors(palette, selectionSize, swaps
   this.kj = null;
   this.h0 = null;
   this.nB = swapsPerPillar;
-  var \u03b41$ = $m_Ltrivalibs_utils_random_random$package$().rf(palette.kq);
-  this.kj = \u03b41$.slice(dropFromPalette);
+  var \u03b42$ = $m_Ltrivalibs_utils_random_random$package$().rf(palette.kq);
+  this.kj = \u03b42$.slice(dropFromPalette);
   this.h0 = $m_Lsketches_rooms_columns_Pillars$package$().uj(this.kj, selectionSize);
 }
 $p = $c_Lsketches_rooms_columns_DriftingColors.prototype = new $h_O();
