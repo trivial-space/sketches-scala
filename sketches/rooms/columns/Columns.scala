@@ -25,7 +25,7 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 val ColSpace = 16.0
 val ColHeight = 40.0
 val ColWidth = 1.6
-val BalkHeight = ColWidth * 4.8
+val BalkHeight = ColWidth * 4.9
 // bays between columns along each side
 val BaysX = 5
 val BaysZ = 10
@@ -104,22 +104,21 @@ val FrameMargin = 0.035
 val FrameEdgeSoftness = 0.01
 // pillar width and height as fractions of the frame's
 val PillarWidthMin = 0.33
-val PillarWidthMax = 0.81
+val PillarWidthMax = 0.78
 val PillarHeightMin = 0.8
 val PillarHeightMax = 0.95
 // meters above the frame's bottom edge
 val PillarFrameGap = 0.4
-val PaintAlpha = 0.8
+val PaintAlpha = 0.85
 // neighboring bays sharing one color group, counted along the perimeter
 val PillarGroupSize = 5
 val PaintTexScale = 56.0
 
 // ---- paint grain ----
-val GrainSize = 0.01
-val GrainTileWorld = 1.0
-val GrainTexScale = 512.0
-// ± coverage modulation (pillar sketch: 0.12 on 0.75 alpha)
-val GrainStrength = 0.16
+// meters
+val GrainSize = 0.03
+// ± alpha modulation, as a fraction of PaintAlpha
+val GrainStrength = 0.2
 
 // ---- mirror, bloom ----
 val ReflStrength = 0.25
@@ -150,10 +149,6 @@ val FamilyYStagger =
   20.0 * SoffitY * SoffitY / NearPlane / 16777216.0
 
 val MaxStripWidth = MaxTexSize / AmbienceTexScale
-
-// integer noise periods per grain tile, so the tile repeats seamlessly
-val GrainPeriod =
-  Math.round(GrainTileWorld / GrainSize).toDouble.max(1.0)
 
 // ---------------------------------------------------------------------------
 // Plan
@@ -591,39 +586,41 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
           out := vec4(vec3(joint * tone), 1.0),
         )
 
-    // ---- paint grain ----
-
-    val grainBounds =
-      (minX = 0.0, minZ = 0.0, maxX = GrainTileWorld, maxZ = GrainTileWorld)
-    val grainForm = form(Arr(planeQuad(grainBounds, 0.0, faceUp = false)))
-    val grainPx = Math.ceil(GrainTileWorld * GrainTexScale).toInt
-    val grainTex = TextureBaker.bake(p, grainForm, grainPx, grainPx):
-      (_, _, uv) =>
-        val n = (vec3(uv.x, uv.y, 0.0) * GrainPeriod).extendedFbmValue(
-          octaves = 1,
-          tilingPeriod = vec3(GrainPeriod, GrainPeriod, 0.0),
-          seed = 5.0,
-        )
-        vec4(n * 0.5 + 0.5, 0.0, 0.0, 1.0)
-
     // ---- paintings ----
 
-    type PaintVertex = (position: Vec3, color: Vec3)
+    type PaintVertex = (position: Vec3, color: Vec3, grainPos: Vec2)
 
     val paintShade =
-      p.shade[PaintVertex, (color: Vec3), (size: VertexUniform[Vec2])]:
-        program =>
-          program.vert: ctx =>
-            Block(
-              ctx.out.color := ctx.in.color,
-              ctx.out.position := vec4(
-                (ctx.in.position.xy / ctx.bindings.size).fit0111,
-                0.0,
-                1.0,
-              ),
-            )
-          program.frag: ctx =>
-            ctx.out.color := vec4(ctx.in.color, PaintAlpha)
+      p.shade[
+        PaintVertex,
+        (color: Vec3, grainPos: Vec2),
+        (size: VertexUniform[Vec2]),
+      ]: program =>
+        program.vert: ctx =>
+          Block(
+            ctx.out.color := ctx.in.color,
+            ctx.out.grainPos := ctx.in.grainPos,
+            ctx.out.position := vec4(
+              (ctx.in.position.xy / ctx.bindings.size).fit0111,
+              0.0,
+              1.0,
+            ),
+          )
+        program.frag: ctx =>
+          val grain = LetFloat("grain")
+          Block(
+            grain := (ctx.in.grainPos / GrainSize)
+              .extendedFbmValue(
+                octaves = 2,
+                seed = 5.0,
+                rot = 0.66,
+              )
+              .fit1101,
+            ctx.out.color := vec4(
+              ctx.in.color,
+              (PaintAlpha * (1.0 - grain * GrainStrength)).clamp01,
+            ),
+          )
 
     val palette = RoomPalette()
     var group = palette.pillarGroup()
@@ -644,9 +641,14 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       val pillar = PillarPainting(pillarW, pillarH, nextPillarColors())
       val margin = pillarW * PillarMarginRatio
       val size = Vec2(pillarW + 2.0 * margin, pillarH + 2.0 * margin)
+      val grainOffset = Vec2(rand() * 1000.0, rand() * 1000.0)
 
       def vertex(v: Vec2, color: Vec3): PaintVertex =
-        (position = Vec3(v.x + margin, v.y + margin, 0.0), color = color)
+        (
+          position = Vec3(v.x + margin, v.y + margin, 0.0),
+          color = color,
+          grainPos = v + grainOffset,
+        )
       val quads = pillar.quads.map: pq =>
         val rgb = pq.hsv.hsv2rgbSmooth
         Quad(
@@ -745,15 +747,12 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
         vp: VertexUniform[Mat4],
         eye: FragmentUniform[Vec3],
         samp: FragmentUniform[Sampler],
-        tileSamp: FragmentUniform[Sampler],
         paintRect: FragmentUniform[Vec4],
         frameRect: FragmentUniform[Vec4],
-        grainOffset: FragmentUniform[Vec2],
     )
     type BayPanels = (
         tex: FragmentPanel,
         paint: FragmentPanel,
-        grain: FragmentPanel,
     )
 
     val bayShade =
@@ -776,7 +775,6 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
             val bayPos = LetVec2("bayPos")
             val paintUv = LetVec2("paintUv")
             val paint = LetVec4("paintColor")
-            val grain = LetFloat("grain")
             val tint = LetVec3("tint")
             Block(
               amb := ctx.textures.tex(ctx.in.uv, ctx.bindings.samp),
@@ -801,15 +799,8 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
               paint := ctx.textures.paint(paintUv, ctx.bindings.samp)
                 * insideUnit(paintUv.x)
                 * insideUnit(paintUv.y),
-              grain := 1.0 + (ctx.textures
-                .grain(
-                  (bayPos + ctx.bindings.grainOffset) / GrainTileWorld,
-                  ctx.bindings.tileSamp,
-                )
-                .x * 2.0 - 1.0) * GrainStrength,
               ctx.out.color := vec4(
-                tint * light * (1.0 - paint.a * grain)
-                  + paint.rgb * grain * light,
+                tint * light * (1.0 - paint.a) + paint.rgb * light,
                 1.0,
               ),
             )
@@ -937,18 +928,12 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
               cullMode = CullMode.None,
             ).bind(
               "samp" := sampler,
-              "tileSamp" := tileSampler,
               "eye" := eyePos,
               "paintRect" := painting.rect,
               "frameRect" := painting.frame,
-              "grainOffset" := Vec2(
-                rand() * GrainTileWorld,
-                rand() * GrainTileWorld,
-              ),
             ).bind(
               "tex" := tex,
               "paint" := painting.panel,
-              "grain" := grainTex,
             ),
           )
         else plainQuads.push(renderQuads(j))
