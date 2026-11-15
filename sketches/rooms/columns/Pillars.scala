@@ -10,8 +10,6 @@ import trivalibs.utils.random.*
 // ---------------------------------------------------------------------------
 
 val PaletteHueCount = 6
-val GroupColorCount = 5
-val PillarColorCount = 4
 
 // segment height, as a fraction of the height still to fill
 val MinSegment = 0.1
@@ -55,7 +53,7 @@ class RoomPalette:
     choices.push(
       Vec3(
         n / PaletteHueCount + randNormal11() * 0.1,
-        (randNormal01() * 0.8 + 0.45).clamp01,
+        (randNormal01() * 0.84 + 0.45).clamp01,
 
         // tested with hsl
         // if j == 0 then randNormal01() * 0.55
@@ -67,17 +65,60 @@ class RoomPalette:
       ),
     )
 
-  def pillarGroup(): PillarGroup = PillarGroup(
-    pickMany(choices, GroupColorCount),
-  )
-
-class PillarGroup(val choices: Arr[Vec3]):
-  def pillarColors(): Arr[Vec3] = pickMany(choices, PillarColorCount)
-
 def pickMany(from: Arr[Vec3], count: Int): Arr[Vec3] =
   val picked = Arr[Vec3]()
   for _ <- 0 until count do picked.push(from.pick())
   picked
+
+def pickDistinct(from: Arr[Vec3], count: Int): Arr[Vec3] =
+  val shuffled = from.shuffled()
+  val picked = Arr[Vec3]()
+  for i <- 0 until count.min(shuffled.length) do picked.push(shuffled(i))
+  picked
+
+// ---------------------------------------------------------------------------
+// Color strategies
+// ---------------------------------------------------------------------------
+
+trait PillarColorStrategy:
+  def next(): Arr[Vec3]
+
+def pillarColorStrategy(palette: RoomPalette): PillarColorStrategy =
+  DriftingColors(palette)
+  // GroupedColors(palette)
+
+class GroupedColors(
+    palette: RoomPalette,
+    pillarsPerGroup: Int = 5,
+    groupColorCount: Int = 5,
+    pillarColorCount: Int = 4,
+) extends PillarColorStrategy:
+  private var group = pickDistinct(palette.choices, groupColorCount)
+  private var pillarsInGroup = 0
+
+  def next(): Arr[Vec3] =
+    if pillarsInGroup == pillarsPerGroup then
+      group = pickDistinct(palette.choices, groupColorCount)
+      pillarsInGroup = 0
+    pillarsInGroup += 1
+    pickMany(group, pillarColorCount)
+
+class DriftingColors(
+    palette: RoomPalette,
+    selectionSize: Int = 5,
+    swapsPerPillar: Int = 1,
+) extends PillarColorStrategy:
+  private val selection = pickDistinct(palette.choices, selectionSize)
+
+  private def swapCandidates(index: Int): Arr[Vec3] =
+    palette.choices.filter: c =>
+      c == selection(index) || !selection.contains(c)
+
+  def next(): Arr[Vec3] =
+    for _ <- 0 until swapsPerPillar do
+      val index = randInt(selection.length)
+      selection(index) = swapCandidates(index).pick()
+    selection.jsSlice()
 
 // ---------------------------------------------------------------------------
 // Pillar

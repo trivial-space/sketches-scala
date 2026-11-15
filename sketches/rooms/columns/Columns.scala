@@ -110,8 +110,6 @@ val PillarHeightMax = 0.95
 // meters above the frame's bottom edge
 val PillarFrameGap = 0.4
 val PaintAlpha = 0.85
-// neighboring bays sharing one color group, counted along the perimeter
-val PillarGroupSize = 5
 val PaintTexScale = 56.0
 
 // ---- paint grain ----
@@ -622,23 +620,14 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
             ),
           )
 
-    val palette = RoomPalette()
-    var group = palette.pillarGroup()
-    var baysInGroup = 0
-
-    def nextPillarColors(): Arr[Vec3] =
-      if baysInGroup == PillarGroupSize then
-        group = palette.pillarGroup()
-        baysInGroup = 0
-      baysInGroup += 1
-      group.pillarColors()
+    val pillarColors = pillarColorStrategy(RoomPalette())
 
     def paintBay(bay: Wall): (panel: Panel, rect: Vec4, frame: Vec4) =
       val frame = bayFrame(bay.width)
       val pillarSize = randomPillarSize(frame)
       val pillarW = pillarSize.x
       val pillarH = pillarSize.y
-      val pillar = PillarPainting(pillarW, pillarH, nextPillarColors())
+      val pillar = PillarPainting(pillarW, pillarH, pillarColors.next())
       val margin = pillarW * PillarMarginRatio
       val size = Vec2(pillarW + 2.0 * margin, pillarH + 2.0 * margin)
       val grainOffset = Vec2(rand() * 1000.0, rand() * 1000.0)

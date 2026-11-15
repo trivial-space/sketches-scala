@@ -39,10 +39,10 @@ object PillarsPng:
         val frame = bayFrame(BayWidth)
         val pxPerMeter = imageSize.y * FrameFill / frame.w
         val frameBottom = (imageSize.y - frame.w * pxPerMeter) / 2.0
-        val group = RoomPalette().pillarGroup()
+        val pillarColors = pillarColorStrategy(RoomPalette())
 
         def pillarQuads(size: Vec2, left: Double): Arr[Quad[PaintVertex]] =
-          val pillar = PillarPainting(size.x, size.y, group.pillarColors())
+          val pillar = PillarPainting(size.x, size.y, pillarColors.next())
           val origin = Vec2(left, frameBottom + PillarFrameGap * pxPerMeter)
           def vertex(v: Vec2, color: Vec3): PaintVertex =
             val pos = origin + v * pxPerMeter
