@@ -615,7 +615,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
               )
               .fit1101,
             ctx.out.color := vec4(
-              ctx.in.color,
+              ctx.in.color * 0.9 + 0.07,
               (PaintAlpha * (1.0 - grain * GrainStrength)).clamp01,
             ),
           )
