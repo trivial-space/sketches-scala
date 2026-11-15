@@ -639,7 +639,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
           grainPos = v + grainOffset,
         )
       val quads = pillar.quads.map: pq =>
-        val rgb = pq.hsv.hsv2rgbSmooth
+        val rgb = pq.hsl.hsl2rgbSmooth
         Quad(
           vertex(pq.quad.tl, rgb),
           vertex(pq.quad.bl, rgb),
@@ -938,7 +938,7 @@ def roomsColumns(canvas: HTMLCanvasElement): Unit =
       shapes = aboveGround,
       vpName = "vp",
       alphaScale = LightY,
-      blurStrength = 6.0,
+      blurStrength = 7.0,
       blurRatioVertical = 3.0,
       clearColor = Vec4(0.9, 0.9, 0.9, 0.0),
     )

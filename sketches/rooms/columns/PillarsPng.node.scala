@@ -48,7 +48,7 @@ object PillarsPng:
             val pos = origin + v * pxPerMeter
             (position = Vec3(pos.x, pos.y, 0.0), color = color)
           pillar.quads.map: pq =>
-            val rgb = pq.hsv.hsv2rgbSmooth
+            val rgb = pq.hsl.hsl2rgbSmooth
             Quad(
               vertex(pq.quad.tl, rgb),
               vertex(pq.quad.bl, rgb),

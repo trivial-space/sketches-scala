@@ -29,8 +29,8 @@ val InstanceShift = 0.022
 val InstanceVertexJitter = 0.015
 
 val HueJitter = 0.015
-val SaturationJitter = 0.23
-val ValueJitter = 0.31
+val SaturationJitter = 0.21
+val ValueJitter = 0.28
 
 // how far jittered corners can reach past the pillar rect, as a fraction of width
 val PillarMarginRatio =
@@ -53,15 +53,15 @@ class RoomPalette:
     choices.push(
       Vec3(
         n / PaletteHueCount + randNormal11() * 0.1,
-        (randNormal01() * 0.84 + 0.45).clamp01,
+        (randNormal01() * 0.8 + 0.45).clamp01,
 
         // tested with hsl
-        // if j == 0 then randNormal01() * 0.55
-        // else (randNormal01() * 0.55 + 0.4).clamp01,
+        if j == 0 then randNormal01() * 0.35 + 0.08
+        else (randNormal01() * 0.16 + 0.47).clamp01,
 
         // good woth hsv
-        if j == 0 then randNormal01() * 0.68
-        else (randNormal01() * 0.75 + 0.45).clamp01,
+        // if j == 0 then randNormal01() * 0.65 + 0.03
+        // else (randNormal01() * 0.75 + 0.45).clamp01,
       ),
     )
 
@@ -105,13 +105,16 @@ class GroupedColors(
 
 class DriftingColors(
     palette: RoomPalette,
-    selectionSize: Int = 5,
+    selectionSize: Int = 4,
     swapsPerPillar: Int = 1,
+    dropFromPalette: Int = 3,
 ) extends PillarColorStrategy:
-  private val selection = pickDistinct(palette.choices, selectionSize)
+  private val candidates =
+    palette.choices.shuffled().jsSlice(dropFromPalette)
+  private val selection = pickDistinct(candidates, selectionSize)
 
   private def swapCandidates(index: Int): Arr[Vec3] =
-    palette.choices.filter: c =>
+    candidates.filter: c =>
       c == selection(index) || !selection.contains(c)
 
   def next(): Arr[Vec3] =
@@ -124,7 +127,7 @@ class DriftingColors(
 // Pillar
 // ---------------------------------------------------------------------------
 
-class PaintedQuad(val quad: Quad[Vec2], val hsv: Vec3)
+class PaintedQuad(val quad: Quad[Vec2], val hsl: Vec3)
 
 class PillarPainting(val width: Double, val height: Double, colors: Arr[Vec3]):
   private def randomOffset(scale: Double): Vec2 =
@@ -186,4 +189,4 @@ class PillarPainting(val width: Double, val height: Double, colors: Arr[Vec3]):
       quads.push(PaintedQuad(instanceOf(reference), variedColor(pairColor)))
     bottom += segment
 
-  quads.sort((a, b) => if a.hsv.z < b.hsv.z then -1 else 1)
+  quads.sort((a, b) => if a.hsl.z < b.hsl.z then -1 else 1)
